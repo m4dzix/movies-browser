@@ -7,4 +7,8 @@ export const GlobalStyle = createGlobalStyle`
   *, ::after, ::before{
     box-sizing: inherit;
     }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: ${({ theme }) => theme.colors.whisper}
+  }
 `;
