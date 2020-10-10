@@ -1,7 +1,10 @@
 import React from "react";
+import Pagination from "./common/Pagination";
 
 function App() {
-  return <div className="App"></div>;
+  return(
+    <Pagination />
+  )
 }
 
 export default App;
