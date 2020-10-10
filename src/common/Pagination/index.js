@@ -9,7 +9,7 @@ const Pagination = () => {
 
     return(
         <Container>
-            <Button disabled>&#60;<Text>First</Text></Button>
+            <Button disabled>&#60; <Text>First</Text></Button>
             <Button disabled>&#60; <Text>Previous</Text></Button>
             <TextArea>
                 <>
