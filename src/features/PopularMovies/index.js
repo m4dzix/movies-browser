@@ -1,7 +1,7 @@
 import React from "react";
 import Main from "../../common/Main";
 import Section from "../../common/Section";
-import Tail from "../../common/Tail";
+import Tile from "../../common/Tile";
 
 const PopularMovies = () => {
   return (
@@ -9,7 +9,7 @@ const PopularMovies = () => {
       <Section
         title={"Popular movies"}
         body={
-          <Tail
+          <Tile
             title={"Tytuł"}
             year={"2020"}
             type={"action"}
@@ -18,7 +18,7 @@ const PopularMovies = () => {
             }
             voteAverage={"7,6"}
             voteCount={"35"}
-          ></Tail>
+          ></Tile>
         }
       ></Section>
     </Main>
