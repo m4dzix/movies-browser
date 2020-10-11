@@ -25,6 +25,10 @@ export const Button = styled.button`
         background-color: ${({theme}) => theme.colors.mistic};
         color: ${({theme}) => theme.colors.waterloo};
     }  
+
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileMax}px){
+        margin: 0 4px;
+    }
 `;
 
 export const Text = styled.span`
@@ -35,9 +39,20 @@ export const Text = styled.span`
         color: ${({theme}) => theme.colors.waterloo};
         font-weight: normal;
     `};
+
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileMax}px){
+        padding: 0 2px;
+    }
 `;
 
 export const TextArea = styled.span`
     margin: 12px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: ${({theme}) => theme.breakpoints.mobileMax}px){
+        margin: 4px;
+        font-size: 10px;
+    }
 `;
