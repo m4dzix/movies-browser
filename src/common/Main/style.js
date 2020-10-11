@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
 export const StyledMain = styled.main`
-  margin: 0 276px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
