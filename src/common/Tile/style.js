@@ -9,8 +9,9 @@ export const Container = styled.div`
   border-radius: 5px;
   display: grid;
   grid-gap: 8px;
+  grid-template-rows: auto 1fr;
   background-color: ${({ theme }) => theme.colors.white};
-  align-items: start;
+  align-items: center;
 `;
 
 export const Poster = styled.img`
@@ -18,15 +19,27 @@ export const Poster = styled.img`
   height: 434px;
   border-radius: 5px;
 `;
+export const Content = styled.div`
+  display: grid;
+  align-items: start;
+  justify-items: start;
+  align-self: stretch; ;
+`;
+export const DetailsContainer = styled.div`
+  align-self: start;
+`;
 export const Title = styled.h3`
   font-weight: 500;
   font-size: 22px;
+  line-height: 130%;
   margin: 0;
+  margin-bottom: 8px;
 `;
 export const Year = styled.p`
   font-size: 16px;
   line-height: 150%;
   margin: 0;
+  margin-bottom: 8px;
   color: ${({ theme }) => theme.colors.waterloo};
 `;
 
@@ -44,6 +57,7 @@ export const Tag = styled.li`
   background-color: ${({ theme }) => theme.colors.mistic};
   border-radius: 5px;
   margin-right: 8px;
+  margin-bottom: 8px;
   padding: 8px 16px;
 `;
 export const VoteContainer = styled.div`

@@ -2,6 +2,8 @@ import React from "react";
 import {
   Container,
   Poster,
+  Content,
+  DetailsContainer,
   Title,
   Year,
   Tags,
@@ -17,18 +19,22 @@ const Tile = ({ title, year, type, imagePath, voteAverage, voteCount }) => {
   return (
     <Container>
       <Poster src={imagePath} alt={""} />
-      <Title>{title}</Title>
-      <Year>{year}</Year>
-      <Tags>
-        <Tag>{type}</Tag>
-        <Tag>{type}</Tag>
-        <Tag>{type}</Tag>
-      </Tags>
-      <VoteContainer>
-        <StarIcon src={starIcon} alt={"star"} />
-        <VoteAverage>{voteAverage}</VoteAverage>
-        <VoteCount>{voteCount} votes</VoteCount>
-      </VoteContainer>
+      <Content>
+        <DetailsContainer>
+          <Title>{title}</Title>
+          <Year>{year}</Year>
+          <Tags>
+            <Tag>{type}</Tag>
+            <Tag>{type}</Tag>
+            <Tag>{type}</Tag>
+          </Tags>
+        </DetailsContainer>
+        <VoteContainer>
+          <StarIcon src={starIcon} alt={"star"} />
+          <VoteAverage>{voteAverage}</VoteAverage>
+          <VoteCount>{voteCount} votes</VoteCount>
+        </VoteContainer>
+      </Content>
     </Container>
   );
 };
