@@ -7,7 +7,7 @@ const Pagination = () => {
     //tmp Data, also disabled state added to 2 buttons for preview
     const currentPage = 7;
     const maxPages = 100;
-    const isMobile = true;
+    const isMobile = false;
 
     return(
         <Container>
@@ -18,8 +18,8 @@ const Pagination = () => {
                     <Text inTextArea>Page</Text> {currentPage} <Text inTextArea>of</Text> {maxPages} 
                 </>
             </TextArea>
-            <Button>{isMobile ? <>&#62;</> : <>&#62; <Text>Previous</Text></>}</Button>
-            <Button>{isMobile ? <>&#62;&#62;</> : <>&#62; <Text>First</Text></>}</Button>
+            <Button>{isMobile ? <>&#62;</> : <><Text>Next</Text> &#62;</>}</Button>
+            <Button>{isMobile ? <>&#62;&#62;</> : <><Text>First</Text> &#62;</>}</Button>
         </Container>
     );
 };
