@@ -1,7 +1,8 @@
 import React from "react";
+import PopularMovies from "./features/PopularMovies";
 
 function App() {
-  return <div className="App"></div>;
+  return <PopularMovies />;
 }
 
 export default App;

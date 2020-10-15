@@ -12,6 +12,7 @@ export const theme = {
     black: "#000",
   },
   breakpoints: {
+    tablet: 1025,
     mobileMax: 767,
   },
 };
