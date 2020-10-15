@@ -1,4 +1,4 @@
-import { delay, call, put } from "./redux-saga/effects";
+import { delay, call, put, takeEvery } from "redux-saga/effects";
 import { getPopularMovies } from "./getApi";
 import {
   fetchPopularMovies,
@@ -16,6 +16,6 @@ function* fetchPopularMoviesHandler() {
   }
 }
 
-export function* watchFerchPopularMovies() {
+export function* watchFetchPopularMovies() {
   yield takeEvery(fetchPopularMovies.type, fetchPopularMoviesHandler);
 }

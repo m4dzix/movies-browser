@@ -24,9 +24,9 @@ export const {
   fetchPopularMovies,
   fetchPopularMoviesSuccess,
   fetchPopularMoviesError,
-} = moviesSlice.actions;
+} = movieSlice.actions;
 export const selectMoviesState = (state) => state.popularMovies;
 export const selectMovies = (state) => selectMoviesState(state).popularMovies;
 export const selectLoading = (state) => selectMoviesState(state).loading;
 
-export default moviesSlice.reducer;
+export default movieSlice.reducer;

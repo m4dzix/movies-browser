@@ -5,7 +5,7 @@ export const getPopularMovies = async () => {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-  const popularMovies = await json.response();
+  const popularMovies = await response.json();
 
   return popularMovies;
 };
