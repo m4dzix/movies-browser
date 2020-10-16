@@ -9,3 +9,17 @@ export const getPopularMovies = async () => {
 
   return popularMovies;
 };
+
+export const getMovieGenres = async () => {
+  const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US`;
+
+  const response = await fetch(api);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  const arrayGenre = await response.json();
+
+  return arrayGenre.genres;
+};
