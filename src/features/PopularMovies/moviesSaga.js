@@ -8,9 +8,9 @@ import {
 
 function* fetchPopularMoviesHandler() {
   try {
-    delay(100);
-    const popularMovies = call(getPopularMovies);
-    yield put(fetchPopularMoviesSuccess(popularMovies));
+    yield delay(100);
+    const movies = yield call(getPopularMovies);
+    yield put(fetchPopularMoviesSuccess(movies));
   } catch (error) {
     yield put(fetchPopularMoviesError());
   }
