@@ -3,21 +3,34 @@ import Main from "../../common/Main";
 import Section from "../../common/Section";
 import Tile from "../../common/Tile";
 import video from "./Video.svg";
+import { Tag } from "./style";
 import {
   fetchPopularMovies,
+  fetchGenres,
   selectLoading,
   selectPopularMovies,
+  selectGenres,
 } from "./moviesSlice";
 import { useSelector, useDispatch } from "react-redux";
 const PopularMovies = () => {
   const loading = useSelector(selectLoading);
-  console.log(loading);
   const popularMovies = useSelector(selectPopularMovies);
-
+  const movieGenres = useSelector(selectGenres);
+  console.log(movieGenres);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchPopularMovies());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchGenres());
+  }, [dispatch]);
+
+  const type = (genreId) =>
+    movieGenres
+      .filter((item) => item.id === genreId)
+      .map((genres) => genres.name);
 
   if (!loading && popularMovies) {
     return (
@@ -29,10 +42,12 @@ const PopularMovies = () => {
               key={movie.id}
               title={movie.title}
               year={movie.release_date.split("-")[0]}
-              type={movie.genre_ids}
+              type={movie.genre_ids.map((id) => (
+                <Tag key={id}>{type(id)}</Tag>
+              ))}
               imagePath={
                 !!movie.poster_path
-                  ? `https://image.tmdb.org/t/p/w185/${movie.poster_path}`
+                  ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
                   : video
               }
               voteAverage={movie.vote_average}

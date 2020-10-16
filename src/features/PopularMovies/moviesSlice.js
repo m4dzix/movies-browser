@@ -22,7 +22,7 @@ const moviesSlice = createSlice({
       state.loading = true;
     },
     fetchGenresSuccess: (state, { payload: genres }) => {
-      state.movies = genres;
+      state.genres = genres;
       state.loading = false;
     },
     fetchGenresError: (state) => {
