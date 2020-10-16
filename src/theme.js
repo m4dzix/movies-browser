@@ -9,6 +9,7 @@ export const theme = {
     candlelight: "#FCD420",
     waterloo: "#7E839A",
     silver: "#C4C4C4",
+    woodsmoke: "#18181B",
     black: "#000",
   },
   breakpoints: {
