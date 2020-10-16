@@ -14,7 +14,7 @@ export const Container = styled.div`
   align-items: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 288px;
-    height: 201px;
+    height: auto;
     grid-template-columns: auto 1fr;
   }
 `;
@@ -23,6 +23,7 @@ export const Poster = styled.img`
   width: 292px;
   height: 434px;
   border-radius: 5px;
+  background-color: ${({ theme }) => theme.colors.silver};
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 114px;
     height: 169px;
@@ -85,7 +86,6 @@ export const VoteContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-export const StarIcon = styled.img``;
 
 export const VoteAverage = styled.strong`
   font-weight: 600;
