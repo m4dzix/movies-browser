@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
-import { StyledNavLink, NavContainer, Input, InputContainer, LogoContainer, Title, LinkContainer } from "./styled";
+import { StyledNavLink, NavContainer, Input, InputContainer, LogoContainer, Title, LinkContainer, StyledImg, ListItem } from "./styled";
 import search from "./images/search.svg";
 import camera from "./images/camera.svg";
 
@@ -9,15 +9,15 @@ export default () => (
     <nav>
       <NavContainer>
         <LogoContainer>
-          <img src={camera} alt="camera icon" />
+          <StyledImg src={camera} alt="camera icon" />
           <Title>Movies Browser</Title>
         </LogoContainer>
         <LinkContainer>
-          <li><StyledNavLink to="/popular-movies">movies</StyledNavLink></li>
-          <li><StyledNavLink to="/popular-people">people</StyledNavLink></li>
+          <ListItem><StyledNavLink to="/popular-movies">movies</StyledNavLink></ListItem>
+          <ListItem><StyledNavLink to="/popular-people">people</StyledNavLink></ListItem>
         </LinkContainer>
         <InputContainer>
-          <img src={search} alt="lens icon" />
+          <StyledImg src={search} alt="lens icon" />
           <Input
             placeholder="Search for movies..."
           />
