@@ -3,6 +3,20 @@ import { NavLink } from "react-router-dom";
 
 const activeClassName = "active";
 
+export const NavContainer = styled.div`
+    background-color: ${({ theme }) => theme.colors.black};
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 94px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
+        height: 142px;
+        flex-wrap: wrap;
+    }
+`;
+
 export const StyledNavLink = styled(NavLink).attrs(() => ({
     activeClassName,
 }))`
@@ -17,21 +31,26 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
     text-transform: uppercase;
     padding: 13.5px 24px;
 
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
+        font-size: 12px;
+        padding: 8px 12px;
+        
+    }
+
+`;
+
+export const ListItem = styled.li`
+    list-style: none;
 `;
 
 export const LinkContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-`;
-
-export const NavContainer = styled.div`
-    background-color: ${({ theme }) => theme.colors.black};
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 94px;
+    
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
+        margin: 32px 16px;
+    }
 `;
 
 export const InputContainer = styled.div`
@@ -43,6 +62,11 @@ export const InputContainer = styled.div`
     height: 48px;
     display:flex;
     align-items: center;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
+        margin: 0 16px 16px 16px;
+        padding-left: 18px;
+    }
 `;
 
 export const Input = styled.input`
@@ -52,6 +76,8 @@ export const Input = styled.input`
     padding-left: 20px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
+        font-size: 13px;
+        padding-left: 10px;
     }
 `;
 
@@ -61,10 +87,22 @@ export const LogoContainer = styled.div`
     justify-content: center;
 `;
 
+export const StyledImg = styled.img`
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
+        height: 17px;
+        width: 17px;
+    }
+`;
+
 export const Title = styled.span`
     font-weight: 500;
     font-size: 24px;
     line-height: 40px;
     color: ${({ theme }) => theme.colors.white};
     padding-left: 17px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
+        font-size: 13px;
+        padding-left: 8px;
+    }
 `;
