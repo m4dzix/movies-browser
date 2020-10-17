@@ -85,6 +85,11 @@ export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 16px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
+        margin: 0 0;
+    }
 `;
 
 export const StyledImg = styled.img`
