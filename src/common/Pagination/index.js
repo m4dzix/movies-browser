@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Button, TextArea, Text} from "./styled";
+import { Container, Button, Pages, Text} from "./styled";
 
 
 const Pagination = () => {
@@ -13,11 +13,11 @@ const Pagination = () => {
         <Container>
             <Button disabled>{isMobile ? <>&#60;&#60;</> : <>&#60; <Text>First</Text></>}</Button>
             <Button disabled>{isMobile ? <>&#60;</> : <>&#60; <Text>Previous</Text></>}</Button>
-            <TextArea>
+            <Pages>
                 <>
-                    <Text inTextArea>Page</Text> {currentPage} <Text inTextArea>of</Text> {maxPages} 
+                    <Text inPages>Page</Text> {currentPage} <Text inPages>of</Text> {maxPages} 
                 </>
-            </TextArea>
+            </Pages>
             <Button>{isMobile ? <>&#62;</> : <><Text>Next</Text> &#62;</>}</Button>
             <Button>{isMobile ? <>&#62;&#62;</> : <><Text>First</Text> &#62;</>}</Button>
         </Container>

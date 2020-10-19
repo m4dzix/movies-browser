@@ -36,7 +36,7 @@ export const Text = styled.span`
     color: ${({theme}) => theme.colors.black};
     padding: 0 8px;
 
-    ${({ inTextArea }) => inTextArea && css`
+    ${({ inPages }) => inPages && css`
         color: ${({theme}) => theme.colors.waterloo};
         font-weight: normal;
     `};
@@ -46,7 +46,7 @@ export const Text = styled.span`
     }
 `;
 
-export const TextArea = styled.span`
+export const Pages = styled.span`
     margin: 12px;
     font-weight: bold;
     display: flex;
