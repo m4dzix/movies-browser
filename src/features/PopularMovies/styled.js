@@ -8,6 +8,7 @@ export const Tag = styled.li`
   margin-right: 8px;
   margin-bottom: 8px;
   padding: 8px 16px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 10px;
     line-height: 110%;

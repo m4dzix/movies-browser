@@ -3,7 +3,7 @@ import Main from "../../common/Main";
 import Section from "../../common/Section";
 import Tile from "../../common/Tile";
 import video from "./Video.svg";
-import { Tag } from "./style";
+import { Tag } from "./styled";
 import {
   fetchPopularMovies,
   fetchGenres,
