@@ -7,7 +7,7 @@ export const NavContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.black};
     display:flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 94px;
 
@@ -15,6 +15,13 @@ export const NavContainer = styled.div`
         height: 142px;
         flex-wrap: wrap;
     }
+`;
+
+export const NavContent = styled.div`
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const StyledNavLink = styled(NavLink).attrs(() => ({
