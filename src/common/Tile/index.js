@@ -7,8 +7,6 @@ import {
   Title,
   Year,
   Tags,
-  Tag,
-  StarIcon,
   VoteContainer,
   VoteAverage,
   VoteCount,
@@ -23,14 +21,10 @@ const Tile = ({ title, year, type, imagePath, voteAverage, voteCount }) => {
         <DetailsContainer>
           <Title>{title}</Title>
           <Year>{year}</Year>
-          <Tags>
-            <Tag>{type}</Tag>
-            <Tag>{type}</Tag>
-            <Tag>{type}</Tag>
-          </Tags>
+          <Tags>{type}</Tags>
         </DetailsContainer>
         <VoteContainer>
-          <StarIcon src={starIcon} alt={"star"} />
+          <img src={starIcon} alt={"star"}></img>
           <VoteAverage>{voteAverage}</VoteAverage>
           <VoteCount>{voteCount} votes</VoteCount>
         </VoteContainer>
