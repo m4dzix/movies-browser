@@ -22,18 +22,18 @@ export default () => (
             placeholder="Search for movies..."
           />
         </InputContainer>
-        <Switch>
-          <Route path="/popular-movies">
-            <div>popular movies</div>
-          </Route>
-          <Route path="/popular-people">
-            <div>popular people</div>
-          </Route>
-          <Route path="/">
-            <Redirect to="/popular-movies" />
-          </Route>
-        </Switch>
       </NavContainer>
     </nav>
+    <Switch>
+      <Route path="/popular-movies">
+        <div>popular movies</div>
+      </Route>
+      <Route path="/popular-people">
+        <div>popular people</div>
+      </Route>
+      <Route path="/">
+        <Redirect to="/popular-movies" />
+      </Route>
+    </Switch>
   </HashRouter>
 );
