@@ -23,9 +23,11 @@ const PopularPeople = () => {
     return (
       <Main>
         <Section
+          group={"people"}
           title={"Popular people"}
           body={popularPeople.map((people) => (
             <Tile
+              group={"people"}
               key={people.id}
               title={people.name}
               imagePath={`https://image.tmdb.org/t/p/w185/${people.profile_path}`}
