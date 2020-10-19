@@ -19,4 +19,7 @@ export const Header = styled.h2`
   font-size: 36px;
   display: flex;
   align-items: center;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    font-size: 18px;
+  }
 `;
