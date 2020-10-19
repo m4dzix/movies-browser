@@ -29,7 +29,7 @@ const Tile = ({
         src={imagePath}
         alt={""}
       />
-      <Content>
+      <Content people={group === "people" ? true : false}>
         <DetailsContainer>
           <Title people={group === "people" ? true : false}>{title}</Title>
           <Year>{year}</Year>

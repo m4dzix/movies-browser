@@ -24,7 +24,6 @@ export const Container = styled.div`
     css`
       width: 208px;
       height: 339px;
-      justify-items: center;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 136px;
@@ -61,7 +60,12 @@ export const Content = styled.div`
   display: grid;
   align-items: start;
   justify-items: start;
-  align-self: stretch; ;
+  align-self: stretch;
+  ${(props) =>
+    props.people &&
+    css`
+      justify-items: stretch;
+    `};
 `;
 
 export const DetailsContainer = styled.div`
@@ -78,6 +82,11 @@ export const Title = styled.h3`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 16px;
   }
+  ${(props) =>
+    props.people &&
+    css`
+      text-align: center;
+    `};
 `;
 
 export const Year = styled.p`
