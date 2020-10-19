@@ -1,4 +1,6 @@
 import React from "react";
+import Pagination from "./common/Pagination";
+import PopularMovies from "./features/PopularMovies";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import { StyledNavLink, NavContainer, NavContent, Input, InputContainer, LogoContainer, Title, LinkContainer, StyledImg, ListItem } from "./styled";
 import search from "./images/search.svg";
@@ -28,10 +30,12 @@ export default () => (
     </nav>
     <Switch>
       <Route path="/popular-movies">
-        <div>popular movies</div>
+        <PopularMovies />
+    <Pagination />
       </Route>
       <Route path="/popular-people">
         <div>popular people</div>
+    <Pagination />
       </Route>
       <Route path="/">
         <Redirect to="/popular-movies" />
