@@ -16,7 +16,6 @@ const PopularMovies = () => {
   const loading = useSelector(selectLoading);
   const popularMovies = useSelector(selectPopularMovies);
   const movieGenres = useSelector(selectGenres);
-  console.log(movieGenres);
   const dispatch = useDispatch();
 
   useEffect(() => {
