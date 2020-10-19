@@ -7,7 +7,7 @@ const Pagination = () => {
     //tmp Data, also disabled state added to 2 buttons for preview
     const currentPage = 7;
     const maxPages = 100;
-    const isMobile = false;
+    const isMobile = true;
 
     return(
         <Container>
