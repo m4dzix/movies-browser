@@ -12,12 +12,12 @@ export const Container = styled.div`
   grid-template-rows: auto 1fr;
   background-color: ${({ theme }) => theme.colors.white};
   align-items: center;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 288px;
     height: auto;
     grid-template-columns: auto 1fr;
   }
+
   ${(props) =>
     props.people &&
     css`
@@ -27,7 +27,9 @@ export const Container = styled.div`
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 136px;
         height: auto;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-columns: none;
+        padding: 8px;
       }
     `}
 `;
@@ -60,6 +62,7 @@ export const Content = styled.div`
   align-items: start;
   justify-items: start;
   align-self: stretch;
+
   ${(props) =>
     props.people &&
     css`
