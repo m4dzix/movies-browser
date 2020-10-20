@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
+import Loading from "../../../common/Loading";
+import Error from "../../../common/Error";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -9,6 +11,7 @@ import {
   fetchPopularPeople,
   selectPopularPeople,
 } from "../peopleSlice";
+
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
   const popularPeople = useSelector(selectPopularPeople);
@@ -37,14 +40,9 @@ const PopularPeople = () => {
       </Main>
     );
   } else if (loading) {
-    return (
-      <div>
-        <h1>LOADING</h1>
-        <p>please wait for a while...</p>;
-      </div>
-    );
+    return <Loading />;
   } else {
-    return <div>ERROR ERROR ERROR</div>;
+    return <Error />;
   }
 };
 export default PopularPeople;

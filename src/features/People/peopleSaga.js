@@ -8,7 +8,7 @@ import {
 
 function* fetchPopularPeopleHandler() {
   try {
-    yield delay(100);
+    yield delay(500);
     const people = yield call(getPopularPeople);
     yield put(fetchPopularPeopleSuccess(people));
   } catch (error) {
