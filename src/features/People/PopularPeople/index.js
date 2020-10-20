@@ -15,7 +15,6 @@ import {
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
   const popularPeople = useSelector(selectPopularPeople);
-  console.log(popularPeople);
   const dispatch = useDispatch();
 
   useEffect(() => {
