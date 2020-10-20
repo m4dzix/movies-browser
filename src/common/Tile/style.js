@@ -13,6 +13,11 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   align-items: center;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    width: 288px;
+    height: auto;
+    grid-template-columns: auto 1fr;
+  }
   ${(props) =>
     props.people &&
     css`
@@ -25,11 +30,6 @@ export const Container = styled.div`
         grid-template-rows: auto 1fr;
       }
     `}
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-    width: 288px;
-    height: auto;
-    grid-template-columns: auto 1fr;
-  }
 `;
 
 export const Poster = styled.img`
@@ -39,8 +39,8 @@ export const Poster = styled.img`
   background-color: ${({ theme }) => theme.colors.silver};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-    width: 177px;
-    height: 264px;
+    width: 114px;
+    height: 169px;
   }
   ${(props) =>
     props.people &&
