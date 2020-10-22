@@ -4,6 +4,9 @@ import Section from "../../common/Section";
 import Tile from "../../common/Tile";
 import video from "./Video.svg";
 import { Tag } from "./styled";
+import Loading from "../../common/Loading";
+import Error from "../../common/Error";
+import Pagination from "../../common/Pagination";
 import {
   fetchPopularMovies,
   fetchGenres,
@@ -57,12 +60,13 @@ const PopularMovies = () => {
             ></Tile>
           ))}
         ></Section>
+        <Pagination />
       </Main>
     );
   } else if (loading) {
-    return <div>LOADING LOADING LOADING</div>;
+    return <Loading />;
   } else {
-    return <div>ERROR ERROR </div>;
+    return <Error />;
   }
 };
 export default PopularMovies;
