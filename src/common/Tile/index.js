@@ -13,25 +13,21 @@ import {
 } from "./style";
 
 const Tile = ({
-  group,
+  type,
   title,
   year,
-  type,
+  group,
   imagePath,
   starIcon,
   voteAverage,
   voteCount,
 }) => {
   return (
-    <Container people={group === "people" ? true : false}>
-      <Poster
-        people={group === "people" ? true : false}
-        src={imagePath}
-        alt={""}
-      />
-      <Content people={group === "people" ? true : false}>
+    <Container people={group}>
+      <Poster people={group} src={imagePath} alt={""} />
+      <Content people={group}>
         <DetailsContainer>
-          <Title people={group === "people" ? true : false}>{title}</Title>
+          <Title people={group}>{title}</Title>
           <Year>{year}</Year>
           <Tags>{type}</Tags>
         </DetailsContainer>

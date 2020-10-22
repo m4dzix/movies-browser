@@ -4,7 +4,7 @@ import { Header, Container } from "./style";
 const Section = ({ group, title, body }) => (
   <section>
     <Header>{title}</Header>
-    <Container people={group === "people" ? true : false}>{body}</Container>
+    <Container people={group}>{body}</Container>
   </section>
 );
 export default Section;

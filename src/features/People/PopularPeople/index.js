@@ -10,11 +10,13 @@ import {
   selectLoading,
   fetchPopularPeople,
   selectPopularPeople,
+  selectGroup,
 } from "../peopleSlice";
 
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
   const popularPeople = useSelector(selectPopularPeople);
+  const group = useSelector(selectGroup);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,11 +27,11 @@ const PopularPeople = () => {
     return (
       <Main>
         <Section
-          group={"people"}
+          group={group}
           title={"Popular people"}
           body={popularPeople.map((people) => (
             <Tile
-              group={"people"}
+              group={group}
               key={people.id}
               title={people.name}
               imagePath={`https://image.tmdb.org/t/p/w185/${people.profile_path}`}
