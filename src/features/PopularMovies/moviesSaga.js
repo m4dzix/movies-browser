@@ -9,10 +9,10 @@ import {
   fetchGenresError,
 } from "./moviesSlice";
 
-function* fetchPopularMoviesHandler() {
+function* fetchPopularMoviesHandler({ payload: page }) {
   try {
     yield delay(100);
-    const movies = yield call(getPopularMovies);
+    const movies = yield call(getPopularMovies, page);
     yield put(fetchPopularMoviesSuccess(movies));
   } catch (error) {
     yield put(fetchPopularMoviesError());
