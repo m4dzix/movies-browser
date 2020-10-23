@@ -16,25 +16,25 @@ const Tile = ({
   type,
   title,
   year,
-  group,
+  changeTileStyle,
   imagePath,
   starIcon,
   voteAverage,
   voteCount,
 }) => {
   return (
-    <Container people={group}>
-      <Poster people={group} src={imagePath} alt={""} />
-      <Content people={group}>
+    <Container people={changeTileStyle}>
+      <Poster people={changeTileStyle} src={imagePath} alt={""} />
+      <Content people={changeTileStyle}>
         <DetailsContainer>
-          <Title people={group}>{title}</Title>
+          <Title people={changeTileStyle}>{title}</Title>
           <Year>{year}</Year>
           <Tags>{type}</Tags>
         </DetailsContainer>
         <VoteContainer>
           <img src={starIcon} alt={""}></img>
           <VoteAverage>{voteAverage}</VoteAverage>
-          <VoteCount>{voteCount} </VoteCount>
+          <VoteCount>{voteCount}</VoteCount>
         </VoteContainer>
       </Content>
     </Container>

@@ -30,6 +30,7 @@ const moviesSlice = createSlice({
     },
   },
 });
+
 export const {
   fetchPopularMovies,
   fetchPopularMoviesSuccess,
@@ -38,9 +39,12 @@ export const {
   fetchGenresSuccess,
   fetchGenresError,
 } = moviesSlice.actions;
+
 export const selectMoviesState = (state) => state.movies;
 export const selectPopularMovies = (state) => selectMoviesState(state).movies;
+
 export const selectGenres = (state) => selectMoviesState(state).genres;
+
 export const selectLoading = (state) => selectMoviesState(state).loading;
 
 export default moviesSlice.reducer;

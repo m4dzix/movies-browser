@@ -5,7 +5,7 @@ const peopleSlice = createSlice({
   initialState: {
     loading: true,
     people: [],
-    group: false,
+    changeTileStyle: false,
   },
   reducers: {
     fetchPopularPeople: (state) => {
@@ -13,7 +13,7 @@ const peopleSlice = createSlice({
     },
     fetchPopularPeopleSuccess: (state, { payload: people }) => {
       state.people = people.results;
-      state.group = true;
+      state.changeTileStyle = true;
       state.loading = false;
     },
     fetchPopularPeopleError: (state) => {
@@ -28,7 +28,8 @@ export const {
 } = peopleSlice.actions;
 export const selectPeopleState = (state) => state.people;
 export const selectPopularPeople = (state) => selectPeopleState(state).people;
-export const selectGroup = (state) => selectPeopleState(state).group;
+export const selectChangeTileStyle = (state) =>
+  selectPeopleState(state).changeTileStyle;
 export const selectLoading = (state) => selectPeopleState(state).loading;
 
 export default peopleSlice.reducer;

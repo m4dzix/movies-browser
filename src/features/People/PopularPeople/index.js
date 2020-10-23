@@ -10,13 +10,13 @@ import {
   selectLoading,
   fetchPopularPeople,
   selectPopularPeople,
-  selectGroup,
+  selectChangeTileStyle,
 } from "../peopleSlice";
 
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
   const popularPeople = useSelector(selectPopularPeople);
-  const group = useSelector(selectGroup);
+  const changeTileStyle = useSelector(selectChangeTileStyle);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,11 +27,11 @@ const PopularPeople = () => {
     return (
       <Main>
         <Section
-          group={group}
+          changeTileStyle={changeTileStyle}
           title={"Popular people"}
           body={popularPeople.map((people) => (
             <Tile
-              group={group}
+              changeTileStyle={changeTileStyle}
               key={people.id}
               title={people.name}
               imagePath={`https://image.tmdb.org/t/p/w185/${people.profile_path}`}
