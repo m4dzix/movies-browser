@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import Main from "../../common/Main";
 import Section from "../../common/Section";
 import Tile from "../../common/Tile";
-import video from "./Video.svg";
-import { Tag } from "./style";
+import video from "../../assets/Video.svg";
+import { Tag } from "./styled";
 import {
   fetchPopularMovies,
   fetchGenres,
@@ -12,6 +12,7 @@ import {
   selectGenres,
 } from "./moviesSlice";
 import { useSelector, useDispatch } from "react-redux";
+import starIcon from "../../assets/Vector.svg";
 const PopularMovies = () => {
   const loading = useSelector(selectLoading);
   const popularMovies = useSelector(selectPopularMovies);
@@ -49,8 +50,9 @@ const PopularMovies = () => {
                   ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
                   : video
               }
+              starIcon={starIcon}
               voteAverage={movie.vote_average}
-              voteCount={movie.vote_count}
+              voteCount={`${movie.vote_count} votes`}
             ></Tile>
           ))}
         ></Section>

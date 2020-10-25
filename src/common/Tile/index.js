@@ -11,22 +11,30 @@ import {
   VoteAverage,
   VoteCount,
 } from "./style";
-import starIcon from "./images/Vector.svg";
 
-const Tile = ({ title, year, type, imagePath, voteAverage, voteCount }) => {
+const Tile = ({
+  type,
+  title,
+  year,
+  changeTileStyle,
+  imagePath,
+  starIcon,
+  voteAverage,
+  voteCount,
+}) => {
   return (
-    <Container>
-      <Poster src={imagePath} alt={""} />
-      <Content>
+    <Container people={changeTileStyle}>
+      <Poster people={changeTileStyle} src={imagePath} alt={""} />
+      <Content people={changeTileStyle}>
         <DetailsContainer>
-          <Title>{title}</Title>
+          <Title people={changeTileStyle}>{title}</Title>
           <Year>{year}</Year>
           <Tags>{type}</Tags>
         </DetailsContainer>
         <VoteContainer>
-          <img src={starIcon} alt={"star"}></img>
+          <img src={starIcon} alt={""}></img>
           <VoteAverage>{voteAverage}</VoteAverage>
-          <VoteCount>{voteCount} votes</VoteCount>
+          <VoteCount>{voteCount}</VoteCount>
         </VoteContainer>
       </Content>
     </Container>
