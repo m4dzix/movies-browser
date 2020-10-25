@@ -76,18 +76,6 @@ export const InputContainer = styled.div`
     }
 `;
 
-export const Input = styled.input`
-    font-size: 16px;
-    line-height: 150%;
-    border: none;
-    padding-left: 20px;
-
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px){
-        font-size: 13px;
-        padding-left: 10px;
-    }
-`;
-
 export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
