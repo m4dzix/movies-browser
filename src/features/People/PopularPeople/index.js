@@ -5,12 +5,13 @@ import Tile from "../../../common/Tile";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Link } from "react-router-dom";
 import {
   selectLoading,
   fetchPopularPeople,
   selectPopularPeople,
   selectChangeTileStyle,
+  showId,
 } from "../peopleSlice";
 
 const PopularPeople = () => {
@@ -23,6 +24,8 @@ const PopularPeople = () => {
     dispatch(fetchPopularPeople());
   }, [dispatch]);
 
+  const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
+
   if (!loading && popularPeople) {
     return (
       <Main>
@@ -30,12 +33,17 @@ const PopularPeople = () => {
           changeTileStyle={changeTileStyle}
           title={"Popular people"}
           body={popularPeople.map((people) => (
-            <Tile
-              changeTileStyle={changeTileStyle}
-              key={people.id}
-              title={people.name}
-              imagePath={`https://image.tmdb.org/t/p/w185/${people.profile_path}`}
-            ></Tile>
+            <Link to={toPerson({ id: people.id })} key={people.id}>
+              <Tile
+                onClick={() => {
+                  dispatch(showId());
+                }}
+                changeTileStyle={changeTileStyle}
+                key={people.id}
+                title={people.name}
+                imagePath={`https://image.tmdb.org/t/p/w185/${people.profile_path}`}
+              ></Tile>
+            </Link>
           ))}
         ></Section>
       </Main>
