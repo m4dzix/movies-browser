@@ -1,6 +1,6 @@
 import { delay, call, put, takeEvery } from "redux-saga/effects";
-import { getPopularMovies, getMovieGenres } from "./getApi";
-import { getMovieDetails } from "./MovieDetails/getMovieDeatailsApi";
+import { getPopularMovies, getMovieGenres, getMovieDetails } from "./getApi";
+
 import {
   fetchPopularMovies,
   fetchPopularMoviesSuccess,
