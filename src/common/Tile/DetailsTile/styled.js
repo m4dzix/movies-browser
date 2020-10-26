@@ -73,7 +73,6 @@ export const Content = styled.div`
 export const VoteAverage = styled.strong`
   font-weight: 600;
   font-size: 16px;
-
   padding: 0;
   margin: 0 12px;
 `;
