@@ -1,6 +1,6 @@
 import React from "react";
 import Pagination from "./common/Pagination";
-import PopularMovies from "./features/PopularMovies";
+import PopularMovies from "./features/Movies";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import {
   StyledNavLink,
