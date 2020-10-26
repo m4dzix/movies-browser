@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: grid;
   grid-gap: 8px;
   grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
   background-color: ${({ theme }) => theme.colors.white};
   align-items: start;
 `;
@@ -18,17 +19,32 @@ export const Poster = styled.img`
   border-radius: 5px;
   background-color: #eee;
   align-self: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    width: 114px;
+    height: 169px;
+    grid-row-end: 2;
+  }
 `;
 export const Title = styled.h3`
   font-weight: 500;
   font-size: 22px;
   margin: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    font-size: 16px;
+  }
 `;
 export const Year = styled.p`
   font-size: 16px;
   line-height: 150%;
   margin: 0;
   color: ${({ theme }) => theme.colors.waterloo};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    font-size: 13px;
+  }
 `;
 export const About = styled.p`
   font-size: 18px;
@@ -36,6 +52,9 @@ export const About = styled.p`
   margin: 0;
   padding: 0;
   margin-bottom: 8px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    font-size: 12px;
+  }
 `;
 export const Span = styled.span`
   font-size: 18px;
@@ -43,6 +62,9 @@ export const Span = styled.span`
   color: #74788b;
   margin: 0;
   padding: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    display: none;
+  }
 `;
 
 export const Tags = styled.ul`
@@ -60,6 +82,10 @@ export const Tag = styled.li`
   border-radius: 5px;
   margin-right: 8px;
   padding: 8px 16px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
 `;
 export const VoteContainer = styled.div`
   display: flex;
@@ -70,13 +96,23 @@ export const Content = styled.div`
   grid-template-columns: auto;
   grid-gap: 24px;
   padding: 40px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    grid-gap: 4px;
+    padding: 16px;
+  }
 `;
 export const VoteAverage = styled.strong`
   font-weight: 600;
   font-size: 16px;
-
   padding: 0;
   margin: 0 12px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    font-size: 13px;
+  }
 `;
 export const VoteCount = styled.span`
   font-style: normal;
@@ -84,10 +120,25 @@ export const VoteCount = styled.span`
   font-size: 16px;
   margin: 0;
   padding: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    font-size: 13px;
+  }
 `;
-export const Description = styled.p`
+export const Description = styled.div`
   font-size: 20px;
   line-height: 160%;
   margin: 0;
-  padding: 0;
+  padding: 0 40px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    font-size: 14px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    padding: 0;
+  }
 `;

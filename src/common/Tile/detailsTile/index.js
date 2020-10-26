@@ -51,8 +51,8 @@ const DetailsTile = ({
             <VoteAverage>{voteAverage}</VoteAverage>
             <VoteCount>{voteCount}</VoteCount>
           </VoteContainer>
-          <Description>{description}</Description>
         </Content>
+        <Description>{description}</Description>
       </Container>
     </>
   );

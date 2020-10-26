@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.section`
   display: grid;
-  align-items: center;
+  align-items: start;
   justify-items: center;
   grid-template-columns: repeat(4, 324px);
   grid-gap: 24px;

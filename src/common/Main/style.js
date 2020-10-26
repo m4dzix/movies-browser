@@ -5,4 +5,5 @@ export const StyledMain = styled.main`
   align-items: center;
   justify-items: center;
   grid-gap: 64px;
+  margin: 16px;
 `;
