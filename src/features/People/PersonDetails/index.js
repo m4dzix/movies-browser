@@ -1,15 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import Main from "../../../common/Main";
-import Section from "../../../common/Section";
-import Tile from "../../../common/Tile";
-import DetailsTile from "../../../common/Tile/DetailsTile";
-import { Tag } from "../../PopularMovies/styled";
-import starIcon from "../../../assets/Vector.svg";
-import video from "../../../assets/Video.svg";
-import Loading from "../../../common/Loading";
-import Error from "../../../common/Error";
 import {
   selectPersonDetails,
   fetchPersonDetails,
@@ -22,6 +13,15 @@ import {
   fetchGenres,
   selectGenres,
 } from "../../PopularMovies/moviesSlice";
+import starIcon from "../../../assets/Vector.svg";
+import video from "../../../assets/Video.svg";
+import Main from "../../../common/Main";
+import Section from "../../../common/Section";
+import Tile from "../../../common/Tile";
+import DetailsTile from "../../../common/Tile/DetailsTile";
+import { Tag } from "../../PopularMovies/styled";
+import Loading from "../../../common/Loading";
+import Error from "../../../common/Error";
 
 const PersonDetails = () => {
   const personDetails = useSelector(selectPersonDetails);

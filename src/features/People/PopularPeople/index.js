@@ -1,9 +1,4 @@
 import React, { useEffect } from "react";
-import Main from "../../../common/Main";
-import Section from "../../../common/Section";
-import Tile from "../../../common/Tile";
-import Loading from "../../../common/Loading";
-import Error from "../../../common/Error";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -13,6 +8,11 @@ import {
   selectChangeTileStyle,
   showId,
 } from "../peopleSlice";
+import Main from "../../../common/Main";
+import Section from "../../../common/Section";
+import Tile from "../../../common/Tile";
+import Loading from "../../../common/Loading";
+import Error from "../../../common/Error";
 
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);

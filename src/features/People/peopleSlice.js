@@ -48,11 +48,15 @@ export const {
   fetchPersonDetailsSuccess,
   fetchPersonDetailsError,
 } = peopleSlice.actions;
+
 export const selectPeopleState = (state) => state.people;
 export const selectPopularPeople = (state) => selectPeopleState(state).people;
+
 export const selectChangeTileStyle = (state) =>
   selectPeopleState(state).changeTileStyle;
+
 export const selectPersonDetails = (state) => selectPeopleState(state).person;
+
 export const selectLoading = (state) => selectPeopleState(state).loading;
 
 export default peopleSlice.reducer;
