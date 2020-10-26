@@ -1,36 +1,37 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   selectMovieDetails,
   fetchMovieDetails,
   selectLoadingMovieDetails,
 } from "../moviesSlice";
-import video from "../../../assets/Video.svg";
-import profile from "../../../assets/Profile.svg";
-import starIcon from "../../../assets/Vector.svg";
 import {
   selectCast,
   selectCrew,
   fetchCredits,
   selectChangeTileStyle,
 } from "../../People/peopleSlice";
+import video from "../../../assets/Video.svg";
+import profile from "../../../assets/Profile.svg";
+import starIcon from "../../../assets/Vector.svg";
 import Main from "../../../common/Main";
+import Section from "../../../common/Section";
+import Tile from "../../../common/Tile";
 import DetailsTile from "../../../common/Tile/detailsTile";
 import { Tag } from "../../../common/Tile/styledTag";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
-import Section from "../../../common/Section";
-import Tile from "../../../common/Tile";
-import { useParams } from "react-router-dom";
 
 const MovieDetails = () => {
   const movieDetails = useSelector(selectMovieDetails);
   const loading = useSelector(selectLoadingMovieDetails);
-
   const changeTileStyle = useSelector(selectChangeTileStyle);
   const cast = useSelector(selectCast);
   const crew = useSelector(selectCrew);
+
   const { id } = useParams();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,11 +46,6 @@ const MovieDetails = () => {
     return (
       <Main>
         <DetailsTile
-          imagePath={
-            !!movieDetails.poster_path
-              ? `https://image.tmdb.org/t/p/w185/${movieDetails.poster_path}`
-              : video
-          }
           imagePath={
             !!movieDetails.poster_path
               ? `https://image.tmdb.org/t/p/w185/${movieDetails.poster_path}`

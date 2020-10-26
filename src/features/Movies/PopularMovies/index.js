@@ -1,9 +1,5 @@
 import React, { useEffect } from "react";
-import Main from "../../../common/Main";
-import Section from "../../../common/Section";
-import Tile from "../../../common/Tile";
-import video from "../../../assets/Video.svg";
-import { Tag } from "../../../common/Tile/styledTag";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   fetchPopularMovies,
@@ -13,8 +9,13 @@ import {
   selectGenres,
   showId,
 } from "../moviesSlice";
-import { useSelector, useDispatch } from "react-redux";
+import video from "../../../assets/Video.svg";
 import starIcon from "../../../assets/Vector.svg";
+import Main from "../../../common/Main";
+import Section from "../../../common/Section";
+import Tile from "../../../common/Tile";
+import { Tag } from "../../../common/Tile/styledTag";
+
 const PopularMovies = () => {
   const loading = useSelector(selectLoading);
   const popularMovies = useSelector(selectPopularMovies);
@@ -34,7 +35,9 @@ const PopularMovies = () => {
     movieGenres
       .filter((item) => item.id === genreId)
       .map((genres) => genres.name);
+
   const toMovie = ({ id } = { id: "id" }) => `/movie-details/${id}`;
+
   if (!loading && popularMovies) {
     return (
       <Main>
