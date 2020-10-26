@@ -3,7 +3,7 @@ import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import video from "../../../assets/Video.svg";
-import { Tag } from "./styled";
+import { Tag } from "../../../common/Tile/styledTag";
 import { Link } from "react-router-dom";
 import {
   fetchPopularMovies,

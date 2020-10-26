@@ -16,7 +16,7 @@ import {
 } from "../../People/peopleSlice";
 import Main from "../../../common/Main";
 import DetailsTile from "../../../common/Tile/detailsTile";
-import { Tag } from "../PopularMovies/styled";
+import { Tag } from "../../../common/Tile/styledTag";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Section from "../../../common/Section";
