@@ -1,6 +1,6 @@
 import React from "react";
 import Pagination from "./common/Pagination";
-import PopularMovies from "./features/Movies";
+import PopularMovies from "./features/Movies/PopularMovies";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import {
   StyledNavLink,
@@ -17,7 +17,7 @@ import {
 import search from "./images/search.svg";
 import camera from "./images/camera.svg";
 import PopularPeople from "./features/People/PopularPeople";
-import MovieDetails from "./features/MovieDetails";
+import MovieDetails from "./features/Movies/MovieDetails";
 
 const App = () => {
   const toMovie = ({ id } = { id: ":id" }) => `/movie-details/${id}`;

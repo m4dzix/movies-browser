@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Main from "../../common/Main";
-import Section from "../../common/Section";
-import Tile from "../../common/Tile";
-import video from "../../assets/Video.svg";
+import Main from "../../../common/Main";
+import Section from "../../../common/Section";
+import Tile from "../../../common/Tile";
+import video from "../../../assets/Video.svg";
 import { Tag } from "./styled";
 import { Link } from "react-router-dom";
 import {
@@ -12,9 +12,9 @@ import {
   selectPopularMovies,
   selectGenres,
   showId,
-} from "./moviesSlice";
+} from "../moviesSlice";
 import { useSelector, useDispatch } from "react-redux";
-import starIcon from "../../assets/Vector.svg";
+import starIcon from "../../../assets/Vector.svg";
 const PopularMovies = () => {
   const loading = useSelector(selectLoading);
   const popularMovies = useSelector(selectPopularMovies);

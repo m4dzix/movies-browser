@@ -5,9 +5,9 @@ import {
   fetchMovieDetails,
   selectLoadingMovieDetails,
 } from "../moviesSlice";
-import video from "../../assets/Video.svg";
-import profile from "../../assets/Profile.svg";
-import starIcon from "../../assets/Vector.svg";
+import video from "../../../assets/Video.svg";
+import profile from "../../../assets/Profile.svg";
+import starIcon from "../../../assets/Vector.svg";
 import {
   selectCast,
   selectCrew,
@@ -16,7 +16,7 @@ import {
 } from "../../People/peopleSlice";
 import Main from "../../../common/Main";
 import DetailsTile from "../../../common/Tile/detailsTile";
-import { Tag } from "../Movies/styled";
+import { Tag } from "../PopularMovies/styled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Section from "../../../common/Section";
