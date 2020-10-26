@@ -48,7 +48,9 @@ const DetailsTile = ({
           <Tags>{type}</Tags>
           <VoteContainer>
             <img src={starIcon} alt={""}></img>
-            <VoteAverage>{voteAverage}</VoteAverage>
+            <VoteAverage>
+              {voteAverage} <VoteCount maxAverage>/10</VoteCount>
+            </VoteAverage>
             <VoteCount>{voteCount}</VoteCount>
           </VoteContainer>
         </Content>

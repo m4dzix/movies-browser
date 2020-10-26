@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   max-width: 1368px;
@@ -107,7 +107,7 @@ export const Content = styled.div`
 `;
 export const VoteAverage = styled.strong`
   font-weight: 600;
-  font-size: 16px;
+  font-size: 22px;
   padding: 0;
   margin: 0 12px;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
@@ -123,6 +123,13 @@ export const VoteCount = styled.span`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 13px;
   }
+  ${(props) =>
+    props.maxAverage &&
+    css`
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        display: none;
+      } ;
+    `}
 `;
 export const Description = styled.div`
   font-size: 20px;
