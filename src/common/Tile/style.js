@@ -22,7 +22,7 @@ export const Container = styled.div`
     props.people &&
     css`
       width: 208px;
-      height: 339px;
+      height: auto;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 136px;
