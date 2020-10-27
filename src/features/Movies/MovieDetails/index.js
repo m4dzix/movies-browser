@@ -5,20 +5,15 @@ import {
   selectMovieDetails,
   fetchMovieDetails,
   selectLoadingMovieDetails,
-} from "../moviesSlice";
-import {
-  selectCast,
-  selectCrew,
-  fetchCredits,
   selectChangeTileStyle,
-} from "../../People/peopleSlice";
+} from "../moviesSlice";
+import { selectCast, selectCrew, fetchCredits } from "../../People/peopleSlice";
 import video from "../../../assets/Video.svg";
 import profile from "../../../assets/Profile.svg";
 import starIcon from "../../../assets/Vector.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
-import DetailsTile from "../../../common/Tile/detailsTile";
 import { Tag } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
@@ -45,7 +40,8 @@ const MovieDetails = () => {
   if (!loading && movieDetails) {
     return (
       <Main>
-        <DetailsTile
+        <Tile
+          detailsTileStyle={changeTileStyle}
           imagePath={
             !!movieDetails.poster_path
               ? `https://image.tmdb.org/t/p/w185/${movieDetails.poster_path}`
@@ -64,9 +60,10 @@ const MovieDetails = () => {
           ))}
           starIcon={starIcon}
           voteAverage={movieDetails.vote_average}
-          voteCount={movieDetails.vote_count}
+          maxAverage={"/10"}
+          voteCount={`${movieDetails.vote_count} votes`}
           description={movieDetails.overview}
-        ></DetailsTile>
+        ></Tile>
         <Section
           changeTileStyle={changeTileStyle}
           title={"Cast"}
@@ -97,7 +94,7 @@ const MovieDetails = () => {
                   : profile
               }
               title={people.name}
-              year={people.character}
+              year={people.job}
             ></Tile>
           ))}
         ></Section>

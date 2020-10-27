@@ -7,36 +7,71 @@ import {
   Title,
   Year,
   Tags,
+  Span,
+  About,
   VoteContainer,
   VoteAverage,
   VoteCount,
+  Description,
 } from "./style";
 
 const Tile = ({
-  type,
+  changeTileStyle,
+  detailsTileStyle,
+  imagePath,
   title,
   year,
-  changeTileStyle,
-  imagePath,
+  info1,
+  info2,
+  value1,
+  value2,
+  type,
   starIcon,
   voteAverage,
+  maxAverage,
   voteCount,
+  description,
 }) => {
   return (
-    <Container people={changeTileStyle}>
-      <Poster people={changeTileStyle} src={imagePath} alt={""} />
-      <Content people={changeTileStyle}>
-        <DetailsContainer>
-          <Title people={changeTileStyle}>{title}</Title>
-          <Year>{year}</Year>
+    <Container people={changeTileStyle} movieDetails={detailsTileStyle}>
+      <Poster
+        people={changeTileStyle}
+        movieDetails={detailsTileStyle}
+        src={imagePath}
+        alt={""}
+      />
+      <Content people={changeTileStyle} movieDetails={detailsTileStyle}>
+        <DetailsContainer movieDetails={detailsTileStyle}>
+          <Title people={changeTileStyle} movieDetails={detailsTileStyle}>
+            {title}
+          </Title>
+          <Year people={changeTileStyle} movieDetails={detailsTileStyle}>
+            {year}
+          </Year>
+          <div>
+            <About>
+              <Span>{info1}</Span>
+              {value1}
+            </About>
+            <About>
+              <Span>{info2}</Span>
+              {value2}
+            </About>
+          </div>
           <Tags>{type}</Tags>
         </DetailsContainer>
         <VoteContainer>
           <img src={starIcon} alt={""}></img>
-          <VoteAverage>{voteAverage}</VoteAverage>
+          <VoteAverage movieDetails={detailsTileStyle}>
+            {voteAverage}{" "}
+            <VoteCount movieDetails={detailsTileStyle} maxAverage>
+              {maxAverage}
+            </VoteCount>
+          </VoteAverage>
           <VoteCount>{voteCount}</VoteCount>
         </VoteContainer>
       </Content>
+      <Description movieDetails={detailsTileStyle}>{description}</Description>
     </Container>
   );
 };
