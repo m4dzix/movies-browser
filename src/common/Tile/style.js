@@ -116,6 +116,10 @@ export const DetailsContainer = styled.div`
     css`
       display: grid;
       grid-gap: 24px;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        grid-gap: 4px;
+      }
     `};
 `;
 
