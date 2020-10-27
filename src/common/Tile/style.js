@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 324px;
-  height: 650px;
   padding: 16px;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
