@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import {
   fetchPopularMovies,
   fetchGenres,
@@ -14,7 +13,7 @@ import starIcon from "../../../assets/Vector.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
-import { Tag } from "../../../common/Tile/styledTag";
+import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 
 const PopularMovies = () => {
   const loading = useSelector(selectLoading);
@@ -44,7 +43,7 @@ const PopularMovies = () => {
         <Section
           title={"Popular movies"}
           body={popularMovies.map((movie) => (
-            <Link to={toMovie({ id: movie.id })} key={movie.id}>
+            <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
               <Tile
                 onClick={() => {
                   dispatch(showId());
@@ -64,7 +63,7 @@ const PopularMovies = () => {
                 voteAverage={movie.vote_average}
                 voteCount={`${movie.vote_count} votes`}
               ></Tile>
-            </Link>
+            </StyledLink>
           ))}
         ></Section>
       </Main>

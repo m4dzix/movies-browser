@@ -19,7 +19,7 @@ import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import DetailsTile from "../../../common/Tile/detailsTile";
-import { Tag } from "../../../common/Tile/styledTag";
+import { Tag } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 
