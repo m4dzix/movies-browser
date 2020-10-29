@@ -13,7 +13,7 @@ import {
   VoteAverage,
   VoteCount,
   Description,
-} from "./style";
+} from "./styled";
 
 const Tile = ({
   changeTileStyle,

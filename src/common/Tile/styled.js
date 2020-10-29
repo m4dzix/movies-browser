@@ -38,6 +38,10 @@ export const Container = styled.div`
       width: 1368px;
       grid-template-rows: auto 1fr;
       align-items: start;
+      padding: 40px;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        padding: 16px;
+      }
     `}
 `;
 
@@ -56,7 +60,6 @@ export const Poster = styled.img`
     css`
       width: 177px;
       height: 264px;
-      margin-top: -6px;
 
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 120px;
