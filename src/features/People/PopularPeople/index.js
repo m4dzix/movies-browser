@@ -7,6 +7,7 @@ import {
   selectPopularPeople,
   selectChangeTileStyle,
   showId,
+  selectPage,
 } from "../peopleSlice";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
@@ -19,11 +20,12 @@ const PopularPeople = () => {
   const loading = useSelector(selectLoading);
   const popularPeople = useSelector(selectPopularPeople);
   const changeTileStyle = useSelector(selectChangeTileStyle);
+  const page = useSelector(selectPage);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPopularPeople());
-  }, [dispatch]);
+    dispatch(fetchPopularPeople(page));
+  }, [dispatch, page]);
 
   const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
 
