@@ -12,6 +12,8 @@ import video from "../../../assets/Video.svg";
 import starIcon from "../../../assets/Vector.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
+import Loading from "../../../common/Loading";
+import Error from "../../../common/Error";
 import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 
@@ -69,9 +71,9 @@ const PopularMovies = () => {
       </Main>
     );
   } else if (loading) {
-    return <div>LOADING LOADING LOADING</div>;
+    return <Loading />;
   } else {
-    return <div>ERROR ERROR </div>;
+    return <Error />;
   }
 };
 export default PopularMovies;
