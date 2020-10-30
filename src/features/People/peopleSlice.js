@@ -38,6 +38,7 @@ const peopleSlice = createSlice({
     },
   },
 });
+
 export const {
   fetchPopularPeople,
   fetchPopularPeopleSuccess,
@@ -46,16 +47,15 @@ export const {
   fetchCreditsError,
   fetchCreditsSuccess,
 } = peopleSlice.actions;
+
 export const selectPeopleState = (state) => state.people;
 export const selectPopularPeople = (state) => selectPeopleState(state).people;
 export const selectChangeTileStyle = (state) =>
   selectPeopleState(state).changeTileStyle;
 export const selectCredits = (state) => selectPeopleState(state).credits;
-
 export const selectCrew = (state) => selectPeopleState(state).crew;
 export const selectLoadingCredits = (state) => selectPeopleState(state).loading;
 export const selectCast = (state) => selectPeopleState(state).cast;
-
 export const selectLoading = (state) => selectPeopleState(state).loading;
 
 export default peopleSlice.reducer;
