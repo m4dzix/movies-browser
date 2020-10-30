@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 324px;
-  height: 650px;
   padding: 16px;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
@@ -17,19 +16,28 @@ export const Container = styled.div`
     height: auto;
     grid-template-columns: auto 1fr;
   }
-
   ${(props) =>
     props.people &&
     css`
       width: 208px;
-      height: 339px;
-
+      height: auto;
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 136px;
         height: auto;
         grid-template-rows: 1fr auto;
         grid-template-columns: none;
         padding: 8px;
+      }
+    `}
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      width: 1368px;
+      grid-template-rows: auto 1fr;
+      align-items: start;
+      padding: 40px;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        padding: 16px;
       }
     `}
 `;
@@ -39,7 +47,6 @@ export const Poster = styled.img`
   height: 434px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.silver};
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 114px;
     height: 169px;
@@ -49,12 +56,26 @@ export const Poster = styled.img`
     css`
       width: 177px;
       height: 264px;
-      margin-top: -6px;
-
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 120px;
         height: 178px;
       } ;
+    `}
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      width: 312px;
+      height: 464px;
+      align-self: center;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 3;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        width: 114px;
+        height: 169px;
+        grid-row-end: 2;
+      }
     `}
 `;
 export const Content = styled.div`
@@ -62,16 +83,39 @@ export const Content = styled.div`
   align-items: start;
   justify-items: start;
   align-self: stretch;
-
   ${(props) =>
     props.people &&
     css`
       justify-items: stretch;
     `};
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      grid-template-columns: auto;
+      grid-gap: 24px;
+      padding: 0 40px;
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        grid-gap: 4px;
+        padding: 16px;
+      }
+    `}
 `;
 
 export const DetailsContainer = styled.div`
   align-self: start;
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      display: grid;
+      grid-gap: 24px;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        grid-gap: 4px;
+      }
+    `};
 `;
 
 export const Title = styled.h3`
@@ -80,7 +124,6 @@ export const Title = styled.h3`
   line-height: 130%;
   margin: 0;
   margin-bottom: 8px;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 16px;
   }
@@ -88,6 +131,15 @@ export const Title = styled.h3`
     props.people &&
     css`
       text-align: center;
+    `};
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      font-size: 36px;
+      margin-bottom: 0;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 16px;
+      }
     `};
 `;
 
@@ -97,9 +149,42 @@ export const Year = styled.p`
   margin: 0;
   margin-bottom: 8px;
   color: ${({ theme }) => theme.colors.waterloo};
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 13px;
+  }
+  ${(props) =>
+    props.people &&
+    css`
+      text-align: center;
+    `};
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      font-size: 22px;
+      margin-bottom: 0;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 13px;
+      }
+    `};
+`;
+export const About = styled.p`
+  font-size: 18px;
+  line-height: 120%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 8px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    font-size: 12px;
+  }
+`;
+export const Span = styled.span`
+  font-size: 18px;
+  line-height: 120%;
+  color: #74788b;
+  margin: 0;
+  padding: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    display: none;
   }
 `;
 
@@ -120,7 +205,6 @@ export const Tag = styled.li`
   margin-right: 8px;
   margin-bottom: 8px;
   padding: 8px 16px;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 10px;
     line-height: 110%;
@@ -138,7 +222,11 @@ export const VoteAverage = styled.strong`
   font-weight: 600;
   font-size: 16px;
   margin: 0 12px;
-
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      font-size: 22px;
+    `};
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 13px;
   }
@@ -148,8 +236,39 @@ export const VoteCount = styled.span`
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-
+  align-self: flex-end;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 13px;
   }
+  ${(props) =>
+    props.maxAverage &&
+    css`
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        display: none;
+      } ;
+    `}
+`;
+export const Description = styled.p`
+  display: none;
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      display: block;
+      font-size: 20px;
+      line-height: 160%;
+      margin: 0;
+      padding: 0 40px;
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 14px;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        padding: 0;
+      }
+    `}
 `;

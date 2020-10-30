@@ -5,6 +5,7 @@ import {
   selectPersonDetails,
   fetchPersonDetails,
   selectLoading,
+  selectChangeTileStyle,
 } from "../peopleSlice";
 import {
   selectMovieCast,
@@ -18,12 +19,12 @@ import video from "../../../assets/Video.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
-import DetailsTile from "../../../common/Tile/DetailsTile";
 import { Tag } from "../../PopularMovies/styled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 
 const PersonDetails = () => {
+  const changeTileStyle = useSelector(selectChangeTileStyle);
   const personDetails = useSelector(selectPersonDetails);
   const movieCast = useSelector(selectMovieCast);
   const movieCrew = useSelector(selectMovieCrew);
@@ -56,7 +57,8 @@ const PersonDetails = () => {
   if (!loading && personDetails) {
     return (
       <Main>
-        <DetailsTile
+        <Tile
+          detailsTileStyle={changeTileStyle}
           imagePath={`https://image.tmdb.org/t/p/w185/${personDetails.profile_path}`}
           title={personDetails.name}
           info1={"date of birth: "}
@@ -64,7 +66,7 @@ const PersonDetails = () => {
           info2={"Place of birth: "}
           value2={personDetails.place_of_birth}
           description={personDetails.biography}
-        ></DetailsTile>
+        ></Tile>
         <Section
           title={`Movie - cast (${castNumber})`}
           body={movieCast.map((movie) => (
