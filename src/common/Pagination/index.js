@@ -22,6 +22,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(firstPage());
         }}
+        disabled={currentPage === 1}
       >
         {isMobile ? (
           <>&#60;&#60;</>
@@ -35,6 +36,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(previousPage());
         }}
+        disabled={currentPage === 1}
       >
         {isMobile ? (
           <>&#60;</>
@@ -54,6 +56,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(nextPage());
         }}
+        disabled={currentPage === maxPages}
       >
         {isMobile ? (
           <>&#62;</>
@@ -67,6 +70,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(lastPage());
         }}
+        disabled={currentPage === maxPages}
       >
         {isMobile ? (
           <>&#62;&#62;</>
