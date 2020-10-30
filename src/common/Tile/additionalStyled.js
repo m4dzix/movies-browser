@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Tag = styled.li`
   font-size: 14px;
@@ -14,4 +15,8 @@ export const Tag = styled.li`
     line-height: 110%;
     padding: 4px 8px;
   }
+`;
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.black};
 `;

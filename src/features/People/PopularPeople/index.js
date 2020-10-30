@@ -5,7 +5,7 @@ import Tile from "../../../common/Tile";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import { useSelector, useDispatch } from "react-redux";
-
+import profile from "../../../assets/Profile.svg";
 import {
   selectLoading,
   fetchPopularPeople,
@@ -34,7 +34,11 @@ const PopularPeople = () => {
               changeTileStyle={changeTileStyle}
               key={people.id}
               title={people.name}
-              imagePath={`https://image.tmdb.org/t/p/w185/${people.profile_path}`}
+              imagePath={
+                !!people.profile_path
+                  ? `https://image.tmdb.org/t/p/w185/${people.profile_path}`
+                  : profile
+              }
             ></Tile>
           ))}
         ></Section>
