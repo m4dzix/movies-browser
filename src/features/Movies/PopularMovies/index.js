@@ -6,6 +6,7 @@ import {
   selectLoading,
   selectPopularMovies,
   selectGenres,
+  selectPage,
   showId,
 } from "../moviesSlice";
 import video from "../../../assets/Video.svg";
@@ -21,12 +22,12 @@ const PopularMovies = () => {
   const loading = useSelector(selectLoading);
   const popularMovies = useSelector(selectPopularMovies);
   const movieGenres = useSelector(selectGenres);
-
+  const page = useSelector(selectPage);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPopularMovies());
-  }, [dispatch]);
+    dispatch(fetchPopularMovies(page));
+  }, [dispatch, page]);
 
   useEffect(() => {
     dispatch(fetchGenres());
