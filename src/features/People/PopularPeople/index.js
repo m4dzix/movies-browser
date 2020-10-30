@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+
 import {
   selectLoading,
   fetchPopularPeople,
@@ -11,6 +11,7 @@ import {
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
+import { StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 
@@ -33,7 +34,7 @@ const PopularPeople = () => {
           changeTileStyle={changeTileStyle}
           title={"Popular people"}
           body={popularPeople.map((people) => (
-            <Link to={toPerson({ id: people.id })} key={people.id}>
+            <StyledLink to={toPerson({ id: people.id })} key={people.id}>
               <Tile
                 onClick={() => {
                   dispatch(showId());
@@ -43,7 +44,7 @@ const PopularPeople = () => {
                 title={people.name}
                 imagePath={`https://image.tmdb.org/t/p/w185/${people.profile_path}`}
               ></Tile>
-            </Link>
+            </StyledLink>
           ))}
         ></Section>
       </Main>

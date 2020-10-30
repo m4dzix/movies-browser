@@ -19,7 +19,7 @@ import video from "../../../assets/Video.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
-import { Tag } from "../../PopularMovies/styled";
+import { Tag } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 
