@@ -5,6 +5,8 @@ export const theme = {
     whisper: "#F5F5FA",
     mistic: "#E4E6F0",
     snuff: "#DDDDEE",
+    gallery: "#EEEEEE",
+    stormGray: "#74788B",
     pattensBlue: "#D6E4FF",
     scienceBlue: "#0044CC",
     candlelight: "#FCD420",

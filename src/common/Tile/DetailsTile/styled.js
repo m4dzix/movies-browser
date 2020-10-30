@@ -16,7 +16,7 @@ export const Poster = styled.img`
   width: 312px;
   height: 464px;
   border-radius: 5px;
-  background-color: #eee;
+  background-color: ${({ theme }) => theme.colors.silver};
   align-self: center;
 `;
 export const Title = styled.h3`
@@ -40,7 +40,7 @@ export const About = styled.p`
 export const Span = styled.span`
   font-size: 18px;
   line-height: 120%;
-  color: #74788b;
+  color: ${({ theme }) => theme.colors.stormGray};
   margin: 0;
   padding: 0;
 `;
