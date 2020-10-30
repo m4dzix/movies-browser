@@ -1,6 +1,7 @@
 import { delay, call, put, takeEvery } from "redux-saga/effects";
 import { getPopularPeople } from "./getPeopleApi";
 import { getCredits } from "./getPeopleApi";
+import { getPersonDetails } from "./getPeopleApi";
 import {
   fetchPopularPeople,
   fetchPopularPeopleSuccess,
@@ -8,6 +9,9 @@ import {
   fetchCredits,
   fetchCreditsSuccess,
   fetchCreditsError,
+  fetchPersonDetails,
+  fetchPersonDetailsSuccess,
+  fetchPersonDetailsError,
 } from "./peopleSlice";
 
 function* fetchPopularPeopleHandler() {
@@ -28,8 +32,18 @@ function* fetchCreditsHandler({ payload: movieId }) {
     yield put(fetchCreditsError());
   }
 }
+function* fetchPersonDetailsHandler({ payload: id }) {
+  try {
+    yield delay(500);
+    const personDetails = yield call(getPersonDetails, id);
+    yield put(fetchPersonDetailsSuccess(personDetails));
+  } catch (error) {
+    yield put(fetchPersonDetailsError());
+  }
+}
 
 export function* watchFetchPopularPeople() {
   yield takeEvery(fetchPopularPeople.type, fetchPopularPeopleHandler);
   yield takeEvery(fetchCredits.type, fetchCreditsHandler);
+  yield takeEvery(fetchPersonDetails.type, fetchPersonDetailsHandler);
 }

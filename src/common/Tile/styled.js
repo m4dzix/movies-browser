@@ -9,7 +9,6 @@ export const Container = styled.div`
   display: grid;
   grid-gap: 8px;
   grid-template-rows: auto 1fr;
-
   background-color: ${({ theme }) => theme.colors.white};
   align-items: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
@@ -17,13 +16,11 @@ export const Container = styled.div`
     height: auto;
     grid-template-columns: auto 1fr;
   }
-
   ${(props) =>
     props.people &&
     css`
       width: 208px;
       height: auto;
-
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 136px;
         height: auto;
@@ -50,7 +47,6 @@ export const Poster = styled.img`
   height: 434px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.silver};
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 114px;
     height: 169px;
@@ -60,7 +56,6 @@ export const Poster = styled.img`
     css`
       width: 177px;
       height: 264px;
-
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 120px;
         height: 178px;
@@ -88,13 +83,11 @@ export const Content = styled.div`
   align-items: start;
   justify-items: start;
   align-self: stretch;
-
   ${(props) =>
     props.people &&
     css`
       justify-items: stretch;
     `};
-
   ${(props) =>
     props.movieDetails &&
     css`
@@ -114,12 +107,12 @@ export const Content = styled.div`
 
 export const DetailsContainer = styled.div`
   align-self: start;
+  grid-gap: 16px;
   ${(props) =>
     props.movieDetails &&
     css`
       display: grid;
       grid-gap: 24px;
-
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         grid-gap: 4px;
       }
@@ -132,17 +125,14 @@ export const Title = styled.h3`
   line-height: 130%;
   margin: 0;
   margin-bottom: 8px;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 16px;
   }
-
   ${(props) =>
     props.people &&
     css`
       text-align: center;
     `};
-
   ${(props) =>
     props.movieDetails &&
     css`
@@ -160,7 +150,6 @@ export const Year = styled.p`
   margin: 0;
   margin-bottom: 8px;
   color: ${({ theme }) => theme.colors.waterloo};
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 13px;
   }
@@ -217,7 +206,6 @@ export const Tag = styled.li`
   margin-right: 8px;
   margin-bottom: 8px;
   padding: 8px 16px;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 10px;
     line-height: 110%;
@@ -235,13 +223,11 @@ export const VoteAverage = styled.strong`
   font-weight: 600;
   font-size: 16px;
   margin: 0 12px;
-
   ${(props) =>
     props.movieDetails &&
     css`
       font-size: 22px;
     `};
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 13px;
   }

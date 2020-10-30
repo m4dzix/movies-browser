@@ -14,13 +14,15 @@ import {
 } from "./styled";
 import Pagination from "./common/Pagination";
 import PopularMovies from "./features/Movies/PopularMovies";
-import PopularPeople from "./features/People/PopularPeople";
 import MovieDetails from "./features/Movies/MovieDetails";
+import PopularPeople from "./features/People/PopularPeople";
+import PersonDetails from "./features/People/PersonDetails";
 import search from "./images/search.svg";
 import camera from "./images/camera.svg";
 
 const App = () => {
   const toMovie = ({ id } = { id: ":id" }) => `/movie-details/${id}`;
+  const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
 
   return (
     <HashRouter>
@@ -57,6 +59,9 @@ const App = () => {
         </Route>
         <Route path={toMovie()}>
           <MovieDetails />
+        </Route>
+        <Route path={toPerson()}>
+          <PersonDetails />
         </Route>
         <Route path="/">
           <Redirect to="/popular-movies" />
