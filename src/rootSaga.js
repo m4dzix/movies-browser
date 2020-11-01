@@ -1,6 +1,7 @@
 import { all } from "redux-saga/effects";
-import { watchFetchPopularMovies } from "./features/PopularMovies/moviesSaga";
+import { watchFetchPopularPeople } from "./features/People/peopleSaga";
+import { watchFetchPopularMovies } from "./features/Movies/moviesSaga";
 
 export default function* rootSaga() {
-  yield all([watchFetchPopularMovies()]);
+  yield all([watchFetchPopularMovies(), watchFetchPopularPeople()]);
 }
