@@ -56,6 +56,7 @@ export const Poster = styled.img`
     css`
       width: 177px;
       height: 264px;
+      align-self: start;
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 120px;
         height: 178px;
@@ -66,7 +67,6 @@ export const Poster = styled.img`
     css`
       width: 312px;
       height: 464px;
-      align-self: center;
       grid-column-start: 1;
       grid-column-end: 2;
       grid-row-start: 1;
@@ -93,7 +93,7 @@ export const Content = styled.div`
     css`
       grid-template-columns: auto;
       grid-gap: 24px;
-      padding: 40px;
+      padding-left: 40px;
       grid-column-start: 2;
       grid-column-end: 3;
       grid-row-start: 1;
