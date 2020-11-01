@@ -1,29 +1,32 @@
 import React from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
+import { selectQuery, updateQuery } from "../../features/Movies/moviesSlice";
 import {Input} from "./styled";
 
 export const SearchInput = () => {
-
+    const query = useSelector(selectQuery);
+    const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
-    const query = (new URLSearchParams(location.search)).get("search");
-    const onInputChange = ({target}) => {
+    const handleChange = (value) => {
         const searchParams = new URLSearchParams(location.search);
 
-        if(target.value.trim() === "") {
+        if(value.trim() === "") {
             searchParams.delete("search");
         } else {
-            searchParams.set("search", target.value);
+            searchParams.set("search", value);
         }
 
         history.push(`${location.pathname}?${searchParams.toString()}`);
-    }
+        dispatch(updateQuery(value));
+    };
 
     return(
         <Input
             placeholder="Search for movie..."
             value={query || ""}
-            onChange={onInputChange}
+            onChange={({ target }) => handleChange(target.value)}
         />
     )
 }

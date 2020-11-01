@@ -4,7 +4,6 @@ import {
   StyledNavLink,
   NavContainer,
   NavContent,
-  Input,
   InputContainer,
   LogoContainer,
   Title,
@@ -12,15 +11,20 @@ import {
   StyledImg,
   ListItem,
 } from "./styled";
+import { SearchInput } from "./common/SearchInput";
 import Pagination from "./common/Pagination";
 import PopularMovies from "./features/Movies/PopularMovies";
 import PopularPeople from "./features/People/PopularPeople";
 import MovieDetails from "./features/Movies/MovieDetails";
+import MoviesByQuery from "./features/Movies/MoviesByQuery";
 import search from "./images/search.svg";
 import camera from "./images/camera.svg";
+import { useSelector } from "react-redux";
+import { selectQuery } from "./features/Movies/moviesSlice";
 
 const App = () => {
   const toMovie = ({ id } = { id: ":id" }) => `/movie-details/${id}`;
+  const query = useSelector(selectQuery);
 
   return (
     <HashRouter>
@@ -50,6 +54,9 @@ const App = () => {
         <Route path="/popular-movies">
           <PopularMovies />
           <Pagination />
+        </Route>
+        <Route path={`/popular-movies?search=${query}`}>
+          <MoviesByQuery />
         </Route>
         <Route path="/popular-people">
           <PopularPeople />

@@ -8,11 +8,15 @@ const moviesSlice = createSlice({
     genres: [],
     movie: [],
     id: "undefinded",
+    query: "",
     changeTileStyle: false,
   },
   reducers: {
     showId: (state) => {
       state.id = this.props.id;
+    },
+    updateQuery: (state, { payload: query}) => {
+      state.query = query;
     },
     fetchPopularMovies: (state) => {
       state.loading = true;
@@ -46,6 +50,16 @@ const moviesSlice = createSlice({
       state.loading = false;
       state.movie = !state.movie;
     },
+    fetchMoviesByQuery: (state) => {
+      state.loading = true;
+    },
+    fetchMoviesByQuerySuccess: (state, { payload: movies }) => {
+      state.movies = movies.results;
+      state.loading = false;
+    },
+    fetchMoviesByQueryError: (state) => {
+      state.loading = false;
+    },
   },
 });
 
@@ -60,6 +74,10 @@ export const {
   fetchMovieDetailsSuccess,
   fetchMovieDetailsError,
   showId,
+  fetchMoviesByQuery,
+  fetchMoviesByQuerySuccess,
+  fetchMoviesByQueryError,
+  updateQuery,
 } = moviesSlice.actions;
 
 export const selectMoviesState = (state) => state.movies;
@@ -71,4 +89,6 @@ export const selectChangeTileStyle = (state) =>
 export const selectLoadingMovieDetails = (state) =>
   selectMoviesState(state).loading;
 export const selectLoading = (state) => selectMoviesState(state).loading;
+export const selectMoviesByQuery = (state) => selectMoviesState(state).movies;
+export const selectQuery = (state) => selectMoviesState(state).query;
 export default moviesSlice.reducer;
