@@ -144,7 +144,7 @@ export const Title = styled.h3`
     `};
 `;
 
-export const Year = styled.p`
+export const YearOrCharacter = styled.p`
   font-size: 16px;
   line-height: 150%;
   margin: 0;

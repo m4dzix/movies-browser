@@ -67,14 +67,15 @@ const PersonDetails = () => {
           value2={personDetails.place_of_birth}
           description={personDetails.biography}
         ></Tile>
-
         <Section
           title={`Movie - cast (${castNumber})`}
           body={movieCast.map((movie) => (
             <Tile
               key={movie.credit_id}
               title={movie.title}
-              year={`${movie.character} (${movie.release_date})`}
+              YearOrCharacter={
+                `${movie.character} (${movie.release_date}`.split("-")[0] + ")"
+              }
               type={movie.genre_ids.map((id) => (
                 <Tag key={id}>{tag(id)}</Tag>
               ))}
@@ -95,7 +96,7 @@ const PersonDetails = () => {
             <Tile
               key={movie.credit_id}
               title={movie.title}
-              year={`${movie.job} (${movie.release_date})`}
+              YearOrCharacter={`${movie.job} (${movie.release_date})`}
               type={movie.genre_ids.map((id) => (
                 <Tag key={id}>{tag(id)}</Tag>
               ))}

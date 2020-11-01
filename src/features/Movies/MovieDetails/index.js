@@ -53,7 +53,7 @@ const MovieDetails = () => {
           value1={movieDetails.production_countries.map(
             (country) => `${country.name}, `
           )}
-          info2={"release date: "}
+          info2={"Rselease date: "}
           value2={movieDetails.release_date}
           type={movieDetails.genres.map((genre) => (
             <Tag key={genre.id}>{genre.name}</Tag>
@@ -77,7 +77,7 @@ const MovieDetails = () => {
                   : profile
               }
               title={people.name}
-              year={people.character}
+              YearOrCharacter={people.character}
             ></Tile>
           ))}
         ></Section>
@@ -94,7 +94,7 @@ const MovieDetails = () => {
                   : profile
               }
               title={people.name}
-              year={people.job}
+              YearOrCharacter={people.job}
             ></Tile>
           ))}
         ></Section>
