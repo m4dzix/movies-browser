@@ -15,7 +15,7 @@ import Tile from "../../../common/Tile";
 import { StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
-
+import Pagination from "../../../common/Pagination";
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
   const popularPeople = useSelector(selectPopularPeople);
@@ -53,6 +53,7 @@ const PopularPeople = () => {
             </StyledLink>
           ))}
         ></Section>
+        <Pagination />
       </Main>
     );
   } else if (loading) {
