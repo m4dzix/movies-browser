@@ -16,6 +16,8 @@ import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
+import Loading from "../../../common/Loading";
+import Error from "../../../common/Error";
 
 const PopularMovies = () => {
 
@@ -80,9 +82,9 @@ const PopularMovies = () => {
         </Main>
       );
     } else if (loading) {
-      return <div>LOADING LOADING LOADING</div>;
+      return <Loading />
     } else {
-      return <div>ERROR ERROR </div>;
+      return <Error />
     }
   } else {
     if (!loading && moviesByQuery) {
@@ -118,9 +120,9 @@ const PopularMovies = () => {
       );
     }
     else if (loading) {
-      return <div>LOADING LOADING LOADING</div>;
+      return <Loading />
     } else {
-      return <div>ERROR ERROR </div>;
+      return <Error />
     }
   }
 };
