@@ -17,6 +17,7 @@ import Tile from "../../../common/Tile";
 import { Tag } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
+import MovieHeader from "./MovieHeader";
 
 const MovieDetails = () => {
   const movieDetails = useSelector(selectMovieDetails);
@@ -38,7 +39,15 @@ const MovieDetails = () => {
   }, [dispatch, id]);
 
   if (!loading && movieDetails) {
+
     return (
+      <>
+      <MovieHeader
+      title={movieDetails.title}
+      backdropPath={movieDetails.backdrop_path}
+      voteAverage={movieDetails.vote_average}
+      voteCount={movieDetails.vote_count}
+    />
       <Main>
         <Tile
           detailsTileStyle={changeTileStyle}
@@ -99,6 +108,7 @@ const MovieDetails = () => {
           ))}
         ></Section>
       </Main>
+      </>
     );
   } else if (loading) {
     return <Loading />;
