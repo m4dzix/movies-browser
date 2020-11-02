@@ -10,6 +10,14 @@ export const BackdropWrapper = styled.div`
     max-width: 1368px;
     margin: auto;
     position: relative;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+        margin: 0 16px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        margin: 0 16px;
+    }
 `;
 
 export const Backdrop = styled.img`
@@ -34,6 +42,16 @@ export const RatingsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 56px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+        margin-bottom: 16px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 8px;
+    }
 `;
 
 export const Title = styled.h1`
@@ -42,11 +60,30 @@ export const Title = styled.h1`
     font-weight: 600;
     line-height: 1.2;
     color: ${({ theme }) => theme.colors.white};
+    -webkit-text-stroke: 0.5px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 24px;
+    }
 `;
 
 export const Star = styled.img`
     width: 40px;
     margin-right: 8px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+        width: 28px;
+        margin-right: 4px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        width: 16px;
+        margin-right: 2px;
+    }
 `;
 
 export const Count = styled.span`
@@ -54,10 +91,30 @@ export const Count = styled.span`
     line-height: 1.3;
     font-size: 30px;
     margin-bottom: 16px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+        font-size: 24px;
+        line-height: 1;
+        margin-right: 16px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 14px;
+        margin-right: 8px;
+    }
 `;
 
 export const Votes = styled.span`
     font-weight: 400;
+    font-size: 16px;
     line-height: 1.2;
     margin-bottom: 16px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+        font-size: 14px;
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        font-size: 10px;
+    }
 `;
