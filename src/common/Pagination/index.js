@@ -11,10 +11,10 @@ import {
 } from "../../features/Movies/moviesSlice";
 
 const Pagination = () => {
-  //tmp Data, also disabled state added to 2 buttons for preview
   const currentPage = useSelector(selectPage);
   const maxPages = useSelector(selectTotalPages);
-  const isMobile = true;
+  const isMobile = window.screen.width < 767;
+
   const dispatch = useDispatch();
   return (
     <Container>
@@ -76,7 +76,7 @@ const Pagination = () => {
           <>&#62;&#62;</>
         ) : (
           <>
-            <Text>First</Text> &#62;
+            <Text>Last</Text> &#62;
           </>
         )}
       </Button>
