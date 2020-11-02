@@ -53,7 +53,7 @@ const MovieDetails = () => {
           value1={movieDetails.production_countries.map(
             (country) => `${country.name}, `
           )}
-          info2={"Rselease date: "}
+          info2={"Release date: "}
           value2={movieDetails.release_date}
           type={movieDetails.genres.map((genre) => (
             <Tag key={genre.id}>{genre.name}</Tag>
