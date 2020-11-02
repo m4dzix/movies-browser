@@ -37,10 +37,24 @@ const App = () => {
             </LogoContainer>
             <LinkContainer>
               <ListItem>
-                <StyledNavLink to="/popular-movies">movies</StyledNavLink>
+                <StyledNavLink
+                  to="/popular-movies"
+                  onClick={() => {
+                    dispatch(firstPage());
+                  }}
+                >
+                  movies
+                </StyledNavLink>
               </ListItem>
               <ListItem>
-                <StyledNavLink to="/popular-people">people</StyledNavLink>
+                <StyledNavLink
+                  to="/popular-people"
+                  onClick={() => {
+                    dispatch(firstPage());
+                  }}
+                >
+                  people
+                </StyledNavLink>
               </ListItem>
             </LinkContainer>
           </NavContent>
