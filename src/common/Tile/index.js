@@ -71,7 +71,7 @@ const Tile = ({
               {maxAverage}
             </VoteCount>
           </VoteAverage>
-          <VoteCount>{voteCount}</VoteCount>
+          <VoteCount movieDetails={detailsTileStyle}>{voteCount}</VoteCount>
         </VoteContainer>
       </Content>
       <Description movieDetails={detailsTileStyle}>{description}</Description>

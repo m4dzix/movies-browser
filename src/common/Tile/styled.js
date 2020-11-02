@@ -237,7 +237,7 @@ export const VoteCount = styled.span`
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  align-self: flex-end;
+  align-self: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 13px;
   }
@@ -248,6 +248,12 @@ export const VoteCount = styled.span`
         display: none;
       } ;
     `}
+  ${(props) =>
+    props.movieDetails &&
+    css`
+   align-self: flex-end;
+      }
+    `};
 `;
 export const Description = styled.p`
   display: none;
