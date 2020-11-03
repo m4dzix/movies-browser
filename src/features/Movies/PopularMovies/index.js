@@ -18,6 +18,7 @@ import Error from "../../../common/Error";
 import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 import Pagination from "../../../common/Pagination";
+import { toMovie } from "../../../routes";
 const PopularMovies = () => {
   const loading = useSelector(selectLoading);
   const popularMovies = useSelector(selectPopularMovies);
@@ -37,8 +38,6 @@ const PopularMovies = () => {
     movieGenres
       .filter((item) => item.id === genreId)
       .map((genres) => genres.name);
-
-  const toMovie = ({ id } = { id: "id" }) => `/movie-details/${id}`;
 
   if (!loading && popularMovies) {
     return (

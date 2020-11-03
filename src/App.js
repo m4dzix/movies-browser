@@ -12,7 +12,7 @@ import {
   StyledImg,
   ListItem,
 } from "./styled";
-
+import { toMovies, toPeople, toMovie, toPerson } from "./routes";
 import { firstPage } from "./features/Movies/moviesSlice";
 import { useDispatch } from "react-redux";
 import PopularMovies from "./features/Movies/PopularMovies";
@@ -23,8 +23,6 @@ import search from "./images/search.svg";
 import camera from "./images/camera.svg";
 
 const App = () => {
-  const toMovie = ({ id } = { id: ":id" }) => `/movie-details/${id}`;
-  const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
   const dispatch = useDispatch();
   return (
     <HashRouter>
@@ -38,7 +36,7 @@ const App = () => {
             <LinkContainer>
               <ListItem>
                 <StyledNavLink
-                  to="/popular-movies"
+                  to={toMovies()}
                   onClick={() => {
                     dispatch(firstPage());
                   }}
@@ -48,7 +46,7 @@ const App = () => {
               </ListItem>
               <ListItem>
                 <StyledNavLink
-                  to="/popular-people"
+                  to={toPeople()}
                   onClick={() => {
                     dispatch(firstPage());
                   }}
@@ -65,10 +63,10 @@ const App = () => {
         </NavContainer>
       </nav>
       <Switch>
-        <Route path="/popular-movies">
+        <Route path={toMovies()}>
           <PopularMovies />
         </Route>
-        <Route path="/popular-people">
+        <Route path={toPeople()}>
           <PopularPeople />
         </Route>
         <Route path={toMovie()}>
@@ -78,7 +76,7 @@ const App = () => {
           <PersonDetails />
         </Route>
         <Route path="/">
-          <Redirect to="/popular-movies" />
+          <Redirect to={toMovies()} />
         </Route>
       </Switch>
     </HashRouter>
