@@ -6,6 +6,7 @@ import {
   selectLoading,
   selectPopularMovies,
   selectGenres,
+  selectPage,
   showId,
 } from "../moviesSlice";
 import video from "../../../assets/Video.svg";
@@ -16,17 +17,17 @@ import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
-
+import Pagination from "../../../common/Pagination";
 const PopularMovies = () => {
   const loading = useSelector(selectLoading);
   const popularMovies = useSelector(selectPopularMovies);
   const movieGenres = useSelector(selectGenres);
-
+  const page = useSelector(selectPage);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPopularMovies());
-  }, [dispatch]);
+    dispatch(fetchPopularMovies(page));
+  }, [dispatch, page]);
 
   useEffect(() => {
     dispatch(fetchGenres());
@@ -68,6 +69,7 @@ const PopularMovies = () => {
             </StyledLink>
           ))}
         ></Section>
+        <Pagination />
       </Main>
     );
   } else if (loading) {

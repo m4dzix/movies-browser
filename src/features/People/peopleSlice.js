@@ -4,6 +4,8 @@ const peopleSlice = createSlice({
   name: "movies",
   initialState: {
     loading: true,
+    page: 1,
+    totalPages: "undefinded",
     people: [],
     credits: [],
     cast: [],
@@ -16,12 +18,26 @@ const peopleSlice = createSlice({
     showId: (state) => {
       state.id = this.props.id;
     },
+    firstPage: (state) => {
+      state.page = 1;
+    },
+    lastPage: (state) => {
+      state.page = state.totalPages;
+    },
+    nextPage: (state) => {
+      state.page++;
+    },
+    previousPage: (state) => {
+      state.page--;
+    },
     fetchPopularPeople: (state) => {
       state.loading = true;
     },
     fetchPopularPeopleSuccess: (state, { payload: people }) => {
       state.people = people.results;
       state.changeTileStyle = true;
+      state.page = people.page;
+      state.totalPages = people.total_pages;
       state.id = people.results.id;
       state.loading = false;
     },
@@ -59,6 +75,10 @@ const peopleSlice = createSlice({
 
 export const {
   showId,
+  firstPage,
+  lastPage,
+  nextPage,
+  previousPage,
   fetchPopularPeople,
   fetchPopularPeopleSuccess,
   fetchPopularPeopleError,
@@ -79,9 +99,9 @@ export const selectCredits = (state) => selectPeopleState(state).credits;
 export const selectCrew = (state) => selectPeopleState(state).crew;
 export const selectLoadingCredits = (state) => selectPeopleState(state).loading;
 export const selectCast = (state) => selectPeopleState(state).cast;
-
 export const selectPersonDetails = (state) => selectPeopleState(state).person;
-
+export const selectPage = (state) => selectPeopleState(state).page;
+export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
 export const selectLoading = (state) => selectPeopleState(state).loading;
 
 export default peopleSlice.reducer;
