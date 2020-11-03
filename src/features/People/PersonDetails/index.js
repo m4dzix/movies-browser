@@ -13,15 +13,17 @@ import {
   fetchMovieCredits,
   fetchGenres,
   selectGenres,
+  showId,
 } from "../../Movies/moviesSlice";
 import starIcon from "../../../assets/Vector.svg";
 import video from "../../../assets/Video.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
-import { Tag } from "../../../common/Tile/additionalStyled";
+import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
+import { toMovie } from "../../../routes";
 
 const PersonDetails = () => {
   const changeTileStyle = useSelector(selectChangeTileStyle);
@@ -70,45 +72,56 @@ const PersonDetails = () => {
         <Section
           title={`Movie - cast (${castNumber})`}
           body={movieCast.map((movie) => (
-            <Tile
-              key={movie.credit_id}
-              title={movie.title}
-              YearOrCharacter={
-                `${movie.character} (${movie.release_date}`.split("-")[0] + ")"
-              }
-              type={movie.genre_ids.map((id) => (
-                <Tag key={id}>{tag(id)}</Tag>
-              ))}
-              imagePath={
-                !!movie.poster_path
-                  ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
-                  : video
-              }
-              starIcon={starIcon}
-              voteAverage={movie.vote_average}
-              voteCount={`${movie.vote_count} votes`}
-            ></Tile>
+            <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
+              <Tile
+                onClick={() => {
+                  dispatch(showId());
+                }}
+                key={movie.credit_id}
+                title={movie.title}
+                YearOrCharacter={
+                  `${movie.character} (${movie.release_date}`.split("-")[0] +
+                  ")"
+                }
+                type={movie.genre_ids.map((id) => (
+                  <Tag key={id}>{tag(id)}</Tag>
+                ))}
+                imagePath={
+                  !!movie.poster_path
+                    ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
+                    : video
+                }
+                starIcon={starIcon}
+                voteAverage={movie.vote_average}
+                voteCount={`${movie.vote_count} votes`}
+              ></Tile>
+            </StyledLink>
           ))}
         ></Section>
         <Section
           title={`Movie - crew (${crewNumber})`}
           body={movieCrew.map((movie) => (
-            <Tile
-              key={movie.credit_id}
-              title={movie.title}
-              YearOrCharacter={`${movie.job} (${movie.release_date})`}
-              type={movie.genre_ids.map((id) => (
-                <Tag key={id}>{tag(id)}</Tag>
-              ))}
-              imagePath={
-                !!movie.poster_path
-                  ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
-                  : video
-              }
-              starIcon={starIcon}
-              voteAverage={movie.vote_average}
-              voteCount={`${movie.vote_count} votes`}
-            ></Tile>
+            <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
+              <Tile
+                onClick={() => {
+                  dispatch(showId());
+                }}
+                key={movie.credit_id}
+                title={movie.title}
+                YearOrCharacter={`${movie.job} (${movie.release_date})`}
+                type={movie.genre_ids.map((id) => (
+                  <Tag key={id}>{tag(id)}</Tag>
+                ))}
+                imagePath={
+                  !!movie.poster_path
+                    ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
+                    : video
+                }
+                starIcon={starIcon}
+                voteAverage={movie.vote_average}
+                voteCount={`${movie.vote_count} votes`}
+              ></Tile>
+            </StyledLink>
           ))}
         ></Section>
       </Main>
