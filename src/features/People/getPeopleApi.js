@@ -1,5 +1,5 @@
-export const getPopularPeople = async () => {
-  const api = `https://api.themoviedb.org/3/person/popular?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US&page=1`;
+export const getPopularPeople = async (page) => {
+  const api = `https://api.themoviedb.org/3/person/popular?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US&page=${page}`;
 
   const response = await fetch(api);
 

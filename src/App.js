@@ -12,7 +12,9 @@ import {
   StyledImg,
   ListItem,
 } from "./styled";
-import Pagination from "./common/Pagination";
+
+import { firstPage } from "./features/Movies/moviesSlice";
+import { useDispatch } from "react-redux";
 import PopularMovies from "./features/Movies/PopularMovies";
 import MovieDetails from "./features/Movies/MovieDetails";
 import PopularPeople from "./features/People/PopularPeople";
@@ -23,7 +25,7 @@ import camera from "./images/camera.svg";
 const App = () => {
   const toMovie = ({ id } = { id: ":id" }) => `/movie-details/${id}`;
   const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
-
+  const dispatch = useDispatch();
   return (
     <HashRouter>
       <nav>
@@ -35,10 +37,24 @@ const App = () => {
             </LogoContainer>
             <LinkContainer>
               <ListItem>
-                <StyledNavLink to="/popular-movies">movies</StyledNavLink>
+                <StyledNavLink
+                  to="/popular-movies"
+                  onClick={() => {
+                    dispatch(firstPage());
+                  }}
+                >
+                  movies
+                </StyledNavLink>
               </ListItem>
               <ListItem>
-                <StyledNavLink to="/popular-people">people</StyledNavLink>
+                <StyledNavLink
+                  to="/popular-people"
+                  onClick={() => {
+                    dispatch(firstPage());
+                  }}
+                >
+                  people
+                </StyledNavLink>
               </ListItem>
             </LinkContainer>
           </NavContent>
@@ -51,11 +67,9 @@ const App = () => {
       <Switch>
         <Route path="/popular-movies">
           <PopularMovies />
-          <Pagination />
         </Route>
         <Route path="/popular-people">
           <PopularPeople />
-          <Pagination />
         </Route>
         <Route path={toMovie()}>
           <MovieDetails />

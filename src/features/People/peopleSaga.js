@@ -14,10 +14,10 @@ import {
   fetchPersonDetailsError,
 } from "./peopleSlice";
 
-function* fetchPopularPeopleHandler() {
+function* fetchPopularPeopleHandler({ payload: page }) {
   try {
     yield delay(500);
-    const people = yield call(getPopularPeople);
+    const people = yield call(getPopularPeople, page);
     yield put(fetchPopularPeopleSuccess(people));
   } catch (error) {
     yield put(fetchPopularPeopleError());
