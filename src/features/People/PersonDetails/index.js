@@ -17,6 +17,7 @@ import {
 } from "../../Movies/moviesSlice";
 import starIcon from "../../../assets/Vector.svg";
 import video from "../../../assets/Video.svg";
+import profile from "../../../assets/Profile.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
@@ -61,12 +62,18 @@ const PersonDetails = () => {
       <Main>
         <Tile
           detailsTileStyle={changeTileStyle}
-          imagePath={`https://image.tmdb.org/t/p/w185/${personDetails.profile_path}`}
+          imagePath={
+            !!personDetails.profile_path
+              ? `https://image.tmdb.org/t/p/w185/${personDetails.profile_path}`
+              : profile
+          }
           title={personDetails.name}
-          info1={"date of birth: "}
-          value1={personDetails.birthday}
+          info1={"Date of birth: "}
+          value1={!!personDetails.birthday ? personDetails.birthday : "-"}
           info2={"Place of birth: "}
-          value2={personDetails.place_of_birth}
+          value2={
+            !!personDetails.place_of_birth ? personDetails.place_of_birth : "-"
+          }
           description={personDetails.biography}
         ></Tile>
         <Section
