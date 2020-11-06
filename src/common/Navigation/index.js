@@ -19,6 +19,7 @@ import camera from "../../images/camera.svg";
 
 export const Navigation = () => {
   const dispatch = useDispatch();
+
   return (
     <nav>
       <NavContainer>
@@ -58,4 +59,5 @@ export const Navigation = () => {
     </nav>
   );
 };
+
 export default Navigation;

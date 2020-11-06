@@ -15,6 +15,7 @@ const moviesSlice = createSlice({
     movieCast: [],
     movieCrew: [],
   },
+
   reducers: {
     firstPage: (state) => {
       state.page = 1;
@@ -116,4 +117,5 @@ export const selectMovieCast = (state) => selectMoviesState(state).movieCast;
 export const selectPage = (state) => selectMoviesState(state).page;
 export const selectTotalPages = (state) => selectMoviesState(state).totalPages;
 export const selectLoading = (state) => selectMoviesState(state).loading;
+
 export default moviesSlice.reducer;

@@ -17,6 +17,7 @@ import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Pagination from "../../../common/Pagination";
 import { toPerson } from "../../../routes";
+
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
   const popularPeople = useSelector(selectPopularPeople);
@@ -61,4 +62,5 @@ const PopularPeople = () => {
     return <Error />;
   }
 };
+
 export default PopularPeople;

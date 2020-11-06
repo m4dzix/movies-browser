@@ -35,9 +35,7 @@ const PersonDetails = () => {
   const loading = useSelector(selectLoading);
   const castNumber = movieCast.length;
   const crewNumber = movieCrew.length;
-
   const { id } = useParams();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -139,4 +137,5 @@ const PersonDetails = () => {
     return <Error />;
   }
 };
+
 export default PersonDetails;

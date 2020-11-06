@@ -7,4 +7,5 @@ const Section = ({ changeTileStyle, title, body }) => (
     <Container people={changeTileStyle}>{body}</Container>
   </section>
 );
+
 export default Section;

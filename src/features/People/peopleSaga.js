@@ -23,6 +23,7 @@ function* fetchPopularPeopleHandler({ payload: page }) {
     yield put(fetchPopularPeopleError());
   }
 }
+
 function* fetchCreditsHandler({ payload: movieId }) {
   try {
     yield delay(100);
@@ -32,6 +33,7 @@ function* fetchCreditsHandler({ payload: movieId }) {
     yield put(fetchCreditsError());
   }
 }
+
 function* fetchPersonDetailsHandler({ payload: id }) {
   try {
     yield delay(500);

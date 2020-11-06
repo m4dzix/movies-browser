@@ -19,6 +19,7 @@ import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 import Pagination from "../../../common/Pagination";
 import { toMovie } from "../../../routes";
+
 const PopularMovies = () => {
   const loading = useSelector(selectLoading);
   const popularMovies = useSelector(selectPopularMovies);
@@ -77,4 +78,5 @@ const PopularMovies = () => {
     return <Error />;
   }
 };
+
 export default PopularMovies;

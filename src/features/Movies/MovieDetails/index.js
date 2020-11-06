@@ -27,9 +27,7 @@ const MovieDetails = () => {
   const changeTileStyle = useSelector(selectChangeTileStyle);
   const cast = useSelector(selectCast);
   const crew = useSelector(selectCrew);
-
   const { id } = useParams();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
