@@ -5,12 +5,8 @@ const moviesSlice = createSlice({
   initialState: {
     loading: true,
     page: 1,
-    totalPages: "undefinded",
     movies: [],
     genres: [],
-    movie: [],
-    id: "undefinded",
-    changeTileStyle: false,
     movieCredits: [],
     movieCast: [],
     movieCrew: [],

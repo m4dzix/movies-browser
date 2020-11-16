@@ -5,14 +5,10 @@ const peopleSlice = createSlice({
   initialState: {
     loading: true,
     page: 1,
-    totalPages: "undefinded",
     people: [],
     credits: [],
     cast: [],
     crew: [],
-    person: [],
-    changeTileStyle: false,
-    id: "undefinded",
   },
 
   reducers: {
