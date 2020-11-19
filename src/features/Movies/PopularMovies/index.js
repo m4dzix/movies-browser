@@ -27,15 +27,14 @@ const PopularMovies = () => {
 
   const dispatch = useDispatch();
 
-  const moviesByQuery = useSelector(selectMovies);
-  const popularMovies = useSelector(selectMovies);
+  const movies = useSelector(selectMovies);
 
   useEffect(() => {
-    dispatch(fetchMoviesByQuery(query));
-  }, [dispatch, query]);
-
-  useEffect(() => {
-    dispatch(fetchPopularMovies());
+    if (query === "") {
+      dispatch(fetchPopularMovies());
+    } else {
+      dispatch(fetchMoviesByQuery(query));
+    }
   }, [dispatch, query]);
 
   useEffect(() => {
@@ -49,81 +48,41 @@ const PopularMovies = () => {
 
   const toMovie = ({ id } = { id: "id" }) => `/movie-details/${id}`;
 
-  if (query === "") {
-    if (!loading && popularMovies) {
-      return (
-        <Main>
-          <Section
-            title={"Popular movies"}
-            body={popularMovies.map((movie) => (
-              <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
-                <Tile
-                  onClick={() => {
-                    dispatch(showId());
-                  }}
-                  key={movie.id}
-                  title={movie.title}
-                  year={movie.release_date.split("-")[0]}
-                  type={movie.genre_ids.map((id) => (
-                    <Tag key={id}>{type(id)}</Tag>
-                  ))}
-                  imagePath={
-                    !!movie.poster_path
-                      ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
-                      : video
-                  }
-                  starIcon={starIcon}
-                  voteAverage={movie.vote_average}
-                  voteCount={`${movie.vote_count} votes`}
-                ></Tile>
-              </StyledLink>
-            ))}
-          ></Section>
-        </Main>
-      );
-    } else if (loading) {
-      return <Loading />
-    } else {
-      return <Error />
-    }
+  if (!loading && movies) {
+    return (
+      <Main>
+        <Section
+          title={query ? `Search for ${query}` : "Popular movies"}
+          body={movies.map((movie) => (
+            <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
+              <Tile
+                onClick={() => {
+                  dispatch(showId());
+                }}
+                key={movie.id}
+                title={movie.title}
+                year={movie.release_date.split("-")[0]}
+                type={movie.genre_ids.map((id) => (
+                  <Tag key={id}>{type(id)}</Tag>
+                ))}
+                imagePath={
+                  !!movie.poster_path
+                    ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
+                    : video
+                }
+                starIcon={starIcon}
+                voteAverage={movie.vote_average}
+                voteCount={`${movie.vote_count} votes`}
+              ></Tile>
+            </StyledLink>
+          ))}
+        ></Section>
+      </Main>
+    );
+  } else if (loading) {
+    return <Loading />
   } else {
-    if (!loading && moviesByQuery) {
-      return (
-        <Main>
-          <Section
-            title={`Search results for: ${query}`}
-            body={moviesByQuery.map((movie) => (
-              <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
-                <Tile
-                  onClick={() => {
-                    dispatch(showId());
-                  }}
-                  key={movie.id}
-                  title={movie.title}
-                  year={movie.release_date.split("-")[0]}
-                  type={movie.genre_ids.map((id) => (
-                    <Tag key={id}>{type(id)}</Tag>
-                  ))}
-                  imagePath={
-                    !!movie.poster_path
-                      ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
-                      : video
-                  }
-                  starIcon={starIcon}
-                  voteAverage={movie.vote_average}
-                  voteCount={`${movie.vote_count} votes`}
-                ></Tile>
-              </StyledLink>
-            ))}
-          ></Section>
-        </Main>
-      );
-    }
-    else if (loading) {
-      return <Loading />
-    } else {
-      return <Error />
-    }
+    return <Error />
   }
 };
 export default PopularMovies;
