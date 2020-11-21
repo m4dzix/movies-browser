@@ -53,7 +53,7 @@ const PopularMovies = () => {
     return (
       <Main>
         <Section
-          title={query ? `Search for ${query}` : "Popular movies"}
+          title={query ? `Search for: ${query}` : "Popular movies"}
           body={movies.map((movie) => (
             <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
               <Tile
