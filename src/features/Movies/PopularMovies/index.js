@@ -49,7 +49,7 @@ const PopularMovies = () => {
 
   const toMovie = ({ id } = { id: "id" }) => `/movie-details/${id}`;
 
-  if (!loading && movies) {
+  if (!loading && movies.length > 0) {
     return (
       <Main>
         <Section
@@ -82,7 +82,7 @@ const PopularMovies = () => {
     );
   } else if (loading) {
     return <Loading />
-  } if (!loading && movies.lenght === 0) {
+  } if (!loading && movies.length === 0) {
     return <NoResults />
   } else {
     return <Error />
