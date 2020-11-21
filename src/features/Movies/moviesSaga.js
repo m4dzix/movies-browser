@@ -1,4 +1,4 @@
-import { delay, call, put, takeEvery, debounce } from "redux-saga/effects";
+import { delay, call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import {
   getPopularMovies,
   getMovieGenres,
@@ -59,8 +59,8 @@ function* fetchMoviesByQueryHandler({ payload: query}) {
 }
 
 export function* watchFetchPopularMovies() {
-  yield debounce(1000, fetchPopularMovies.type, fetchPopularMoviesHandler);
+  yield takeEvery(fetchPopularMovies.type, fetchPopularMoviesHandler);
   yield takeEvery(fetchGenres.type, fetchGenresHandler);
   yield takeEvery(fetchMovieDetails.type, fetchMovieDetailsHandler);
-  yield debounce(1000, fetchMoviesByQuery.type, fetchMoviesByQueryHandler);
+  yield takeLatest(fetchMoviesByQuery.type, fetchMoviesByQueryHandler);
 }

@@ -18,6 +18,7 @@ import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
+import NoResults from "../../../common/NoResults";
 
 const PopularMovies = () => {
 
@@ -81,6 +82,8 @@ const PopularMovies = () => {
     );
   } else if (loading) {
     return <Loading />
+  } if (!loading && movies.lenght === 0) {
+    return <NoResults />
   } else {
     return <Error />
   }
