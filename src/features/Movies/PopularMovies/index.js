@@ -6,6 +6,7 @@ import {
   selectLoading,
   selectMovies,
   selectGenres,
+  selectPage,
   showId,
   selectQuery,
   fetchMoviesByQuery,
@@ -14,18 +15,21 @@ import video from "../../../assets/Video.svg";
 import starIcon from "../../../assets/Vector.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
+import Loading from "../../../common/Loading";
+import Error from "../../../common/Error";
 import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import NoResults from "../../../common/NoResults";
+import Pagination from "../../../common/Pagination";
 
 const PopularMovies = () => {
 
   const query = useSelector(selectQuery);
   const loading = useSelector(selectLoading);
   const movieGenres = useSelector(selectGenres);
-
+  const page = useSelector(selectPage);
   const dispatch = useDispatch();
 
   const movies = useSelector(selectMovies);
@@ -62,7 +66,7 @@ const PopularMovies = () => {
                 }}
                 key={movie.id}
                 title={movie.title}
-                year={movie.release_date.split("-")[0]}
+                YearOrCharacter={movie.release_date.split("-")[0]}
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{type(id)}</Tag>
                 ))}
@@ -78,6 +82,7 @@ const PopularMovies = () => {
             </StyledLink>
           ))}
         ></Section>
+        <Pagination />
       </Main>
     );
   } else if (loading) {

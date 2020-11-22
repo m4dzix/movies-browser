@@ -4,6 +4,7 @@ import {
   getMovieGenres,
   getMovieDetails,
   getMoviesByQuery,
+  getMovieCredits,
 } from "./getMoviesApi";
 
 import {
@@ -19,12 +20,15 @@ import {
   fetchMoviesByQuery,
   fetchMoviesByQuerySuccess,
   fetchMoviesByQueryError,
+  fetchMovieCredits,
+  fetchMovieCreditsSuccess,
+  fetchMovieCreditsError,
 } from "./moviesSlice";
 
-function* fetchPopularMoviesHandler() {
+function* fetchPopularMoviesHandler({ payload: page }) {
   try {
-    yield delay(100);
-    const movies = yield call(getPopularMovies);
+    yield delay(500);
+    const movies = yield call(getPopularMovies, page);
     yield put(fetchPopularMoviesSuccess(movies));
   } catch (error) {
     yield put(fetchPopularMoviesError());
@@ -32,7 +36,7 @@ function* fetchPopularMoviesHandler() {
 }
 function* fetchGenresHandler() {
   try {
-    yield delay(100);
+    yield delay(500);
     const genres = yield call(getMovieGenres);
     yield put(fetchGenresSuccess(genres));
   } catch (error) {
@@ -57,10 +61,20 @@ function* fetchMoviesByQueryHandler({ payload: query}) {
     yield put(fetchMoviesByQueryError());
   }
 }
+function* fetchMovieCreditsHandler({ payload: id }) {
+  try {
+    yield delay(500);
+    const movieCredits = yield call(getMovieCredits, id);
+    yield put(fetchMovieCreditsSuccess(movieCredits));
+  } catch (error) {
+    yield put(fetchMovieCreditsError());
+  }
+}
 
 export function* watchFetchPopularMovies() {
   yield takeEvery(fetchPopularMovies.type, fetchPopularMoviesHandler);
   yield takeEvery(fetchGenres.type, fetchGenresHandler);
   yield takeEvery(fetchMovieDetails.type, fetchMovieDetailsHandler);
   yield takeLatest(fetchMoviesByQuery.type, fetchMoviesByQueryHandler);
+  yield takeEvery(fetchMovieCredits.type, fetchMovieCreditsHandler);
 }

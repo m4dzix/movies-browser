@@ -5,7 +5,7 @@ import {
   Content,
   DetailsContainer,
   Title,
-  Year,
+  YearOrCharacter,
   Tags,
   Span,
   About,
@@ -45,9 +45,12 @@ const Tile = ({
           <Title people={changeTileStyle} movieDetails={detailsTileStyle}>
             {title}
           </Title>
-          <Year people={changeTileStyle} movieDetails={detailsTileStyle}>
+          <YearOrCharacter
+            people={changeTileStyle}
+            movieDetails={detailsTileStyle}
+          >
             {year}
-          </Year>
+          </YearOrCharacter>
           <div>
             <About>
               <Span>{info1}</Span>
@@ -68,7 +71,7 @@ const Tile = ({
               {maxAverage}
             </VoteCount>
           </VoteAverage>
-          <VoteCount>{voteCount}</VoteCount>
+          <VoteCount movieDetails={detailsTileStyle}>{voteCount}</VoteCount>
         </VoteContainer>
       </Content>
       <Description movieDetails={detailsTileStyle}>{description}</Description>

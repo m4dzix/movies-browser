@@ -17,6 +17,7 @@ import Tile from "../../../common/Tile";
 import { Tag } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
+import MovieHeader from "./MovieHeader";
 
 const MovieDetails = () => {
   const movieDetails = useSelector(selectMovieDetails);
@@ -38,7 +39,15 @@ const MovieDetails = () => {
   }, [dispatch, id]);
 
   if (!loading && movieDetails) {
+
     return (
+      <>
+      <MovieHeader
+      title={movieDetails.title}
+      backdropPath={movieDetails.backdrop_path}
+      voteAverage={movieDetails.vote_average}
+      voteCount={movieDetails.vote_count}
+    />
       <Main>
         <Tile
           detailsTileStyle={changeTileStyle}
@@ -53,7 +62,7 @@ const MovieDetails = () => {
           value1={movieDetails.production_countries.map(
             (country) => `${country.name}, `
           )}
-          info2={"release date: "}
+          info2={"Release date: "}
           value2={movieDetails.release_date}
           type={movieDetails.genres.map((genre) => (
             <Tag key={genre.id}>{genre.name}</Tag>
@@ -77,7 +86,7 @@ const MovieDetails = () => {
                   : profile
               }
               title={people.name}
-              year={people.character}
+              YearOrCharacter={people.character}
             ></Tile>
           ))}
         ></Section>
@@ -94,11 +103,12 @@ const MovieDetails = () => {
                   : profile
               }
               title={people.name}
-              year={people.job}
+              YearOrCharacter={people.job}
             ></Tile>
           ))}
         ></Section>
       </Main>
+      </>
     );
   } else if (loading) {
     return <Loading />;
