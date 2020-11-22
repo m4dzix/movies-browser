@@ -10,6 +10,7 @@ const moviesSlice = createSlice({
     genres: [],
     movie: [],
     id: "undefinded",
+    query: "",
     changeTileStyle: false,
     movieCredits: [],
     movieCast: [],
@@ -30,6 +31,9 @@ const moviesSlice = createSlice({
     },
     showId: (state) => {
       state.id = this.props.id;
+    },
+    updateQuery: (state, { payload: query}) => {
+      state.query = query;
     },
     fetchPopularMovies: (state) => {
       state.loading = true;
@@ -65,6 +69,16 @@ const moviesSlice = createSlice({
       state.loading = false;
       state.movie = !state.movie;
     },
+    fetchMoviesByQuery: (state) => {
+      state.loading = true;
+    },
+    fetchMoviesByQuerySuccess: (state, { payload: movies }) => {
+      state.movies = movies.results;
+      state.loading = false;
+    },
+    fetchMoviesByQueryError: (state) => {
+      state.loading = false;
+    },
     fetchMovieCredits: (state) => {
       state.loading = true;
     },
@@ -96,13 +110,17 @@ export const {
   fetchMovieDetailsSuccess,
   fetchMovieDetailsError,
   showId,
+  fetchMoviesByQuery,
+  fetchMoviesByQuerySuccess,
+  fetchMoviesByQueryError,
+  updateQuery,
   fetchMovieCredits,
   fetchMovieCreditsError,
   fetchMovieCreditsSuccess,
 } = moviesSlice.actions;
 
 export const selectMoviesState = (state) => state.movies;
-export const selectPopularMovies = (state) => selectMoviesState(state).movies;
+export const selectMovies = (state) => selectMoviesState(state).movies;
 export const selectGenres = (state) => selectMoviesState(state).genres;
 export const selectMovieDetails = (state) => selectMoviesState(state).movie;
 export const selectChangeTileStyle = (state) =>
@@ -116,4 +134,5 @@ export const selectMovieCast = (state) => selectMoviesState(state).movieCast;
 export const selectPage = (state) => selectMoviesState(state).page;
 export const selectTotalPages = (state) => selectMoviesState(state).totalPages;
 export const selectLoading = (state) => selectMoviesState(state).loading;
+export const selectQuery = (state) => selectMoviesState(state).query;
 export default moviesSlice.reducer;

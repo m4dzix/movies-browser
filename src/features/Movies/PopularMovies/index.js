@@ -4,10 +4,12 @@ import {
   fetchPopularMovies,
   fetchGenres,
   selectLoading,
-  selectPopularMovies,
+  selectMovies,
   selectGenres,
   selectPage,
   showId,
+  selectQuery,
+  fetchMoviesByQuery,
 } from "../moviesSlice";
 import video from "../../../assets/Video.svg";
 import starIcon from "../../../assets/Vector.svg";
@@ -17,17 +19,28 @@ import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
+import Loading from "../../../common/Loading";
+import Error from "../../../common/Error";
+import NoResults from "../../../common/NoResults";
 import Pagination from "../../../common/Pagination";
+
 const PopularMovies = () => {
+
+  const query = useSelector(selectQuery);
   const loading = useSelector(selectLoading);
-  const popularMovies = useSelector(selectPopularMovies);
   const movieGenres = useSelector(selectGenres);
   const page = useSelector(selectPage);
   const dispatch = useDispatch();
 
+  const movies = useSelector(selectMovies);
+
   useEffect(() => {
-    dispatch(fetchPopularMovies(page));
-  }, [dispatch, page]);
+    if (query === "") {
+      dispatch(fetchPopularMovies());
+    } else {
+      dispatch(fetchMoviesByQuery(query));
+    }
+  }, [dispatch, query]);
 
   useEffect(() => {
     dispatch(fetchGenres());
@@ -40,12 +53,12 @@ const PopularMovies = () => {
 
   const toMovie = ({ id } = { id: "id" }) => `/movie-details/${id}`;
 
-  if (!loading && popularMovies) {
+  if (!loading && movies.length > 0) {
     return (
       <Main>
         <Section
-          title={"Popular movies"}
-          body={popularMovies.map((movie) => (
+          title={query ? `Search for: ${query}` : "Popular movies"}
+          body={movies.map((movie) => (
             <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
               <Tile
                 onClick={() => {
@@ -73,9 +86,11 @@ const PopularMovies = () => {
       </Main>
     );
   } else if (loading) {
-    return <Loading />;
+    return <Loading />
+  } if (!loading && movies.length === 0) {
+    return <NoResults />
   } else {
-    return <Error />;
+    return <Error />
   }
 };
 export default PopularMovies;
