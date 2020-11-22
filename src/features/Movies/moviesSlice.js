@@ -74,6 +74,8 @@ const moviesSlice = createSlice({
     },
     fetchMoviesByQuerySuccess: (state, { payload: movies }) => {
       state.movies = movies.results;
+      state.page = movies.page;
+      state.totalPages = movies.total_pages;
       state.loading = false;
     },
     fetchMoviesByQueryError: (state) => {

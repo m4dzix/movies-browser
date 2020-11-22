@@ -19,8 +19,6 @@ import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
-import Loading from "../../../common/Loading";
-import Error from "../../../common/Error";
 import NoResults from "../../../common/NoResults";
 import Pagination from "../../../common/Pagination";
 
@@ -36,11 +34,11 @@ const PopularMovies = () => {
 
   useEffect(() => {
     if (query === "") {
-      dispatch(fetchPopularMovies());
+      dispatch(fetchPopularMovies(page));
     } else {
-      dispatch(fetchMoviesByQuery(query));
+      dispatch(fetchMoviesByQuery(query, page));
     }
-  }, [dispatch, query]);
+  }, [dispatch, query, page]);
 
   useEffect(() => {
     dispatch(fetchGenres());

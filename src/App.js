@@ -12,7 +12,6 @@ import {
   ListItem,
 } from "./styled";
 import { SearchInput } from "./common/SearchInput";
-import Pagination from "./common/Pagination";
 import { firstPage } from "./features/Movies/moviesSlice";
 import { useDispatch } from "react-redux";
 import PopularMovies from "./features/Movies/PopularMovies";

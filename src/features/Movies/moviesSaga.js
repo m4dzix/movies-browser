@@ -52,10 +52,10 @@ function* fetchMovieDetailsHandler({ payload: id }) {
     yield put(fetchMovieDetailsError());
   }
 }
-function* fetchMoviesByQueryHandler({ payload: query}) {
+function* fetchMoviesByQueryHandler({ payload: query, page}) {
   try {
     yield delay(100);
-    const searchMovies = yield call(getMoviesByQuery, query);
+    const searchMovies = yield call(getMoviesByQuery, query, page);
     yield put(fetchMoviesByQuerySuccess(searchMovies));
   } catch (error) {
     yield put(fetchMoviesByQueryError());

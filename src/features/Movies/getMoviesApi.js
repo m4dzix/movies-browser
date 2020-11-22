@@ -34,8 +34,8 @@ export const getMovieDetails = async (id) => {
   return movieDetails;
 };
 
-export const getMoviesByQuery = async (query) => {
-  const api = `https://api.themoviedb.org/3/search/movie/?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US&query=${query}`
+export const getMoviesByQuery = async (query, page) => {
+  const api = `https://api.themoviedb.org/3/search/movie/?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US&query=${query}&page=${page}`
   const response = await fetch(api);
   
   if (!response.ok) {
