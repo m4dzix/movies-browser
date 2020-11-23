@@ -13,6 +13,7 @@ import {
 } from "./styled";
 import { SearchInput } from "./common/SearchInput";
 import { firstPage } from "./features/Movies/moviesSlice";
+import { peopleTabActive, peopleTabInactive } from "./features/People/peopleSlice";
 import { useDispatch } from "react-redux";
 import PopularMovies from "./features/Movies/PopularMovies";
 import MovieDetails from "./features/Movies/MovieDetails";
@@ -40,6 +41,7 @@ const App = () => {
                   to="/popular-movies"
                   onClick={() => {
                     dispatch(firstPage());
+                    dispatch(peopleTabInactive());
                   }}
                 >
                   movies
@@ -50,6 +52,7 @@ const App = () => {
                   to="/popular-people"
                   onClick={() => {
                     dispatch(firstPage());
+                    dispatch(peopleTabActive());
                   }}
                 >
                   people

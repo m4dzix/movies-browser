@@ -13,6 +13,7 @@ const peopleSlice = createSlice({
     person: [],
     changeTileStyle: false,
     id: "undefinded",
+    isPeopleTabActive: "undefined",
   },
   reducers: {
     showId: (state) => {
@@ -70,6 +71,12 @@ const peopleSlice = createSlice({
     fetchPersonDetailsError: (state) => {
       state.loading = false;
     },
+    peopleTabActive: (state) => {
+      state.isPeopleTabActive = true;
+    },
+    peopleTabInactive: (state) => {
+      state.isPeopleTabActive = false;
+    },
   },
 });
 
@@ -88,6 +95,8 @@ export const {
   fetchPersonDetails,
   fetchPersonDetailsSuccess,
   fetchPersonDetailsError,
+  peopleTabActive,
+  peopleTabInactive,
 } = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;
@@ -103,5 +112,6 @@ export const selectPersonDetails = (state) => selectPeopleState(state).person;
 export const selectPage = (state) => selectPeopleState(state).page;
 export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
 export const selectLoading = (state) => selectPeopleState(state).loading;
+export const selectPeopleActiveTab = (state) => selectPeopleState(state).isPeopleTabActive;
 
 export default peopleSlice.reducer;
