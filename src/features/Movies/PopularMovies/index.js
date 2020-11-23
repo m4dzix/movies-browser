@@ -29,7 +29,6 @@ const PopularMovies = () => {
   const movieGenres = useSelector(selectGenres);
   const page = useSelector(selectPage);
   const dispatch = useDispatch();
-
   const movies = useSelector(selectMovies);
 
   useEffect(() => {
@@ -48,8 +47,6 @@ const PopularMovies = () => {
     movieGenres
       .filter((item) => item.id === genreId)
       .map((genres) => genres.name);
-
-  const toMovie = ({ id } = { id: "id" }) => `/movie-details/${id}`;
 
   if (!loading && movies.length > 0) {
     return (
