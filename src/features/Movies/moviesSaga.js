@@ -1,4 +1,4 @@
-import { delay, call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { delay, call, put, takeLatest } from "redux-saga/effects";
 import {
   getPopularMovies,
   getMovieGenres,
@@ -26,7 +26,7 @@ import {
 
 function* fetchPopularMoviesHandler({ payload: page }) {
   try {
-    yield delay(500);
+    yield delay(100);
     const movies = yield call(getPopularMovies, page);
     yield put(fetchPopularMoviesSuccess(movies));
   } catch (error) {
@@ -36,7 +36,7 @@ function* fetchPopularMoviesHandler({ payload: page }) {
 
 function* fetchGenresHandler() {
   try {
-    yield delay(500);
+    yield delay(100);
     const genres = yield call(getMovieGenres);
     yield put(fetchGenresSuccess(genres));
   } catch (error) {
@@ -64,7 +64,7 @@ function* fetchMoviesByQueryHandler({ payload: query, page }) {
 }
 function* fetchMovieCreditsHandler({ payload: id }) {
   try {
-    yield delay(500);
+    yield delay(100);
     const movieCredits = yield call(getMovieCredits, id);
     yield put(fetchMovieCreditsSuccess(movieCredits));
   } catch (error) {
@@ -73,9 +73,9 @@ function* fetchMovieCreditsHandler({ payload: id }) {
 }
 
 export function* watchFetchPopularMovies() {
-  yield takeEvery(fetchPopularMovies.type, fetchPopularMoviesHandler);
-  yield takeEvery(fetchGenres.type, fetchGenresHandler);
-  yield takeEvery(fetchMovieDetails.type, fetchMovieDetailsHandler);
+  yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
+  yield takeLatest(fetchGenres.type, fetchGenresHandler);
+  yield takeLatest(fetchMovieDetails.type, fetchMovieDetailsHandler);
   yield takeLatest(fetchMoviesByQuery.type, fetchMoviesByQueryHandler);
-  yield takeEvery(fetchMovieCredits.type, fetchMovieCreditsHandler);
+  yield takeLatest(fetchMovieCredits.type, fetchMovieCreditsHandler);
 }
