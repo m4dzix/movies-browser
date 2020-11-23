@@ -2,17 +2,24 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Button, Pages, Text } from "./styled";
 import {
-  selectPage,
-  selectTotalPages,
+  selectMoviePage,
+  selectTotalMoviePages,
   nextPage,
   previousPage,
   lastPage,
   firstPage,
 } from "../../features/Movies/moviesSlice";
-
+import {
+  selectPeopleActiveTab,
+  selectPeoplePage,
+  selectTotalPeoplePages,
+} from "../../features/People/peopleSlice";
 const Pagination = () => {
-  const currentPage = useSelector(selectPage);
-  const maxPages = useSelector(selectTotalPages);
+  const currentMoviePage = useSelector(selectMoviePage);
+  const currentPeoplePage = useSelector(selectPeoplePage);
+  const maxMoviePages = useSelector(selectTotalMoviePages);
+  const maxPeoplePages = useSelector(selectTotalPeoplePages);
+  const isPeopleTabActive = useSelector(selectPeopleActiveTab);
   const isMobile = window.screen.width < 767;
 
   const dispatch = useDispatch();
@@ -22,7 +29,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(firstPage());
         }}
-        disabled={currentPage === 1}
+        disabled={isPeopleTabActive ? currentPeoplePage === 1 : currentMoviePage === 1}
       >
         {isMobile ? (
           <>&#60;&#60;</>
@@ -36,7 +43,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(previousPage());
         }}
-        disabled={currentPage === 1}
+        disabled={isPeopleTabActive ? currentPeoplePage === 1 : currentMoviePage === 1}
       >
         {isMobile ? (
           <>&#60;</>
@@ -48,15 +55,15 @@ const Pagination = () => {
       </Button>
       <Pages>
         <>
-          <Text inPages>Page</Text> {currentPage} <Text inPages>of</Text>{" "}
-          {maxPages}
+          <Text inPages>Page</Text> {isPeopleTabActive ? currentPeoplePage : currentMoviePage} <Text inPages>of</Text>{" "}
+          {isPeopleTabActive ? maxPeoplePages : maxMoviePages}
         </>
       </Pages>
       <Button
         onClick={() => {
           dispatch(nextPage());
         }}
-        disabled={currentPage === maxPages}
+        disabled={isPeopleTabActive ? currentPeoplePage === maxPeoplePages : currentMoviePage === maxMoviePages}
       >
         {isMobile ? (
           <>&#62;</>
@@ -70,7 +77,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(lastPage());
         }}
-        disabled={currentPage === maxPages}
+        disabled={isPeopleTabActive ? currentPeoplePage === maxPeoplePages : currentMoviePage === maxMoviePages}
       >
         {isMobile ? (
           <>&#62;&#62;</>

@@ -6,7 +6,7 @@ import {
   selectLoading,
   selectMovies,
   selectGenres,
-  selectPage,
+  selectMoviePage,
   showId,
   selectQuery,
   fetchMoviesByQuery,
@@ -27,7 +27,7 @@ const PopularMovies = () => {
   const query = useSelector(selectQuery);
   const loading = useSelector(selectLoading);
   const movieGenres = useSelector(selectGenres);
-  const page = useSelector(selectPage);
+  const page = useSelector(selectMoviePage);
   const dispatch = useDispatch();
 
   const movies = useSelector(selectMovies);

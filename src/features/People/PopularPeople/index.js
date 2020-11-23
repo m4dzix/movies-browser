@@ -4,10 +4,12 @@ import profile from "../../../assets/Profile.svg";
 import {
   selectLoading,
   fetchPopularPeople,
-  selectPopularPeople,
+  fetchPeopleByQuery,
+  selectPeople,
   selectChangeTileStyle,
   showId,
-  selectPage,
+  selectPeoplePage,
+  selectQuery,
 } from "../peopleSlice";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
@@ -16,37 +18,44 @@ import { StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Pagination from "../../../common/Pagination";
+import NoResults from "../../../common/NoResults";
+
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
-  const popularPeople = useSelector(selectPopularPeople);
+  const query = useSelector(selectQuery);
+  const people = useSelector(selectPeople);
   const changeTileStyle = useSelector(selectChangeTileStyle);
-  const page = useSelector(selectPage);
+  const page = useSelector(selectPeoplePage);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPopularPeople(page));
-  }, [dispatch, page]);
+    if (query === ""){
+      dispatch(fetchPopularPeople(page));
+    } else {
+      dispatch(fetchPeopleByQuery(query, page))
+    }
+  }, [dispatch, page, query]);
 
   const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
 
-  if (!loading && popularPeople) {
+  if (!loading && people.length > 0) {
     return (
       <Main>
         <Section
           changeTileStyle={changeTileStyle}
           title={"Popular people"}
-          body={popularPeople.map((people) => (
-            <StyledLink to={toPerson({ id: people.id })} key={people.id}>
+          body={people.map((person) => (
+            <StyledLink to={toPerson({ id: person.id })} key={person.id}>
               <Tile
                 onClick={() => {
                   dispatch(showId());
                 }}
                 changeTileStyle={changeTileStyle}
-                key={people.id}
-                title={people.name}
+                key={person.id}
+                title={person.name}
                 imagePath={
-                  !!people.profile_path
-                    ? `https://image.tmdb.org/t/p/w185/${people.profile_path}`
+                  !!person.profile_path
+                    ? `https://image.tmdb.org/t/p/w185/${person.profile_path}`
                     : profile
                 }
               ></Tile>
@@ -58,6 +67,8 @@ const PopularPeople = () => {
     );
   } else if (loading) {
     return <Loading />;
+  } else if (!loading && people.length === 0) {
+    return <NoResults />;
   } else {
     return <Error />;
   }
