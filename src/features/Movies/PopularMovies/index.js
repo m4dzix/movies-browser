@@ -21,9 +21,9 @@ import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 import NoResults from "../../../common/NoResults";
 import Pagination from "../../../common/Pagination";
+import { toMovie } from "../../../routes";
 
 const PopularMovies = () => {
-
   const query = useSelector(selectQuery);
   const loading = useSelector(selectLoading);
   const movieGenres = useSelector(selectGenres);
@@ -84,11 +84,12 @@ const PopularMovies = () => {
       </Main>
     );
   } else if (loading) {
-    return <Loading />
-  } if (!loading && movies.length === 0) {
-    return <NoResults />
+    return <Loading />;
+  }
+  if (!loading && movies.length === 0) {
+    return <NoResults />;
   } else {
-    return <Error />
+    return <Error />;
   }
 };
 export default PopularMovies;

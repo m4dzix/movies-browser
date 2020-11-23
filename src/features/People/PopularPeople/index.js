@@ -16,6 +16,8 @@ import { StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Pagination from "../../../common/Pagination";
+import { toPerson } from "../../../routes";
+
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
   const popularPeople = useSelector(selectPopularPeople);
@@ -26,8 +28,6 @@ const PopularPeople = () => {
   useEffect(() => {
     dispatch(fetchPopularPeople(page));
   }, [dispatch, page]);
-
-  const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
 
   if (!loading && popularPeople) {
     return (
@@ -62,4 +62,5 @@ const PopularPeople = () => {
     return <Error />;
   }
 };
+
 export default PopularPeople;

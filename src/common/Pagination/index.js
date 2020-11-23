@@ -14,8 +14,8 @@ const Pagination = () => {
   const currentPage = useSelector(selectPage);
   const maxPages = useSelector(selectTotalPages);
   const isMobile = window.screen.width < 767;
-
   const dispatch = useDispatch();
+
   return (
     <Container>
       <Button

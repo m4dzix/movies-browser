@@ -5,15 +5,12 @@ const peopleSlice = createSlice({
   initialState: {
     loading: true,
     page: 1,
-    totalPages: "undefinded",
     people: [],
     credits: [],
     cast: [],
     crew: [],
-    person: [],
-    changeTileStyle: false,
-    id: "undefinded",
   },
+
   reducers: {
     showId: (state) => {
       state.id = this.props.id;
@@ -92,7 +89,6 @@ export const {
 
 export const selectPeopleState = (state) => state.people;
 export const selectPopularPeople = (state) => selectPeopleState(state).people;
-
 export const selectChangeTileStyle = (state) =>
   selectPeopleState(state).changeTileStyle;
 export const selectCredits = (state) => selectPeopleState(state).credits;

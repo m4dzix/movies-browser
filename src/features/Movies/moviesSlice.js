@@ -5,17 +5,14 @@ const moviesSlice = createSlice({
   initialState: {
     loading: true,
     page: 1,
-    totalPages: "undefinded",
     movies: [],
     genres: [],
-    movie: [],
-    id: "undefinded",
     query: "",
-    changeTileStyle: false,
     movieCredits: [],
     movieCast: [],
     movieCrew: [],
   },
+
   reducers: {
     firstPage: (state) => {
       state.page = 1;
@@ -32,7 +29,7 @@ const moviesSlice = createSlice({
     showId: (state) => {
       state.id = this.props.id;
     },
-    updateQuery: (state, { payload: query}) => {
+    updateQuery: (state, { payload: query }) => {
       state.query = query;
     },
     fetchPopularMovies: (state) => {
@@ -137,4 +134,5 @@ export const selectPage = (state) => selectMoviesState(state).page;
 export const selectTotalPages = (state) => selectMoviesState(state).totalPages;
 export const selectLoading = (state) => selectMoviesState(state).loading;
 export const selectQuery = (state) => selectMoviesState(state).query;
+
 export default moviesSlice.reducer;
