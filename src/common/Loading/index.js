@@ -9,7 +9,7 @@ const Loading = () => {
   const query = useSelector(selectQuery);
   return (
     <Main>
-      <Header title={!query ? `Search results for: ${query}` : `Loading`} />
+      <Header title={query ? `Search results for: ${query}` : `Loading...`} />
       <LoadingWrapper>
         <StyledSpinner />
       </LoadingWrapper>

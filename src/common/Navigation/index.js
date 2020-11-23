@@ -4,7 +4,6 @@ import {
   StyledNavLink,
   NavContainer,
   NavContent,
-  Input,
   InputContainer,
   LogoContainer,
   Title,
@@ -12,6 +11,7 @@ import {
   StyledImg,
   ListItem,
 } from "./styled";
+import { SearchInput } from "../SearchInput";
 import { toMovies, toPeople } from "../../routes";
 import { firstPage } from "../../features/Movies/moviesSlice";
 import search from "../../images/search.svg";
@@ -53,7 +53,7 @@ export const Navigation = () => {
         </NavContent>
         <InputContainer>
           <StyledImg src={search} alt="lens icon" />
-          <Input placeholder="Search for movies..." />
+          <SearchInput />
         </InputContainer>
       </NavContainer>
     </nav>
