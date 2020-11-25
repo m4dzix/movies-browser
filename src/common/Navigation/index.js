@@ -11,6 +11,7 @@ import {
   StyledImg,
   ListItem,
 } from "./styled";
+import { Link } from "react-router-dom";
 import { SearchInput } from "../SearchInput";
 import { toMovies, toPeople } from "../../routes";
 import { firstPage } from "../../features/Movies/moviesSlice";
@@ -25,7 +26,9 @@ export const Navigation = () => {
       <NavContainer>
         <NavContent>
           <LogoContainer>
-            <StyledImg src={camera} alt="camera icon" />
+            <Link to={toMovies()}>
+              <StyledImg src={camera} alt="camera icon" />
+            </Link>
             <Title>Movies Browser</Title>
           </LogoContainer>
           <LinkContainer>
