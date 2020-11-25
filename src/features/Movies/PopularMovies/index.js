@@ -54,14 +54,17 @@ const PopularMovies = () => {
         <Section
           title={query ? `Search for: ${query}` : "Popular movies"}
           body={movies.map((movie) => (
-            <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
+            <StyledLink
+              to={toMovie({ id: movie.id })}
+              key={`${movie.id}+${movie.title || movie.tmdb_id}`}
+            >
               <Tile
                 onClick={() => {
                   dispatch(showId());
                 }}
-                key={movie.id}
+                key={`${movie.id}+${movie.orginal_title || movie.tmdb_id}`}
                 title={movie.title}
-                YearOrCharacter={movie.release_date.split("-")[0]}
+                yearOrCharacter={movie.release_date.split("-")[0]}
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{type(id)}</Tag>
                 ))}
@@ -71,8 +74,12 @@ const PopularMovies = () => {
                     : video
                 }
                 starIcon={starIcon}
-                voteAverage={movie.vote_average}
-                voteCount={`${movie.vote_count} votes`}
+                voteAverage={movie.vote_average !== 0 ? movie.vote_average : ""}
+                voteCount={`${
+                  !!movie.vote_average
+                    ? movie.vote_count + " votes"
+                    : "No votes yet"
+                } `}
               ></Tile>
             </StyledLink>
           ))}

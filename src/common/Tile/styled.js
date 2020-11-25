@@ -15,7 +15,6 @@ export const Container = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 288px;
     height: auto;
-    grid-template-columns: auto 1fr;
   }
 
   ${(props) =>
@@ -28,7 +27,6 @@ export const Container = styled.div`
         width: 136px;
         height: auto;
         grid-template-rows: 1fr auto;
-        grid-template-columns: none;
         padding: 8px;
       }
     `}
@@ -38,6 +36,7 @@ export const Container = styled.div`
     css`
       width: 1368px;
       grid-template-rows: auto 1fr;
+      grid-template-columns: auto 1fr;
       align-items: start;
       padding: 40px;
 
@@ -244,6 +243,11 @@ export const VoteContainer = styled.div`
   align-self: end;
   display: flex;
   align-items: center;
+  margin-top: 8px;
+`;
+
+export const StarIcon = styled.img`
+  transform: translateY(-2px);
 `;
 
 export const VoteAverage = styled.strong`
@@ -267,6 +271,7 @@ export const VoteCount = styled.span`
   font-weight: normal;
   font-size: 16px;
   align-self: center;
+  color: ${({ theme }) => theme.colors.waterloo};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 13px;
@@ -284,6 +289,7 @@ export const VoteCount = styled.span`
     props.movieDetails &&
     css`
    align-self: flex-end;
+   color: ${({ theme }) => theme.colors.black};
       }
     `};
 `;

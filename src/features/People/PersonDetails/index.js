@@ -77,17 +77,22 @@ const PersonDetails = () => {
         <Section
           title={`Movie - cast (${castNumber})`}
           body={movieCast.map((movie) => (
-            <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
+            <StyledLink
+              to={toMovie({ id: movie.id })}
+              key={`${movie.id} + ${movie.character}`}
+            >
               <Tile
                 onClick={() => {
                   dispatch(showId());
                 }}
-                key={movie.credit_id}
+                key={`${movie.credit_id} + ${movie.original_name}`}
                 title={movie.title}
-                YearOrCharacter={
-                  `${movie.character} (${movie.release_date}`.split("-")[0] +
-                  ")"
-                }
+                yearOrCharacter={`${movie.character} 
+                (${
+                  movie.release_date
+                    ? movie.release_date.split("-")[0]
+                    : "no data"
+                })`}
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{tag(id)}</Tag>
                 ))}
@@ -98,7 +103,7 @@ const PersonDetails = () => {
                 }
                 starIcon={starIcon}
                 voteAverage={movie.vote_average}
-                voteCount={`${movie.vote_count} votes`}
+                voteCount={`${movie.vote_count} `}
               ></Tile>
             </StyledLink>
           ))}
@@ -106,14 +111,22 @@ const PersonDetails = () => {
         <Section
           title={`Movie - crew (${crewNumber})`}
           body={movieCrew.map((movie) => (
-            <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
+            <StyledLink
+              to={toMovie({ id: movie.id })}
+              key={`${movie.id} + ${movie.original_title} + ${movie.credit_id}`}
+            >
               <Tile
                 onClick={() => {
                   dispatch(showId());
                 }}
                 key={movie.credit_id}
                 title={movie.title}
-                YearOrCharacter={`${movie.job} (${movie.release_date})`}
+                yearOrCharacter={`${movie.job} 
+                 (${
+                   movie.release_date
+                     ? movie.release_date.split("-")[0]
+                     : "no data"
+                 })`}
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{tag(id)}</Tag>
                 ))}

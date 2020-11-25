@@ -56,18 +56,24 @@ const MovieDetails = () => {
                 : video
             }
             title={movieDetails.title}
-            year={movieDetails.release_date.split("-")[0]}
+            yearOrCharacter={movieDetails.release_date.split("-")[0]}
             info1={"Production: "}
-            value1={movieDetails.production_countries.map(
-              (country) => `${country.name}, `
-            )}
+            value1={
+              !movieDetails.production_countries
+                ? movieDetails.production_countries.map(
+                    (country) => `${country.name}, `
+                  )
+                : "-"
+            }
             info2={"Release date: "}
-            value2={movieDetails.release_date}
+            value2={
+              !!movieDetails.release_date ? movieDetails.release_date : "-"
+            }
             type={movieDetails.genres.map((genre) => (
               <Tag key={genre.id}>{genre.name}</Tag>
             ))}
             starIcon={starIcon}
-            voteAverage={movieDetails.vote_average}
+            voteAverage={movieDetails.vote_average.toFixed(1)}
             maxAverage={"/10"}
             voteCount={`${movieDetails.vote_count} votes`}
             description={movieDetails.overview}
@@ -76,12 +82,17 @@ const MovieDetails = () => {
             changeTileStyle={changeTileStyle}
             title={"Cast"}
             body={cast.map((people) => (
-              <StyledLink to={toPerson({ id: people.id })} key={people.id}>
+              <StyledLink
+                to={toPerson({ id: people.id })}
+                key={`${people.id} + ${people.tmdb_id || people.name}`}
+              >
                 <Tile
                   onClick={() => {
                     dispatch(showId());
                   }}
-                  key={people.credit_id}
+                  key={`${people.credit_id} + ${
+                    people.character || people.tmdb_id
+                  }`}
                   changeTileStyle={changeTileStyle}
                   imagePath={
                     !!people.profile_path
@@ -89,7 +100,7 @@ const MovieDetails = () => {
                       : profile
                   }
                   title={people.name}
-                  YearOrCharacter={people.character}
+                  yearOrCharacter={people.character}
                 ></Tile>
               </StyledLink>
             ))}
@@ -98,20 +109,23 @@ const MovieDetails = () => {
             changeTileStyle={changeTileStyle}
             title={"Crew"}
             body={crew.map((people) => (
-              <StyledLink to={toPerson({ id: people.id })} key={people.id}>
+              <StyledLink
+                to={toPerson({ id: people.id })}
+                key={`${people.id}+${people.job || people.tmdb_id}`}
+              >
                 <Tile
                   onClick={() => {
                     dispatch(showId());
                   }}
                   changeTileStyle={changeTileStyle}
-                  key={people.credit_id}
+                  key={`${people.credit_id}+${people.name || people.tmdb_id}`}
                   imagePath={
                     !!people.profile_path
                       ? `https://image.tmdb.org/t/p/w185/${people.profile_path}`
                       : profile
                   }
                   title={people.name}
-                  YearOrCharacter={people.job}
+                  yearOrCharacter={people.job}
                 ></Tile>
               </StyledLink>
             ))}

@@ -10,6 +10,7 @@ import {
   Span,
   About,
   VoteContainer,
+  StarIcon,
   VoteAverage,
   VoteCount,
   Description,
@@ -20,7 +21,7 @@ const Tile = ({
   detailsTileStyle,
   imagePath,
   title,
-  year,
+  yearOrCharacter,
   info1,
   info2,
   value1,
@@ -49,7 +50,7 @@ const Tile = ({
             people={changeTileStyle}
             movieDetails={detailsTileStyle}
           >
-            {year}
+            {yearOrCharacter}
           </YearOrCharacter>
           <div>
             <About>
@@ -64,7 +65,7 @@ const Tile = ({
           <Tags>{type}</Tags>
         </DetailsContainer>
         <VoteContainer>
-          <img src={starIcon} alt={""}></img>
+          <StarIcon src={starIcon} alt={""} hidden={!voteAverage}></StarIcon>
           <VoteAverage movieDetails={detailsTileStyle}>
             {voteAverage}{" "}
             <VoteCount movieDetails={detailsTileStyle} maxAverage>

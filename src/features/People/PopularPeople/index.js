@@ -36,13 +36,16 @@ const PopularPeople = () => {
           changeTileStyle={changeTileStyle}
           title={"Popular people"}
           body={popularPeople.map((people) => (
-            <StyledLink to={toPerson({ id: people.id })} key={people.id}>
+            <StyledLink
+              to={toPerson({ id: people.id })}
+              key={`${people.id} + ${people.name || people.tmdb_id}`}
+            >
               <Tile
                 onClick={() => {
                   dispatch(showId());
                 }}
                 changeTileStyle={changeTileStyle}
-                key={people.id}
+                key={`${people.id} + ${people.name || people.tmdb_id}`}
                 title={people.name}
                 imagePath={
                   !!people.profile_path
