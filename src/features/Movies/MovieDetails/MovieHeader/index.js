@@ -21,7 +21,7 @@ const MovieHeader = ({ title, backdropPath, voteAverage, voteCount }) => {
           <RatingsWrapper>
             <Count>
               <Star src={starIcon} />
-              {voteAverage} <Votes>/ 10</Votes>
+              {`${voteAverage.toFixed(1)}`} <Votes>/ 10</Votes>
             </Count>
             <Votes>{voteCount} votes</Votes>
           </RatingsWrapper>

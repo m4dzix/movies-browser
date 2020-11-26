@@ -102,7 +102,7 @@ const PersonDetails = () => {
                     : video
                 }
                 starIcon={starIcon}
-                voteAverage={movie.vote_average}
+                voteAverage={`${movie.vote_average.toFixed(1)}`}
                 voteCount={`${movie.vote_count} `}
               ></Tile>
             </StyledLink>
@@ -136,7 +136,7 @@ const PersonDetails = () => {
                     : video
                 }
                 starIcon={starIcon}
-                voteAverage={movie.vote_average}
+                voteAverage={`${movie.vote_average.toFixed(1)}`}
                 voteCount={`${movie.vote_count} votes`}
               ></Tile>
             </StyledLink>
