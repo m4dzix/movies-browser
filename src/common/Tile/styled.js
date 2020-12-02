@@ -144,7 +144,7 @@ export const DetailsContainer = styled.div`
 export const Title = styled.h3`
   font-weight: 500;
   font-size: 22px;
-  line-height: 130%;
+  line-height: 1.3;
   margin: 0;
   margin-bottom: 8px;
 
@@ -172,7 +172,7 @@ export const Title = styled.h3`
 
 export const YearOrCharacter = styled.p`
   font-size: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   margin: 0;
   margin-bottom: 8px;
   color: ${({ theme }) => theme.colors.waterloo};
@@ -239,7 +239,7 @@ export const Tags = styled.ul`
 
 export const Tag = styled.li`
   font-size: 14px;
-  line-height: 140%;
+  line-height: 1.4;
   background-color: ${({ theme }) => theme.colors.mistic};
   border-radius: 5px;
   margin-right: 8px;
