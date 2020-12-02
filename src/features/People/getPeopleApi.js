@@ -1,5 +1,9 @@
+import { API_KEY, API_URL, API_LANGUAGE } from "../fetchFromApi";
+
 export const getPopularPeople = async (page) => {
-  const api = `https://api.themoviedb.org/3/person/popular?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US&page=${page}`;
+  const api = `${API_URL}/person/popular?api_key=${API_KEY}&language=en-US&page=${encodeURIComponent(
+    page
+  )}`;
 
   const response = await fetch(api);
 
@@ -13,7 +17,9 @@ export const getPopularPeople = async (page) => {
 };
 
 export const getCredits = async (id) => {
-  const api = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=284d89d28528d0d1591b16fc44d13746`;
+  const api = `${API_URL}/movie/${encodeURIComponent(
+    id
+  )}/credits?api_key=${API_KEY}`;
 
   const response = await fetch(api);
 
@@ -27,7 +33,9 @@ export const getCredits = async (id) => {
 };
 
 export const getPersonDetails = async (id) => {
-  const api = `https://api.themoviedb.org/3/person/${id}?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US`;
+  const api = `${API_URL}/person/${encodeURIComponent(
+    id
+  )}?api_key=${API_KEY}&language=${API_LANGUAGE}`;
 
   const response = await fetch(api);
 
