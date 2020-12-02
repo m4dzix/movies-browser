@@ -19,6 +19,7 @@ import {
 const Tile = ({
   changeTileStyle,
   detailsTileStyle,
+  hide,
   imagePath,
   title,
   yearOrCharacter,
@@ -54,11 +55,11 @@ const Tile = ({
           </YearOrCharacter>
           <div>
             <About>
-              <Span>{info1}</Span>
+              <Span movieDetails={hide}>{info1}</Span>
               {value1}
             </About>
             <About>
-              <Span>{info2}</Span>
+              <Span movieDetails={hide}>{info2}</Span>
               {value2}
             </About>
           </div>

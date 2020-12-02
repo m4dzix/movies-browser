@@ -1,45 +1,48 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  width: 324px;
   padding: 16px;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
   border-radius: 5px;
   display: grid;
   grid-gap: 8px;
-  grid-template-rows: auto 1fr;
   background-color: ${({ theme }) => theme.colors.white};
   align-items: center;
+  grid-template-areas:
+    "photo"
+    "content";
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 288px;
-    height: auto;
+    grid-template-areas: "photo content";
   }
 
   ${(props) =>
     props.people &&
     css`
       width: 208px;
-      height: auto;
-
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         width: 136px;
-        height: auto;
-        grid-template-rows: 1fr auto;
         padding: 8px;
+        grid-template-areas:
+          "photo"
+          "content";
       }
     `}
 
   ${(props) =>
     props.movieDetails &&
     css`
-      width: 1368px;
       grid-template-rows: auto 1fr;
       grid-template-columns: auto 1fr;
       align-items: start;
       padding: 40px;
-
+      width: 100%;
+      max-width: 1368px;
+      @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+        width: 100%;
+      }
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         padding: 16px;
       }
@@ -51,7 +54,8 @@ export const Poster = styled.img`
   height: 434px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.silver};
-
+  grid-area: photo;
+  justify-self: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 114px;
     height: 169px;
@@ -92,7 +96,11 @@ export const Content = styled.div`
   align-items: start;
   justify-items: start;
   align-self: stretch;
+  grid-area: content;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+    align-self: start;
+  }
   ${(props) =>
     props.people &&
     css`
@@ -192,7 +200,7 @@ export const YearOrCharacter = styled.p`
 `;
 export const About = styled.p`
   font-size: 18px;
-  line-height: 120%;
+  line-height: 1.2;
   margin: 0;
   padding: 0;
   margin-bottom: 8px;
@@ -204,14 +212,20 @@ export const About = styled.p`
 
 export const Span = styled.span`
   font-size: 18px;
-  line-height: 120%;
+  line-height: 1.2;
   color: #74788b;
   margin: 0;
   padding: 0;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-    display: none;
+    font-size: 12px;
   }
+  ${(props) =>
+    props.movieDetails &&
+    css`
+      @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+        display: none;
+      }
+    `};
 `;
 
 export const Tags = styled.ul`
@@ -234,7 +248,7 @@ export const Tag = styled.li`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 10px;
-    line-height: 110%;
+    line-height: 1.1;
     padding: 4px 8px;
   }
 `;
@@ -247,7 +261,14 @@ export const VoteContainer = styled.div`
 `;
 
 export const StarIcon = styled.img`
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+
+  ${(props) =>
+    props.hidden &&
+    css`
+      width: 0px;
+      display: unset;
+    `}
 `;
 
 export const VoteAverage = styled.strong`
@@ -259,6 +280,7 @@ export const VoteAverage = styled.strong`
     props.movieDetails &&
     css`
       font-size: 22px;
+      align-self: flex-end;
     `};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
@@ -302,7 +324,7 @@ export const Description = styled.p`
     css`
       display: block;
       font-size: 20px;
-      line-height: 160%;
+      line-height: 1.6;
       margin: 0;
       padding: 0 40px;
       grid-column-start: 2;

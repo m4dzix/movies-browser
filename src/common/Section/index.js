@@ -1,11 +1,11 @@
 import React from "react";
-import { Header, Container } from "./style";
+import { StyledSection, Header, Container } from "./style";
 
 const Section = ({ changeTileStyle, title, body }) => (
-  <section>
+  <StyledSection>
     <Header>{title}</Header>
     <Container people={changeTileStyle}>{body}</Container>
-  </section>
+  </StyledSection>
 );
 
 export default Section;
