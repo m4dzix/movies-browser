@@ -50,6 +50,7 @@ const MovieDetails = () => {
         <Main>
           <Tile
             detailsTileStyle={changeTileStyle}
+            hide={changeTileStyle}
             imagePath={
               !!movieDetails.poster_path
                 ? `https://image.tmdb.org/t/p/w185/${movieDetails.poster_path}`
@@ -75,7 +76,8 @@ const MovieDetails = () => {
             starIcon={starIcon}
             voteAverage={movieDetails.vote_average.toFixed(1)}
             maxAverage={"/10"}
-            voteCount={`${movieDetails.vote_count} votes`}
+            voteCount={`${movieDetails.vote_count} 
+              ${movieDetails.vote_count === 1 ? "vote" : "votes"}`}
             description={movieDetails.overview}
           ></Tile>
           <Section

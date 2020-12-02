@@ -103,7 +103,9 @@ const PersonDetails = () => {
                 }
                 starIcon={starIcon}
                 voteAverage={`${movie.vote_average.toFixed(1)}`}
-                voteCount={`${movie.vote_count} `}
+                voteCount={`${movie.vote_count} ${
+                  movie.vote_count === 1 ? "vote" : "votes"
+                }`}
               ></Tile>
             </StyledLink>
           ))}
@@ -137,7 +139,9 @@ const PersonDetails = () => {
                 }
                 starIcon={starIcon}
                 voteAverage={`${movie.vote_average.toFixed(1)}`}
-                voteCount={`${movie.vote_count} votes`}
+                voteCount={`${movie.vote_count}  ${
+                  movie.vote_count === 1 ? "vote" : "votes"
+                }`}
               ></Tile>
             </StyledLink>
           ))}
