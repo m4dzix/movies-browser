@@ -64,7 +64,9 @@ const PopularMovies = () => {
                 }}
                 key={`${movie.id}+${movie.orginal_title || movie.tmdb_id}`}
                 title={movie.title}
-                yearOrCharacter={movie.release_date.split("-")[0]}
+                yearOrCharacter={
+                  !!movie.release_date ? movie.release_date.split("-")[0] : ""
+                }
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{type(id)}</Tag>
                 ))}

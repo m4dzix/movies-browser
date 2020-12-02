@@ -57,7 +57,11 @@ const MovieDetails = () => {
                 : video
             }
             title={movieDetails.title}
-            yearOrCharacter={movieDetails.release_date.split("-")[0]}
+            yearOrCharacter={
+              !!movieDetails.release_date
+                ? movieDetails.release_date.split("-")[0]
+                : ""
+            }
             info1={"Production: "}
             value1={
               !movieDetails.production_countries
@@ -76,8 +80,15 @@ const MovieDetails = () => {
             starIcon={starIcon}
             voteAverage={movieDetails.vote_average.toFixed(1)}
             maxAverage={"/10"}
-            voteCount={`${movieDetails.vote_count} 
-              ${movieDetails.vote_count === 1 ? "vote" : "votes"}`}
+            voteCount={`${
+              movieDetails.vote_count === 0 ? "" : movieDetails.vote_count
+            } ${
+              !!movieDetails.vote_average
+                ? movieDetails.vote_count === 1
+                  ? "vote"
+                  : "votes"
+                : "No votes yet"
+            } `}
             description={movieDetails.overview}
           ></Tile>
           <Section
