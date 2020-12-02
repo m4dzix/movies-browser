@@ -74,10 +74,14 @@ const PopularMovies = () => {
                     : video
                 }
                 starIcon={starIcon}
-                voteAverage={movie.vote_average !== 0 ? movie.vote_average : ""}
-                voteCount={`${
+                voteAverage={
+                  movie.vote_average !== 0 ? movie.vote_average.toFixed(1) : ""
+                }
+                voteCount={`${movie.vote_count === 0 ? "" : movie.vote_count} ${
                   !!movie.vote_average
-                    ? movie.vote_count + " votes"
+                    ? movie.vote_count === 1
+                      ? "vote"
+                      : "votes"
                     : "No votes yet"
                 } `}
               ></Tile>

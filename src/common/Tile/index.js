@@ -66,8 +66,15 @@ const Tile = ({
           <Tags>{type}</Tags>
         </DetailsContainer>
         <VoteContainer>
-          <StarIcon src={starIcon} alt={""} hidden={!voteAverage}></StarIcon>
-          <VoteAverage movieDetails={detailsTileStyle}>
+          <StarIcon
+            src={starIcon}
+            alt={""}
+            hidden={!voteAverage || voteAverage < 1}
+          ></StarIcon>
+          <VoteAverage
+            movieDetails={detailsTileStyle}
+            hidden={!voteAverage || voteAverage < 1}
+          >
             {voteAverage}{" "}
             <VoteCount movieDetails={detailsTileStyle} maxAverage>
               {maxAverage}

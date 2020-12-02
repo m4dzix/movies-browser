@@ -103,9 +103,13 @@ const PersonDetails = () => {
                 }
                 starIcon={starIcon}
                 voteAverage={`${movie.vote_average.toFixed(1)}`}
-                voteCount={`${movie.vote_count} ${
-                  movie.vote_count === 1 ? "vote" : "votes"
-                }`}
+                voteCount={`${movie.vote_count === 0 ? "" : movie.vote_count} ${
+                  !!movie.vote_average
+                    ? movie.vote_count === 1
+                      ? "vote"
+                      : "votes"
+                    : "No votes yet"
+                } `}
               ></Tile>
             </StyledLink>
           ))}
@@ -139,9 +143,15 @@ const PersonDetails = () => {
                 }
                 starIcon={starIcon}
                 voteAverage={`${movie.vote_average.toFixed(1)}`}
-                voteCount={`${movie.vote_count}  ${
-                  movie.vote_count === 1 ? "vote" : "votes"
-                }`}
+                voteCount={`${movie.vote_count === 0 ? "" : movie.vote_count}}
+                  ${
+                    !movie.vote_average
+                      ? movie.vote_count === 1
+                        ? "vote"
+                        : "votes"
+                      : "No votes yet"
+                  }
+                `}
               ></Tile>
             </StyledLink>
           ))}
