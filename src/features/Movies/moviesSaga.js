@@ -33,7 +33,6 @@ function* fetchPopularMoviesHandler({ payload: page }) {
     yield put(fetchPopularMoviesError());
   }
 }
-
 function* fetchGenresHandler() {
   try {
     yield delay(100);
@@ -43,7 +42,6 @@ function* fetchGenresHandler() {
     yield put(fetchGenresError());
   }
 }
-
 function* fetchMovieDetailsHandler({ payload: id }) {
   try {
     yield delay(100);
@@ -53,6 +51,7 @@ function* fetchMovieDetailsHandler({ payload: id }) {
     yield put(fetchMovieDetailsError());
   }
 }
+
 function* fetchMoviesByQueryHandler({ payload: query, page }) {
   try {
     yield delay(100);
@@ -62,6 +61,7 @@ function* fetchMoviesByQueryHandler({ payload: query, page }) {
     yield put(fetchMoviesByQueryError());
   }
 }
+
 function* fetchMovieCreditsHandler({ payload: id }) {
   try {
     yield delay(100);

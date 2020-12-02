@@ -19,7 +19,7 @@ const peopleSlice = createSlice({
       state.page = 1;
     },
     lastPage: (state) => {
-      state.page = state.totalPages;
+      state.page = state.total_pages;
     },
     nextPage: (state) => {
       state.page++;
