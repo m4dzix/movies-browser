@@ -23,13 +23,17 @@ const Pagination = () => {
   const isMobile = window.screen.width < 767;
 
   const dispatch = useDispatch();
+
+  const currentPage = isPeopleTabActive ? currentPeoplePage : currentMoviePage;
+  const maxPages = isPeopleTabActive ? maxPeoplePages : maxMoviePages;
+
   return (
     <Container>
       <Button
         onClick={() => {
           dispatch(firstPage());
         }}
-        disabled={isPeopleTabActive ? currentPeoplePage === 1 : currentMoviePage === 1}
+        disabled={currentPage === 1}
       >
         {isMobile ? (
           <>&#60;&#60;</>
@@ -43,7 +47,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(previousPage());
         }}
-        disabled={isPeopleTabActive ? currentPeoplePage === 1 : currentMoviePage === 1}
+        disabled={currentPage === 1}
       >
         {isMobile ? (
           <>&#60;</>
@@ -55,15 +59,14 @@ const Pagination = () => {
       </Button>
       <Pages>
         <>
-          <Text inPages>Page</Text> {isPeopleTabActive ? currentPeoplePage : currentMoviePage} <Text inPages>of</Text>{" "}
-          {isPeopleTabActive ? maxPeoplePages : maxMoviePages}
+          <Text inPages>Page</Text> {currentPage} <Text inPages>of</Text>{" "}{maxPages}
         </>
       </Pages>
       <Button
         onClick={() => {
           dispatch(nextPage());
         }}
-        disabled={isPeopleTabActive ? currentPeoplePage === maxPeoplePages : currentMoviePage === maxMoviePages}
+        disabled={currentPage === maxPages}
       >
         {isMobile ? (
           <>&#62;</>
@@ -77,7 +80,7 @@ const Pagination = () => {
         onClick={() => {
           dispatch(lastPage());
         }}
-        disabled={isPeopleTabActive ? currentPeoplePage === maxPeoplePages : currentMoviePage === maxMoviePages}
+        disabled={currentPage === maxPages}
       >
         {isMobile ? (
           <>&#62;&#62;</>
