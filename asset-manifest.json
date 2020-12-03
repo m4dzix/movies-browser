@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.js": "/movies-browser/static/js/main.24e6adcd.chunk.js",
-    "main.js.map": "/movies-browser/static/js/main.24e6adcd.chunk.js.map",
+    "main.js": "/movies-browser/static/js/main.35ca9f4b.chunk.js",
+    "main.js.map": "/movies-browser/static/js/main.35ca9f4b.chunk.js.map",
     "runtime-main.js": "/movies-browser/static/js/runtime-main.8e42f4f8.js",
     "runtime-main.js.map": "/movies-browser/static/js/runtime-main.8e42f4f8.js.map",
-    "static/js/2.e7cd88b1.chunk.js": "/movies-browser/static/js/2.e7cd88b1.chunk.js",
-    "static/js/2.e7cd88b1.chunk.js.map": "/movies-browser/static/js/2.e7cd88b1.chunk.js.map",
+    "static/js/2.c5f0aa31.chunk.js": "/movies-browser/static/js/2.c5f0aa31.chunk.js",
+    "static/js/2.c5f0aa31.chunk.js.map": "/movies-browser/static/js/2.c5f0aa31.chunk.js.map",
     "index.html": "/movies-browser/index.html",
-    "precache-manifest.c2d5a66baef6f4770b56045fd411063d.js": "/movies-browser/precache-manifest.c2d5a66baef6f4770b56045fd411063d.js",
+    "precache-manifest.c54418fc4d34aa56fd6e8ffefc2005ef.js": "/movies-browser/precache-manifest.c54418fc4d34aa56fd6e8ffefc2005ef.js",
     "service-worker.js": "/movies-browser/service-worker.js",
-    "static/js/2.e7cd88b1.chunk.js.LICENSE.txt": "/movies-browser/static/js/2.e7cd88b1.chunk.js.LICENSE.txt",
-    "static/media/Profile.svg": "/movies-browser/static/media/Profile.e35e95ed.svg",
-    "static/media/Vector.svg": "/movies-browser/static/media/Vector.5ac444e8.svg",
-    "static/media/Video.svg": "/movies-browser/static/media/Video.27ea078a.svg",
-    "static/media/camera.svg": "/movies-browser/static/media/camera.726b97db.svg",
-    "static/media/danger.dd14bd7c.svg": "/movies-browser/static/media/danger.dd14bd7c.svg",
-    "static/media/paper-plane.d277a94c.svg": "/movies-browser/static/media/paper-plane.d277a94c.svg",
-    "static/media/search.svg": "/movies-browser/static/media/search.bdbe6d07.svg"
+    "static/js/2.c5f0aa31.chunk.js.LICENSE.txt": "/movies-browser/static/js/2.c5f0aa31.chunk.js.LICENSE.txt",
+    "static/media/Profile.svg": "/movies-browser/static/media/Profile.345aaccb.svg",
+    "static/media/Vector.svg": "/movies-browser/static/media/Vector.b489e613.svg",
+    "static/media/Video.svg": "/movies-browser/static/media/Video.66e2a949.svg",
+    "static/media/camera.svg": "/movies-browser/static/media/camera.cdf24f10.svg",
+    "static/media/danger.8815fed7.svg": "/movies-browser/static/media/danger.8815fed7.svg",
+    "static/media/paper-plane.3cb4c491.svg": "/movies-browser/static/media/paper-plane.3cb4c491.svg",
+    "static/media/search.svg": "/movies-browser/static/media/search.9a86aa04.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8e42f4f8.js",
-    "static/js/2.e7cd88b1.chunk.js",
-    "static/js/main.24e6adcd.chunk.js"
+    "static/js/2.c5f0aa31.chunk.js",
+    "static/js/main.35ca9f4b.chunk.js"
   ]
 }
