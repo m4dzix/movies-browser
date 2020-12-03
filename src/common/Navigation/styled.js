@@ -76,7 +76,7 @@ export const InputContainer = styled.div`
 
 export const Input = styled.input`
   font-size: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   border: none;
   padding-left: 20px;
 

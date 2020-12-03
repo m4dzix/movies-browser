@@ -89,9 +89,7 @@ const PersonDetails = () => {
                 title={movie.title}
                 yearOrCharacter={`${movie.character} 
                 (${
-                  movie.release_date
-                    ? movie.release_date.split("-")[0]
-                    : "no data"
+                  !!movie.release_date ? movie.release_date.split("-")[0] : ""
                 })`}
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{tag(id)}</Tag>
@@ -103,7 +101,13 @@ const PersonDetails = () => {
                 }
                 starIcon={starIcon}
                 voteAverage={`${movie.vote_average.toFixed(1)}`}
-                voteCount={`${movie.vote_count} `}
+                voteCount={`${movie.vote_count === 0 ? "" : movie.vote_count} ${
+                  !!movie.vote_average
+                    ? movie.vote_count === 1
+                      ? "vote"
+                      : "votes"
+                    : "No votes yet"
+                } `}
               ></Tile>
             </StyledLink>
           ))}
@@ -123,9 +127,7 @@ const PersonDetails = () => {
                 title={movie.title}
                 yearOrCharacter={`${movie.job} 
                  (${
-                   movie.release_date
-                     ? movie.release_date.split("-")[0]
-                     : "no data"
+                   !!movie.release_date ? movie.release_date.split("-")[0] : ""
                  })`}
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{tag(id)}</Tag>
@@ -137,7 +139,15 @@ const PersonDetails = () => {
                 }
                 starIcon={starIcon}
                 voteAverage={`${movie.vote_average.toFixed(1)}`}
-                voteCount={`${movie.vote_count} votes`}
+                voteCount={`${movie.vote_count === 0 ? "" : movie.vote_count}
+                  ${
+                    !!movie.vote_average
+                      ? movie.vote_count === 1
+                        ? "vote"
+                        : "votes"
+                      : "No votes yet"
+                  }
+                `}
               ></Tile>
             </StyledLink>
           ))}

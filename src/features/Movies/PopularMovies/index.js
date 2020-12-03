@@ -64,7 +64,9 @@ const PopularMovies = () => {
                 }}
                 key={`${movie.id}+${movie.orginal_title || movie.tmdb_id}`}
                 title={movie.title}
-                yearOrCharacter={movie.release_date.split("-")[0]}
+                yearOrCharacter={
+                  !!movie.release_date ? movie.release_date.split("-")[0] : ""
+                }
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{type(id)}</Tag>
                 ))}
@@ -74,10 +76,14 @@ const PopularMovies = () => {
                     : video
                 }
                 starIcon={starIcon}
-                voteAverage={movie.vote_average !== 0 ? movie.vote_average : ""}
-                voteCount={`${
+                voteAverage={
+                  movie.vote_average !== 0 ? movie.vote_average.toFixed(1) : ""
+                }
+                voteCount={`${movie.vote_count === 0 ? "" : movie.vote_count} ${
                   !!movie.vote_average
-                    ? movie.vote_count + " votes"
+                    ? movie.vote_count === 1
+                      ? "vote"
+                      : "votes"
                     : "No votes yet"
                 } `}
               ></Tile>

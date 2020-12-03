@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Tag = styled.li`
   font-size: 14px;
-  line-height: 140%;
+  line-height: 1.4;
   background-color: ${({ theme }) => theme.colors.mistic};
   border-radius: 5px;
   margin-right: 8px;
@@ -12,7 +12,7 @@ export const Tag = styled.li`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 10px;
-    line-height: 110%;
+    line-height: 1.1;
     padding: 4px 8px;
   }
 `;

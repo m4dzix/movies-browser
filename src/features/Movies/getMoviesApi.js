@@ -1,5 +1,9 @@
+import { API_KEY, API_URL, API_LANGUAGE } from "../fetchFromApi";
+
 export const getPopularMovies = async (page) => {
-  const api = `https://api.themoviedb.org/3/movie/popular?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US&page=${page}`;
+  const api = `${API_URL}/movie/popular?api_key=${API_KEY}&language=${API_LANGUAGE}&page=${encodeURIComponent(
+    page
+  )}`;
 
   const response = await fetch(api);
 
@@ -12,7 +16,7 @@ export const getPopularMovies = async (page) => {
 };
 
 export const getMovieGenres = async () => {
-  const api = `https://api.themoviedb.org/3/genre/movie/list?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US`;
+  const api = `${API_URL}/genre/movie/list?api_key=${API_KEY}&language=${API_LANGUAGE}`;
 
   const response = await fetch(api);
 
@@ -25,7 +29,9 @@ export const getMovieGenres = async () => {
 };
 
 export const getMovieDetails = async (id) => {
-  const api = `https://api.themoviedb.org/3/movie/${id}?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US`;
+  const api = `${API_URL}/movie/${encodeURIComponent(
+    id
+  )}?api_key=${API_KEY}&language=${API_LANGUAGE}`;
 
   const response = await fetch(api);
 
@@ -38,7 +44,9 @@ export const getMovieDetails = async (id) => {
 };
 
 export const getMoviesByQuery = async (query, page) => {
-  const api = `https://api.themoviedb.org/3/search/movie/?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US&query=${query}&page=${page}`;
+  const api = `${API_URL}/search/movie/?api_key=${API_KEY}&language=${API_LANGUAGE}&query=${encodeURIComponent(
+    query
+  )}&page=${encodeURIComponent(page)}`;
 
   const response = await fetch(api);
 
@@ -51,7 +59,9 @@ export const getMoviesByQuery = async (query, page) => {
 };
 
 export const getMovieCredits = async (id) => {
-  const api = `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=284d89d28528d0d1591b16fc44d13746&language=en-US`;
+  const api = `${API_URL}/person/${encodeURIComponent(
+    id
+  )}/movie_credits?api_key=${API_KEY}&language=${API_LANGUAGE}`;
 
   const response = await fetch(api);
 

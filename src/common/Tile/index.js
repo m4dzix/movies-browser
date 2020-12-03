@@ -19,6 +19,7 @@ import {
 const Tile = ({
   changeTileStyle,
   detailsTileStyle,
+  hide,
   imagePath,
   title,
   yearOrCharacter,
@@ -54,19 +55,26 @@ const Tile = ({
           </YearOrCharacter>
           <div>
             <About>
-              <Span>{info1}</Span>
+              <Span movieDetails={hide}>{info1}</Span>
               {value1}
             </About>
             <About>
-              <Span>{info2}</Span>
+              <Span movieDetails={hide}>{info2}</Span>
               {value2}
             </About>
           </div>
           <Tags>{type}</Tags>
         </DetailsContainer>
         <VoteContainer>
-          <StarIcon src={starIcon} alt={""} hidden={!voteAverage}></StarIcon>
-          <VoteAverage movieDetails={detailsTileStyle}>
+          <StarIcon
+            src={starIcon}
+            alt={""}
+            hidden={!voteAverage || voteAverage < 1}
+          ></StarIcon>
+          <VoteAverage
+            movieDetails={detailsTileStyle}
+            hidden={!voteAverage || voteAverage < 1}
+          >
             {voteAverage}{" "}
             <VoteCount movieDetails={detailsTileStyle} maxAverage>
               {maxAverage}
