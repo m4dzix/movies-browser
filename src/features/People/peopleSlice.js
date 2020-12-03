@@ -13,7 +13,7 @@ const peopleSlice = createSlice({
     person: [],
     changeTileStyle: false,
     id: "undefinded",
-    isPeopleTabActive: "undefined",
+    isPeopleTabActive: false,
     query: "",
   },
   reducers: {
