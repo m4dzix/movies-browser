@@ -18,7 +18,7 @@ const moviesSlice = createSlice({
       state.page = 1;
     },
     lastPage: (state) => {
-      state.page = state.total_pages;
+      state.page = state.totalPages;
     },
     nextPage: (state) => {
       state.page++;
