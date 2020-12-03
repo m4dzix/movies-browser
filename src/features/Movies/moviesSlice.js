@@ -130,8 +130,8 @@ export const selectMovieCredits = (state) =>
   selectMoviesState(state).movieCredits;
 export const selectMovieCrew = (state) => selectMoviesState(state).movieCrew;
 export const selectMovieCast = (state) => selectMoviesState(state).movieCast;
-export const selectPage = (state) => selectMoviesState(state).page;
-export const selectTotalPages = (state) => selectMoviesState(state).totalPages;
+export const selectMoviePage = (state) => selectMoviesState(state).page;
+export const selectTotalMoviePages = (state) => selectMoviesState(state).totalPages;
 export const selectLoading = (state) => selectMoviesState(state).loading;
 export const selectQuery = (state) => selectMoviesState(state).query;
 

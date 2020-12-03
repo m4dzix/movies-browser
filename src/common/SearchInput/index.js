@@ -2,10 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import { selectQuery, updateQuery } from "../../features/Movies/moviesSlice";
+import { selectPeopleActiveTab } from "../../features/People/peopleSlice";
 import {Input} from "./styled";
 
 export const SearchInput = () => {
     const query = useSelector(selectQuery);
+    const isPeopleTabActive = useSelector(selectPeopleActiveTab);
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
@@ -21,10 +23,10 @@ export const SearchInput = () => {
         history.push(`${location.pathname}?${searchParams.toString()}`);
         dispatch(updateQuery(value));
     };
-
+    
     return(
         <Input
-            placeholder="Search for movie..."
+            placeholder={isPeopleTabActive ? "Search for people..." : "Search for movies..."}
             value={query || ""}
             onChange={({ target }) => handleChange(target.value)}
         />

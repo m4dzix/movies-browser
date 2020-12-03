@@ -1,7 +1,7 @@
-import { delay, call, put, takeLatest } from "redux-saga/effects";
+import { delay, call, put, takeEvery, debounce } from "redux-saga/effects";
 import { getPopularPeople } from "./getPeopleApi";
 import { getCredits } from "./getPeopleApi";
-import { getPersonDetails } from "./getPeopleApi";
+import { getPersonDetails, getPeopleByQuery } from "./getPeopleApi";
 import {
   fetchPopularPeople,
   fetchPopularPeopleSuccess,
@@ -12,6 +12,9 @@ import {
   fetchPersonDetails,
   fetchPersonDetailsSuccess,
   fetchPersonDetailsError,
+  fetchPeopleByQuery,
+  fetchPeopleByQuerySuccess,
+  fetchPeopleByQueryError,
 } from "./peopleSlice";
 
 function* fetchPopularPeopleHandler({ payload: page }) {
@@ -43,9 +46,19 @@ function* fetchPersonDetailsHandler({ payload: id }) {
     yield put(fetchPersonDetailsError());
   }
 }
+function* fetchPeopleByQueryHandler({ payload: query, page}) {
+  try {
+    yield delay(100);
+    const searchPeople = yield call(getPeopleByQuery, query, page);
+    yield put(fetchPeopleByQuerySuccess(searchPeople));
+  } catch (error) {
+    yield put(fetchPeopleByQueryError());
+  }
+}
 
 export function* watchFetchPopularPeople() {
-  yield takeLatest(fetchPopularPeople.type, fetchPopularPeopleHandler);
-  yield takeLatest(fetchCredits.type, fetchCreditsHandler);
-  yield takeLatest(fetchPersonDetails.type, fetchPersonDetailsHandler);
+  yield takeEvery(fetchPopularPeople.type, fetchPopularPeopleHandler);
+  yield takeEvery(fetchCredits.type, fetchCreditsHandler);
+  yield takeEvery(fetchPersonDetails.type, fetchPersonDetailsHandler);
+  yield debounce(1000, fetchPeopleByQuery.type, fetchPeopleByQueryHandler);
 }
