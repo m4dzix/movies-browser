@@ -1,20 +1,5 @@
 import React from "react";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
-import {
-  StyledNavLink,
-  NavContainer,
-  NavContent,
-  InputContainer,
-  LogoContainer,
-  Title,
-  LinkContainer,
-  StyledImg,
-  ListItem,
-} from "./styled";
-import { SearchInput } from "./common/SearchInput";
-import { firstPage } from "./features/Movies/moviesSlice";
-import { peopleTabActive, peopleTabInactive } from "./features/People/peopleSlice";
-import { useDispatch } from "react-redux";
 import Navigation from "./common/Navigation";
 import { toMovies, toPeople, toMovie, toPerson } from "./routes";
 import PopularMovies from "./features/Movies/PopularMovies";

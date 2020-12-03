@@ -19,7 +19,6 @@ import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Pagination from "../../../common/Pagination";
 import NoResults from "../../../common/NoResults";
-import { toPerson } from "../../../routes";
 
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);

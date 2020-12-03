@@ -17,6 +17,7 @@ import { toMovies, toPeople } from "../../routes";
 import { firstPage } from "../../features/Movies/moviesSlice";
 import search from "../../images/search.svg";
 import camera from "../../images/camera.svg";
+import { peopleTabActive, peopleTabInactive } from "../../features/People/peopleSlice";
 
 export const Navigation = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ export const Navigation = () => {
                 to={toMovies()}
                 onClick={() => {
                   dispatch(firstPage());
+                  dispatch(peopleTabInactive());
                 }}
               >
                 movies
@@ -47,6 +49,7 @@ export const Navigation = () => {
                 to={toPeople()}
                 onClick={() => {
                   dispatch(firstPage());
+                  dispatch(peopleTabActive());
                 }}
               >
                 people
