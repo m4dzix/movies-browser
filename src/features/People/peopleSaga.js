@@ -45,9 +45,8 @@ function* fetchPersonDetailsHandler({ payload: id }) {
   }
 }
 function* fetchPeopleByQueryHandler({ payload: query, page}) {
-  console.log("Ppl Saga: ", query, page);
   try {
-    yield delay(500);
+    yield delay(100);
     const searchPeople = yield call(getPeopleByQuery, query, page);
     yield put(fetchPeopleByQuerySuccess(searchPeople));
   } catch (error) {
