@@ -19,6 +19,7 @@ import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Pagination from "../../../common/Pagination";
 import NoResults from "../../../common/NoResults";
+import { toPerson } from "../../../routes";
 
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
@@ -51,7 +52,7 @@ const PopularPeople = () => {
                   dispatch(showId());
                 }}
                 changeTileStyle={changeTileStyle}
-                key={person.id}
+                key={`${person.id} + ${person.name || person.tmdb_id}`}
                 title={person.name}
                 imagePath={
                   !!person.profile_path
@@ -73,4 +74,5 @@ const PopularPeople = () => {
     return <Error />;
   }
 };
+
 export default PopularPeople;

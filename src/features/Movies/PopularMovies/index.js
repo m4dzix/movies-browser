@@ -21,15 +21,14 @@ import Tile from "../../../common/Tile";
 import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
 import NoResults from "../../../common/NoResults";
 import Pagination from "../../../common/Pagination";
+import { toMovie } from "../../../routes";
 
 const PopularMovies = () => {
-
   const query = useSelector(selectQuery);
   const loading = useSelector(selectLoading);
   const movieGenres = useSelector(selectGenres);
   const page = useSelector(selectMoviePage);
   const dispatch = useDispatch();
-
   const movies = useSelector(selectMovies);
 
   useEffect(() => {
@@ -49,22 +48,23 @@ const PopularMovies = () => {
       .filter((item) => item.id === genreId)
       .map((genres) => genres.name);
 
-  const toMovie = ({ id } = { id: "id" }) => `/movie-details/${id}`;
-
   if (!loading && movies.length > 0) {
     return (
       <Main>
         <Section
           title={query ? `Search for: ${query}` : "Popular movies"}
           body={movies.map((movie) => (
-            <StyledLink to={toMovie({ id: movie.id })} key={movie.id}>
+            <StyledLink
+              to={toMovie({ id: movie.id })}
+              key={`${movie.id}+${movie.title || movie.tmdb_id}`}
+            >
               <Tile
                 onClick={() => {
                   dispatch(showId());
                 }}
-                key={movie.id}
+                key={`${movie.id}+${movie.orginal_title || movie.tmdb_id}`}
                 title={movie.title}
-                YearOrCharacter={movie.release_date.split("-")[0]}
+                yearOrCharacter={movie.release_date.split("-")[0]}
                 type={movie.genre_ids.map((id) => (
                   <Tag key={id}>{type(id)}</Tag>
                 ))}
@@ -74,8 +74,12 @@ const PopularMovies = () => {
                     : video
                 }
                 starIcon={starIcon}
-                voteAverage={movie.vote_average}
-                voteCount={`${movie.vote_count} votes`}
+                voteAverage={movie.vote_average !== 0 ? movie.vote_average : ""}
+                voteCount={`${
+                  !!movie.vote_average
+                    ? movie.vote_count + " votes"
+                    : "No votes yet"
+                } `}
               ></Tile>
             </StyledLink>
           ))}
@@ -84,11 +88,12 @@ const PopularMovies = () => {
       </Main>
     );
   } else if (loading) {
-    return <Loading />
-  } if (!loading && movies.length === 0) {
-    return <NoResults />
+    return <Loading />;
+  }
+  if (!loading && movies.length === 0) {
+    return <NoResults />;
   } else {
-    return <Error />
+    return <Error />;
   }
 };
 export default PopularMovies;

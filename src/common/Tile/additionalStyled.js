@@ -16,7 +16,12 @@ export const Tag = styled.li`
     padding: 4px 8px;
   }
 `;
+
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.black};
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;

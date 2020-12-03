@@ -19,13 +19,14 @@ import {
 
 function* fetchPopularPeopleHandler({ payload: page }) {
   try {
-    yield delay(500);
+    yield delay(100);
     const people = yield call(getPopularPeople, page);
     yield put(fetchPopularPeopleSuccess(people));
   } catch (error) {
     yield put(fetchPopularPeopleError());
   }
 }
+
 function* fetchCreditsHandler({ payload: movieId }) {
   try {
     yield delay(100);
@@ -35,9 +36,10 @@ function* fetchCreditsHandler({ payload: movieId }) {
     yield put(fetchCreditsError());
   }
 }
+
 function* fetchPersonDetailsHandler({ payload: id }) {
   try {
-    yield delay(500);
+    yield delay(100);
     const personDetails = yield call(getPersonDetails, id);
     yield put(fetchPersonDetailsSuccess(personDetails));
   } catch (error) {

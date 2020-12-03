@@ -21,7 +21,6 @@ const Pagination = () => {
   const maxPeoplePages = useSelector(selectTotalPeoplePages);
   const isPeopleTabActive = useSelector(selectPeopleActiveTab);
   const isMobile = window.screen.width < 767;
-
   const dispatch = useDispatch();
 
   const currentPage = isPeopleTabActive ? currentPeoplePage : currentMoviePage;

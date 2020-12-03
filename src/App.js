@@ -15,62 +15,22 @@ import { SearchInput } from "./common/SearchInput";
 import { firstPage } from "./features/Movies/moviesSlice";
 import { peopleTabActive, peopleTabInactive } from "./features/People/peopleSlice";
 import { useDispatch } from "react-redux";
+import Navigation from "./common/Navigation";
+import { toMovies, toPeople, toMovie, toPerson } from "./routes";
 import PopularMovies from "./features/Movies/PopularMovies";
 import MovieDetails from "./features/Movies/MovieDetails";
 import PopularPeople from "./features/People/PopularPeople";
 import PersonDetails from "./features/People/PersonDetails";
-import search from "./images/search.svg";
-import camera from "./images/camera.svg";
 
 const App = () => {
-  const toMovie = ({ id } = { id: ":id" }) => `/movie-details/${id}`;
-  const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
-  const dispatch = useDispatch();
   return (
     <HashRouter>
-      <nav>
-        <NavContainer>
-          <NavContent>
-            <LogoContainer>
-              <StyledImg src={camera} alt="camera icon" />
-              <Title>Movies Browser</Title>
-            </LogoContainer>
-            <LinkContainer>
-              <ListItem>
-                <StyledNavLink
-                  to="/popular-movies"
-                  onClick={() => {
-                    dispatch(firstPage());
-                    dispatch(peopleTabInactive());
-                  }}
-                >
-                  movies
-                </StyledNavLink>
-              </ListItem>
-              <ListItem>
-                <StyledNavLink
-                  to="/popular-people"
-                  onClick={() => {
-                    dispatch(firstPage());
-                    dispatch(peopleTabActive());
-                  }}
-                >
-                  people
-                </StyledNavLink>
-              </ListItem>
-            </LinkContainer>
-          </NavContent>
-          <InputContainer>
-            <StyledImg src={search} alt="lens icon" />
-            <SearchInput />
-          </InputContainer>
-        </NavContainer>
-      </nav>
+      <Navigation />
       <Switch>
-        <Route path="/popular-movies">
+        <Route path={toMovies()}>
           <PopularMovies />
         </Route>
-        <Route path="/popular-people">
+        <Route path={toPeople()}>
           <PopularPeople />
         </Route>
         <Route path={toMovie()}>
@@ -80,10 +40,11 @@ const App = () => {
           <PersonDetails />
         </Route>
         <Route path="/">
-          <Redirect to="/popular-movies" />
+          <Redirect to={toMovies()} />
         </Route>
       </Switch>
     </HashRouter>
   );
 };
+
 export default App;

@@ -1,4 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movies Browser
+
+**LIVE LINK:** [https://m4dzix.github.io/movies-browser/](https://m4dzix.github.io/movies-browser/)
+
+Service, where you can search popular movies and people related to the film industry. The data are fetched from the API interface provided by [TMDB](https://www.themoviedb.org/). This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+The main page presents movies. Ordered from most popular.
+
+Navigation bar contains categories and search box.
+
+## Actions
+
+- Searching:
+  Start typing interested movie or person. Data will be live filtered with typed letters.
+  At the bottom of the page is a pagination that allows you to navigate between the pages.
+- Reviewing details:
+  Clicking on the card presenting a given movie or person opens subpage with details.
+
+## Movie details:
+
+First section: title, production details, rating and short description. If the movie data includes will be shown also a poster.
+
+The following sections feature people from the cast and crew.
+Clicking person card move to dedicated page with details.
+
+## Person details:
+
+First section: Person details such as photo, date and place of birth with short description.
+
+The following sections list videos where the person was involved.
+clicking on a movie card move to dedicated page with details.
+
+## Technologies used:
+
+- HTML
+- REACT JS
+- Create react app
+- Styled-components
+- React-redux
+- Redux-saga
+- @reduxjs/toolkit
+- React-router
+- Fetching API
 
 ## Available Scripts
 
