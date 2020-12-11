@@ -9,6 +9,7 @@ export const Container = styled.div`
   grid-gap: 8px;
   background-color: ${({ theme }) => theme.colors.white};
   align-items: center;
+  height: 100%;
   grid-template-areas:
     "photo"
     "content";
