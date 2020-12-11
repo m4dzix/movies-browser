@@ -1,7 +1,14 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const activeClassName = "active";
+
+export const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+`;
 
 export const NavContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.black};

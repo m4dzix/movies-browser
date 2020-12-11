@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import {
+  StyledLink,
   StyledNavLink,
   NavContainer,
   NavContent,
@@ -11,13 +12,15 @@ import {
   StyledImg,
   ListItem,
 } from "./styled";
-import { Link } from "react-router-dom";
 import { SearchInput } from "../SearchInput";
 import { toMovies, toPeople } from "../../routes";
 import { firstPage } from "../../features/Movies/moviesSlice";
 import search from "../../images/search.svg";
 import camera from "../../images/camera.svg";
-import { peopleTabActive, peopleTabInactive } from "../../features/People/peopleSlice";
+import {
+  peopleTabActive,
+  peopleTabInactive,
+} from "../../features/People/peopleSlice";
 
 export const Navigation = () => {
   const dispatch = useDispatch();
@@ -27,10 +30,10 @@ export const Navigation = () => {
       <NavContainer>
         <NavContent>
           <LogoContainer>
-            <Link to={toMovies()}>
+            <StyledLink to={toMovies()}>
               <StyledImg src={camera} alt="camera icon" />
-            </Link>
-            <Title>Movies Browser</Title>
+              <Title>Movies Browser</Title>
+            </StyledLink>
           </LogoContainer>
           <LinkContainer>
             <ListItem>
