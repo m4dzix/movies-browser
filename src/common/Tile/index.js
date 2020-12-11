@@ -18,7 +18,7 @@ import {
 
 const Tile = ({
   changeTileStyle,
-  detailsTileStyle,
+  details,
   hide,
   imagePath,
   title,
@@ -35,31 +35,28 @@ const Tile = ({
   description,
 }) => {
   return (
-    <Container people={changeTileStyle} movieDetails={detailsTileStyle}>
+    <Container people={changeTileStyle} details={details}>
       <Poster
         people={changeTileStyle}
-        movieDetails={detailsTileStyle}
+        details={details}
         src={imagePath}
         alt={""}
       />
-      <Content people={changeTileStyle} movieDetails={detailsTileStyle}>
-        <DetailsContainer movieDetails={detailsTileStyle}>
-          <Title people={changeTileStyle} movieDetails={detailsTileStyle}>
+      <Content people={changeTileStyle} details={details}>
+        <DetailsContainer details={details}>
+          <Title people={changeTileStyle} details={details}>
             {title}
           </Title>
-          <YearOrCharacter
-            people={changeTileStyle}
-            movieDetails={detailsTileStyle}
-          >
+          <YearOrCharacter people={changeTileStyle} details={details}>
             {yearOrCharacter}
           </YearOrCharacter>
           <div>
             <About>
-              <Span movieDetails={hide}>{info1}</Span>
+              <Span details={hide}>{info1}</Span>
               {value1}
             </About>
             <About>
-              <Span movieDetails={hide}>{info2}</Span>
+              <Span details={hide}>{info2}</Span>
               {value2}
             </About>
           </div>
@@ -72,18 +69,18 @@ const Tile = ({
             hidden={!voteAverage || voteAverage < 1}
           ></StarIcon>
           <VoteAverage
-            movieDetails={detailsTileStyle}
+            details={details}
             hidden={!voteAverage || voteAverage < 1}
           >
             {voteAverage}{" "}
-            <VoteCount movieDetails={detailsTileStyle} maxAverage>
+            <VoteCount details={details} maxAverage>
               {maxAverage}
             </VoteCount>
           </VoteAverage>
-          <VoteCount movieDetails={detailsTileStyle}>{voteCount}</VoteCount>
+          <VoteCount details={details}>{voteCount}</VoteCount>
         </VoteContainer>
       </Content>
-      <Description movieDetails={detailsTileStyle}>{description}</Description>
+      <Description details={details}>{description}</Description>
     </Container>
   );
 };

@@ -49,7 +49,7 @@ const MovieDetails = () => {
         />
         <Main>
           <Tile
-            detailsTileStyle={changeTileStyle}
+            details={changeTileStyle}
             hide={changeTileStyle}
             imagePath={
               !!movieDetails.poster_path

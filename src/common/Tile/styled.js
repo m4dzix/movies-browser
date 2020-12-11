@@ -33,7 +33,7 @@ export const Container = styled.div`
     `}
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       grid-template-rows: auto 1fr;
       grid-template-columns: auto 1fr;
@@ -76,7 +76,7 @@ export const Poster = styled.img`
     `}
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       width: 312px;
       height: 464px;
@@ -109,7 +109,7 @@ export const Content = styled.div`
     `};
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       grid-template-columns: auto;
       grid-gap: 24px;
@@ -131,7 +131,7 @@ export const DetailsContainer = styled.div`
   grid-gap: 16px;
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       display: grid;
       grid-gap: 24px;
@@ -160,7 +160,7 @@ export const Title = styled.h3`
     `};
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       font-size: 36px;
       margin-bottom: 0;
@@ -189,7 +189,7 @@ export const YearOrCharacter = styled.p`
     `};
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       font-size: 22px;
       margin-bottom: 0;
@@ -221,7 +221,7 @@ export const Span = styled.span`
     font-size: 12px;
   }
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
         display: none;
@@ -278,7 +278,7 @@ export const VoteAverage = styled.strong`
   margin: 0 12px;
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       font-size: 22px;
       align-self: flex-end;
@@ -309,7 +309,7 @@ export const VoteCount = styled.span`
     `}
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
    align-self: flex-end;
    color: ${({ theme }) => theme.colors.black};
@@ -321,7 +321,7 @@ export const Description = styled.p`
   display: none;
 
   ${(props) =>
-    props.movieDetails &&
+    props.details &&
     css`
       display: block;
       font-size: 20px;

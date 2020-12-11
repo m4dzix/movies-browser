@@ -59,7 +59,7 @@ const PersonDetails = () => {
     return (
       <Main>
         <Tile
-          detailsTileStyle={changeTileStyle}
+          details={changeTileStyle}
           imagePath={
             !!personDetails.profile_path
               ? `https://image.tmdb.org/t/p/w185/${personDetails.profile_path}`
