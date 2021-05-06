@@ -10,7 +10,7 @@ import {
   showId,
   selectPeoplePage,
   selectQuery,
-} from "../peopleSlice";
+} from "./peopleSlice";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
@@ -29,10 +29,10 @@ const PopularPeople = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (query === ""){
+    if (query === "") {
       dispatch(fetchPopularPeople(page));
     } else {
-      dispatch(fetchPeopleByQuery(query, page))
+      dispatch(fetchPeopleByQuery(query, page));
     }
   }, [dispatch, page, query]);
 

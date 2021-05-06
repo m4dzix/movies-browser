@@ -13,7 +13,7 @@ import {
   selectPeopleActiveTab,
   selectPeoplePage,
   selectTotalPeoplePages,
-} from "../../features/People/peopleSlice";
+} from "../../features/People/PopularPeople/peopleSlice";
 const Pagination = () => {
   const currentMoviePage = useSelector(selectMoviePage);
   const currentPeoplePage = useSelector(selectPeoplePage);

@@ -8,7 +8,11 @@ import {
   selectChangeTileStyle,
   showId,
 } from "./movieDetailsSlice";
-import { selectCast, selectCrew, fetchCredits } from "../../People/peopleSlice";
+import {
+  selectCast,
+  selectCrew,
+  fetchCredits,
+} from "../../People/PopularPeople/peopleSlice";
 import video from "../../../assets/Video.svg";
 import profile from "../../../assets/Profile.svg";
 import starIcon from "../../../assets/Vector.svg";

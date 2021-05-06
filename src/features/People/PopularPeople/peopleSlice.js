@@ -20,7 +20,7 @@ const peopleSlice = createSlice({
     showId: (state) => {
       state.id = this.props.id;
     },
-    updateQuery: (state, { payload: query}) => {
+    updateQuery: (state, { payload: query }) => {
       state.query = query;
     },
     firstPage: (state) => {
@@ -63,18 +63,6 @@ const peopleSlice = createSlice({
       state.loading = false;
       state.credits = !state.credits;
     },
-    fetchPersonDetails: (state) => {
-      state.loading = true;
-    },
-    fetchPersonDetailsSuccess: (state, { payload: person }) => {
-      state.person = person;
-      state.id = person.id;
-      state.loading = false;
-      state.changeTileStyle = true;
-    },
-    fetchPersonDetailsError: (state) => {
-      state.loading = false;
-    },
     peopleTabActive: (state) => {
       state.isPeopleTabActive = true;
     },
@@ -110,9 +98,6 @@ export const {
   fetchCredits,
   fetchCreditsError,
   fetchCreditsSuccess,
-  fetchPersonDetails,
-  fetchPersonDetailsSuccess,
-  fetchPersonDetailsError,
   peopleTabActive,
   peopleTabInactive,
   updateQuery,
@@ -129,11 +114,12 @@ export const selectCredits = (state) => selectPeopleState(state).credits;
 export const selectCrew = (state) => selectPeopleState(state).crew;
 export const selectLoadingCredits = (state) => selectPeopleState(state).loading;
 export const selectCast = (state) => selectPeopleState(state).cast;
-export const selectPersonDetails = (state) => selectPeopleState(state).person;
 export const selectPeoplePage = (state) => selectPeopleState(state).page;
-export const selectTotalPeoplePages = (state) => selectPeopleState(state).totalPages;
+export const selectTotalPeoplePages = (state) =>
+  selectPeopleState(state).totalPages;
 export const selectLoading = (state) => selectPeopleState(state).loading;
-export const selectPeopleActiveTab = (state) => selectPeopleState(state).isPeopleTabActive;
+export const selectPeopleActiveTab = (state) =>
+  selectPeopleState(state).isPeopleTabActive;
 export const selectQuery = (state) => selectPeopleState(state).query;
 
 export default peopleSlice.reducer;

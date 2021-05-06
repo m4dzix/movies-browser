@@ -6,7 +6,7 @@ import {
   fetchPersonDetails,
   selectLoading,
   selectChangeTileStyle,
-} from "../peopleSlice";
+} from "./personDetailsSlice";
 import {
   selectMovieCast,
   selectMovieCrew,

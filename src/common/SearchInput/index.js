@@ -5,7 +5,7 @@ import {
   selectQuery,
   updateQuery,
 } from "../../features/Movies/PopularMovies/moviesSlice";
-import { selectPeopleActiveTab } from "../../features/People/peopleSlice";
+import { selectPeopleActiveTab } from "../../features/People/PopularPeople/peopleSlice";
 import { Input } from "./styled";
 
 export const SearchInput = () => {

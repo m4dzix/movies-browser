@@ -20,7 +20,7 @@ import camera from "../../images/camera.svg";
 import {
   peopleTabActive,
   peopleTabInactive,
-} from "../../features/People/peopleSlice";
+} from "../../features/People/PopularPeople/peopleSlice";
 
 export const Navigation = () => {
   const dispatch = useDispatch();
