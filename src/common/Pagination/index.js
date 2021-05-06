@@ -8,7 +8,7 @@ import {
   previousPage,
   lastPage,
   firstPage,
-} from "../../features/Movies/moviesSlice";
+} from "../../features/Movies/PopularMovies/moviesSlice";
 import {
   selectPeopleActiveTab,
   selectPeoplePage,
@@ -58,7 +58,8 @@ const Pagination = () => {
       </Button>
       <Pages>
         <>
-          <Text inPages>Page</Text> {currentPage} <Text inPages>of</Text>{" "}{maxPages}
+          <Text inPages>Page</Text> {currentPage} <Text inPages>of</Text>{" "}
+          {maxPages}
         </>
       </Pages>
       <Button

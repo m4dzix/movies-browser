@@ -5,7 +5,6 @@ const moviesSlice = createSlice({
   initialState: {
     loading: true,
     page: 1,
-    movies: [],
     genres: [],
     query: "",
     movieCredits: [],
@@ -54,18 +53,6 @@ const moviesSlice = createSlice({
     fetchGenresError: (state) => {
       state.loading = false;
     },
-    fetchMovieDetails: (state) => {
-      state.loading = true;
-    },
-    fetchMovieDetailsSuccess: (state, { payload: movie }) => {
-      state.loading = false;
-      state.movie = movie;
-      state.changeTileStyle = true;
-    },
-    fetchMovieDetailsError: (state) => {
-      state.loading = false;
-      state.movie = !state.movie;
-    },
     fetchMoviesByQuery: (state) => {
       state.loading = true;
     },
@@ -105,9 +92,6 @@ export const {
   fetchGenres,
   fetchGenresSuccess,
   fetchGenresError,
-  fetchMovieDetails,
-  fetchMovieDetailsSuccess,
-  fetchMovieDetailsError,
   showId,
   fetchMoviesByQuery,
   fetchMoviesByQuerySuccess,
@@ -121,17 +105,15 @@ export const {
 export const selectMoviesState = (state) => state.movies;
 export const selectMovies = (state) => selectMoviesState(state).movies;
 export const selectGenres = (state) => selectMoviesState(state).genres;
-export const selectMovieDetails = (state) => selectMoviesState(state).movie;
 export const selectChangeTileStyle = (state) =>
   selectMoviesState(state).changeTileStyle;
-export const selectLoadingMovieDetails = (state) =>
-  selectMoviesState(state).loading;
 export const selectMovieCredits = (state) =>
   selectMoviesState(state).movieCredits;
 export const selectMovieCrew = (state) => selectMoviesState(state).movieCrew;
 export const selectMovieCast = (state) => selectMoviesState(state).movieCast;
 export const selectMoviePage = (state) => selectMoviesState(state).page;
-export const selectTotalMoviePages = (state) => selectMoviesState(state).totalPages;
+export const selectTotalMoviePages = (state) =>
+  selectMoviesState(state).totalPages;
 export const selectLoading = (state) => selectMoviesState(state).loading;
 export const selectQuery = (state) => selectMoviesState(state).query;
 

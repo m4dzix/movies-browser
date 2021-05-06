@@ -14,7 +14,7 @@ import {
 } from "./styled";
 import { SearchInput } from "../SearchInput";
 import { toMovies, toPeople } from "../../routes";
-import { firstPage } from "../../features/Movies/moviesSlice";
+import { firstPage } from "../../features/Movies/PopularMovies/moviesSlice";
 import search from "../../images/search.svg";
 import camera from "../../images/camera.svg";
 import {

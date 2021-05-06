@@ -1,4 +1,4 @@
-import { API_KEY, API_URL, API_LANGUAGE } from "../fetchFromApi";
+import { API_KEY, API_URL, API_LANGUAGE } from "../../fetchFromApi";
 
 export const getPopularMovies = async (page) => {
   const api = `${API_URL}/movie/popular?api_key=${API_KEY}&language=${API_LANGUAGE}&page=${encodeURIComponent(

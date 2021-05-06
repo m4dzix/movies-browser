@@ -7,7 +7,7 @@ import {
   selectLoadingMovieDetails,
   selectChangeTileStyle,
   showId,
-} from "../moviesSlice";
+} from "./movieDetailsSlice";
 import { selectCast, selectCrew, fetchCredits } from "../../People/peopleSlice";
 import video from "../../../assets/Video.svg";
 import profile from "../../../assets/Profile.svg";

@@ -14,7 +14,7 @@ import {
   fetchGenres,
   selectGenres,
   showId,
-} from "../../Movies/moviesSlice";
+} from "../../Movies/PopularMovies/moviesSlice";
 import starIcon from "../../../assets/Vector.svg";
 import video from "../../../assets/Video.svg";
 import profile from "../../../assets/Profile.svg";

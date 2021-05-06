@@ -10,7 +10,7 @@ import {
   showId,
   selectQuery,
   fetchMoviesByQuery,
-} from "../moviesSlice";
+} from "./moviesSlice";
 import video from "../../../assets/Video.svg";
 import starIcon from "../../../assets/Vector.svg";
 import Main from "../../../common/Main";
