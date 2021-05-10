@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchPopularMovies,
-  fetchGenres,
   selectLoading,
   selectMovies,
-  selectGenres,
   selectMoviePage,
   showId,
   selectQuery,
@@ -18,7 +16,7 @@ import Section from "../../../common/Section";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Tile from "../../../common/Tile";
-import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
+import { StyledLink } from "../../../common/Tile/additionalStyled";
 import NoResults from "../../../common/NoResults";
 import Pagination from "../../../common/Pagination";
 import { toMovie } from "../../../routes";
@@ -26,7 +24,6 @@ import { toMovie } from "../../../routes";
 const PopularMovies = () => {
   const query = useSelector(selectQuery);
   const loading = useSelector(selectLoading);
-  const movieGenres = useSelector(selectGenres);
   const page = useSelector(selectMoviePage);
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
@@ -38,15 +35,6 @@ const PopularMovies = () => {
       dispatch(fetchMoviesByQuery(query, page));
     }
   }, [dispatch, query, page]);
-
-  useEffect(() => {
-    dispatch(fetchGenres());
-  }, [dispatch]);
-
-  const type = (genreId) =>
-    movieGenres
-      .filter((item) => item.id === genreId)
-      .map((genres) => genres.name);
 
   if (!loading && movies.length > 0) {
     return (
@@ -67,9 +55,7 @@ const PopularMovies = () => {
                 yearOrCharacter={
                   !!movie.release_date ? movie.release_date.split("-")[0] : ""
                 }
-                type={movie.genre_ids.map((id) => (
-                  <Tag key={id}>{type(id)}</Tag>
-                ))}
+                genre_ids={movie.genre_ids}
                 imagePath={
                   !!movie.poster_path
                     ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`

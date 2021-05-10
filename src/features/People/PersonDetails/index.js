@@ -11,8 +11,6 @@ import {
   selectMovieCast,
   selectMovieCrew,
   fetchMovieCredits,
-  fetchGenres,
-  selectGenres,
   showId,
 } from "../../Movies/PopularMovies/moviesSlice";
 import starIcon from "../../../assets/Vector.svg";
@@ -21,7 +19,7 @@ import profile from "../../../assets/Profile.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
-import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
+import { StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import { toMovie } from "../../../routes";
@@ -31,7 +29,6 @@ const PersonDetails = () => {
   const personDetails = useSelector(selectPersonDetails);
   const movieCast = useSelector(selectMovieCast);
   const movieCrew = useSelector(selectMovieCrew);
-  const movieGenres = useSelector(selectGenres);
   const loading = useSelector(selectLoading);
   const castNumber = movieCast.length;
   const crewNumber = movieCrew.length;
@@ -45,15 +42,6 @@ const PersonDetails = () => {
   useEffect(() => {
     dispatch(fetchMovieCredits(id));
   }, [dispatch, id]);
-
-  useEffect(() => {
-    dispatch(fetchGenres());
-  }, [dispatch]);
-
-  const tag = (genreId) =>
-    movieGenres
-      .filter((item) => item.id === genreId)
-      .map((genres) => genres.name);
 
   if (!loading && personDetails) {
     return (
@@ -91,9 +79,7 @@ const PersonDetails = () => {
                 (${
                   !!movie.release_date ? movie.release_date.split("-")[0] : ""
                 })`}
-                type={movie.genre_ids.map((id) => (
-                  <Tag key={id}>{tag(id)}</Tag>
-                ))}
+                genre_ids={movie.genre_ids}
                 imagePath={
                   !!movie.poster_path
                     ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
@@ -129,9 +115,7 @@ const PersonDetails = () => {
                  (${
                    !!movie.release_date ? movie.release_date.split("-")[0] : ""
                  })`}
-                type={movie.genre_ids.map((id) => (
-                  <Tag key={id}>{tag(id)}</Tag>
-                ))}
+                genre_ids={movie.genre_ids}
                 imagePath={
                   !!movie.poster_path
                     ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`

@@ -19,7 +19,7 @@ import starIcon from "../../../assets/Vector.svg";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
-import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
+import { StyledLink } from "../../../common/Tile/additionalStyled";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import MovieHeader from "./MovieHeader";
@@ -78,9 +78,7 @@ const MovieDetails = () => {
             value2={
               !!movieDetails.release_date ? movieDetails.release_date : "-"
             }
-            type={movieDetails.genres.map((genre) => (
-              <Tag key={genre.id}>{genre.name}</Tag>
-            ))}
+            genreId={movieDetails.genres}
             starIcon={starIcon}
             voteAverage={movieDetails.vote_average.toFixed(1)}
             maxAverage={"/10"}

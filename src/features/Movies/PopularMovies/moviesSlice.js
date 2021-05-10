@@ -5,7 +5,6 @@ const moviesSlice = createSlice({
   initialState: {
     loading: true,
     page: 1,
-    genres: [],
     query: "",
     movieCredits: [],
     movieCast: [],
@@ -43,16 +42,7 @@ const moviesSlice = createSlice({
     fetchPopularMoviesError: (state) => {
       state.loading = false;
     },
-    fetchGenres: (state) => {
-      state.loading = true;
-    },
-    fetchGenresSuccess: (state, { payload: genres }) => {
-      state.genres = genres;
-      state.loading = false;
-    },
-    fetchGenresError: (state) => {
-      state.loading = false;
-    },
+
     fetchMoviesByQuery: (state) => {
       state.loading = true;
     },
@@ -89,9 +79,6 @@ export const {
   fetchPopularMovies,
   fetchPopularMoviesSuccess,
   fetchPopularMoviesError,
-  fetchGenres,
-  fetchGenresSuccess,
-  fetchGenresError,
   showId,
   fetchMoviesByQuery,
   fetchMoviesByQuerySuccess,
@@ -104,7 +91,6 @@ export const {
 
 export const selectMoviesState = (state) => state.movies;
 export const selectMovies = (state) => selectMoviesState(state).movies;
-export const selectGenres = (state) => selectMoviesState(state).genres;
 export const selectChangeTileStyle = (state) =>
   selectMoviesState(state).changeTileStyle;
 export const selectMovieCredits = (state) =>
