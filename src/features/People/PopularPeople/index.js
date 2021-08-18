@@ -9,7 +9,7 @@ import {
   selectChangeTileStyle,
   showId,
 } from "./peopleSlice";
-import { useQueryParameters } from "../../../useQueryParameters";
+import { useQueryParameters } from "../../../customHooks/useQueryParameters";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
@@ -36,7 +36,7 @@ const PopularPeople = () => {
 
   const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
 
-  if (!loading && people.length > 0) {
+  if (!loading && people) {
     return (
       <Main>
         <Section
@@ -65,7 +65,7 @@ const PopularPeople = () => {
     );
   } else if (loading) {
     return <Loading />;
-  } else if (!loading && people.length === 0) {
+  } else if (!loading && people) {
     return <NoResults />;
   } else {
     return <Error />;

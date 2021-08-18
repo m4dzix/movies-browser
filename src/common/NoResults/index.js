@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./../Header";
 import Main from "../Main";
 import { StyledPaperPlane, ImageWrapper } from "./styled";
-import { useQueryParameters } from "../../useQueryParameters";
+import { useQueryParameters } from "../../customHooks/useQueryParameters";
 
 const NoResults = () => {
   const query = useQueryParameters("search");

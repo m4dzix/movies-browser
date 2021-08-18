@@ -4,15 +4,12 @@ const peopleSlice = createSlice({
   name: "movies",
   initialState: {
     loading: true,
-    page: 1,
-    people: [],
     credits: [],
     cast: [],
     crew: [],
     person: [],
     changeTileStyle: false,
-    id: "undefinded",
-    isPeopleTabActive: false,
+    id: "undefined",
     query: "",
   },
 

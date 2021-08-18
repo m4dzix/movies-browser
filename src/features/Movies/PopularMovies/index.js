@@ -18,7 +18,7 @@ import { StyledLink } from "../../../common/Tile/additionalStyled";
 import NoResults from "../../../common/NoResults";
 import Pagination from "../../../common/Pagination";
 import { toMovie } from "../../../routes";
-import { useQueryParameters } from "../../../useQueryParameters";
+import { useQueryParameters } from "../../../customHooks/useQueryParameters";
 
 const PopularMovies = () => {
   const query = useQueryParameters("search");
@@ -29,13 +29,12 @@ const PopularMovies = () => {
   const movies = useSelector(selectMovies);
 
   useEffect(() => {
-    console.log(page);
     page === null
       ? dispatch(fetchPopularMovies({ currentPage: 1, query }))
       : dispatch(fetchPopularMovies({ currentPage: page, query }));
   }, [dispatch, page, query]);
 
-  if (!loading && movies.length > 0) {
+  if (!loading && movies) {
     return (
       <Main>
         <Section
@@ -81,7 +80,7 @@ const PopularMovies = () => {
   } else if (loading) {
     return <Loading />;
   }
-  if (!loading && movies.length === 0) {
+  if (!loading && movies) {
     return <NoResults />;
   } else {
     return <Error />;

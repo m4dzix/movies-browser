@@ -1,12 +1,12 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useReplaceQueryParameters } from "../../useQueryParameters";
+import { useReplaceQueryParameters } from "../../customHooks/useQueryParameters";
 import {
   selectQuery,
   updateQuery,
 } from "../../features/Movies/PopularMovies/moviesSlice";
-import { useGoToPage } from "../../useGoToPage";
+import { useGoToPage } from "../../customHooks/useGoToPage";
 import { Input } from "./styled";
 
 export const SearchInput = () => {

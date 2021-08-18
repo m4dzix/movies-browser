@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Button, Pages, Text } from "./styled";
-import { useGoToPage } from "../../useGoToPage";
+import { useGoToPage } from "../../customHooks/useGoToPage";
 
 const Pagination = ({ currentPage, lastPage }) => {
   const page = currentPage;

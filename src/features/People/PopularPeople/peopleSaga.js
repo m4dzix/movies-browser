@@ -12,7 +12,6 @@ import {
 function* fetchPopularPeopleHandler({ payload }) {
   try {
     yield delay(100);
-    console.log(payload);
     const people = yield call(
       getPopularPeople,
       payload.currentPage,
