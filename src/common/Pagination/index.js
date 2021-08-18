@@ -1,25 +1,17 @@
 import React from "react";
 import { Container, Button, Pages, Text } from "./styled";
-import { useReplaceQueryParameters } from "../../useQueryParameters";
+import { useGoToPage } from "../../useGoToPage";
 
 const Pagination = ({ currentPage, lastPage }) => {
-  const replaceQueryParameters = useReplaceQueryParameters();
   const page = currentPage;
-
-  const onPageChange = (page) => {
-    replaceQueryParameters({
-      key: "page",
-      value: page.toString(),
-    });
-  };
-
+  const goToPage = useGoToPage();
   const isMobile = window.screen.width < 767;
 
   return (
     <Container>
       <Button
         onClick={() => {
-          onPageChange(1);
+          goToPage(1);
         }}
         disabled={+page === 1 || page === null}
       >
@@ -33,7 +25,7 @@ const Pagination = ({ currentPage, lastPage }) => {
       </Button>
       <Button
         onClick={() => {
-          onPageChange(+page - 1);
+          goToPage(+page - 1);
         }}
         disabled={+page === 1 || page === null}
       >
@@ -53,7 +45,7 @@ const Pagination = ({ currentPage, lastPage }) => {
       </Pages>
       <Button
         onClick={() => {
-          page === null ? onPageChange(2) : onPageChange(+page + 1);
+          page === null ? goToPage(2) : goToPage(+page + 1);
         }}
         disabled={+page === lastPage}
       >
@@ -67,7 +59,7 @@ const Pagination = ({ currentPage, lastPage }) => {
       </Button>
       <Button
         onClick={() => {
-          onPageChange(lastPage);
+          goToPage(lastPage);
         }}
         disabled={+page === lastPage}
       >

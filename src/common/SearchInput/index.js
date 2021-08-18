@@ -6,6 +6,7 @@ import {
   selectQuery,
   updateQuery,
 } from "../../features/Movies/PopularMovies/moviesSlice";
+import { useGoToPage } from "../../useGoToPage";
 import { Input } from "./styled";
 
 export const SearchInput = () => {
@@ -14,15 +15,10 @@ export const SearchInput = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const searchMovies = location.pathname.includes("movies");
-
-  const onFirstPage = (page) =>
-    replaceQueryParameters({
-      key: "page",
-      value: page.toString(),
-    });
+  const goToFirstPage = useGoToPage();
 
   const onInputChange = ({ target }) => {
-    onFirstPage(1);
+    goToFirstPage(1);
     replaceQueryParameters({
       key: "search",
       value: target.value.trim() !== "" ? target.value : "",
