@@ -1,4 +1,5 @@
 import React from "react";
+import Genres from "../Genres";
 import {
   Container,
   Poster,
@@ -6,7 +7,6 @@ import {
   DetailsContainer,
   Title,
   YearOrCharacter,
-  Tags,
   Span,
   About,
   VoteContainer,
@@ -27,7 +27,8 @@ const Tile = ({
   info2,
   value1,
   value2,
-  type,
+  genre_ids,
+  genreId,
   starIcon,
   voteAverage,
   maxAverage,
@@ -60,7 +61,11 @@ const Tile = ({
               {value2}
             </About>
           </div>
-          <Tags>{type}</Tags>
+          <Genres
+            people={changeTileStyle}
+            genreId={genreId}
+            genre_ids={genre_ids}
+          ></Genres>
         </DetailsContainer>
         <VoteContainer>
           <StarIcon

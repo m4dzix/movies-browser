@@ -2,15 +2,11 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchPopularMovies,
-  fetchGenres,
   selectLoading,
   selectMovies,
-  selectGenres,
-  selectMoviePage,
+  selectTotalMoviePages,
   showId,
-  selectQuery,
-  fetchMoviesByQuery,
-} from "../moviesSlice";
+} from "./moviesSlice";
 import video from "../../../assets/Video.svg";
 import starIcon from "../../../assets/Vector.svg";
 import Main from "../../../common/Main";
@@ -18,37 +14,27 @@ import Section from "../../../common/Section";
 import Loading from "../../../common/Loading";
 import Error from "../../../common/Error";
 import Tile from "../../../common/Tile";
-import { Tag, StyledLink } from "../../../common/Tile/additionalStyled";
+import { StyledLink } from "../../../common/Tile/additionalStyled";
 import NoResults from "../../../common/NoResults";
 import Pagination from "../../../common/Pagination";
 import { toMovie } from "../../../routes";
+import { useQueryParameters } from "../../../customHooks/useQueryParameters";
 
 const PopularMovies = () => {
-  const query = useSelector(selectQuery);
+  const query = useQueryParameters("search");
   const loading = useSelector(selectLoading);
-  const movieGenres = useSelector(selectGenres);
-  const page = useSelector(selectMoviePage);
+  const page = useQueryParameters("page");
+  const lastPage = useSelector(selectTotalMoviePages);
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
 
   useEffect(() => {
-    if (query === "") {
-      dispatch(fetchPopularMovies(page));
-    } else {
-      dispatch(fetchMoviesByQuery(query, page));
-    }
-  }, [dispatch, query, page]);
+    page === null
+      ? dispatch(fetchPopularMovies({ currentPage: 1, query }))
+      : dispatch(fetchPopularMovies({ currentPage: page, query }));
+  }, [dispatch, page, query]);
 
-  useEffect(() => {
-    dispatch(fetchGenres());
-  }, [dispatch]);
-
-  const type = (genreId) =>
-    movieGenres
-      .filter((item) => item.id === genreId)
-      .map((genres) => genres.name);
-
-  if (!loading && movies.length > 0) {
+  if (!loading && movies) {
     return (
       <Main>
         <Section
@@ -67,9 +53,7 @@ const PopularMovies = () => {
                 yearOrCharacter={
                   !!movie.release_date ? movie.release_date.split("-")[0] : ""
                 }
-                type={movie.genre_ids.map((id) => (
-                  <Tag key={id}>{type(id)}</Tag>
-                ))}
+                genre_ids={movie.genre_ids}
                 imagePath={
                   !!movie.poster_path
                     ? `https://images.tmdb.org/t/p/w185/${movie.poster_path}`
@@ -90,13 +74,13 @@ const PopularMovies = () => {
             </StyledLink>
           ))}
         ></Section>
-        <Pagination />
+        <Pagination currentPage={page} lastPage={lastPage} />
       </Main>
     );
   } else if (loading) {
     return <Loading />;
   }
-  if (!loading && movies.length === 0) {
+  if (!loading && movies) {
     return <NoResults />;
   } else {
     return <Error />;

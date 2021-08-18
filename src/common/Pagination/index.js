@@ -1,38 +1,19 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Container, Button, Pages, Text } from "./styled";
-import {
-  selectMoviePage,
-  selectTotalMoviePages,
-  nextPage,
-  previousPage,
-  lastPage,
-  firstPage,
-} from "../../features/Movies/moviesSlice";
-import {
-  selectPeopleActiveTab,
-  selectPeoplePage,
-  selectTotalPeoplePages,
-} from "../../features/People/peopleSlice";
-const Pagination = () => {
-  const currentMoviePage = useSelector(selectMoviePage);
-  const currentPeoplePage = useSelector(selectPeoplePage);
-  const maxMoviePages = useSelector(selectTotalMoviePages);
-  const maxPeoplePages = useSelector(selectTotalPeoplePages);
-  const isPeopleTabActive = useSelector(selectPeopleActiveTab);
-  const isMobile = window.screen.width < 767;
-  const dispatch = useDispatch();
+import { useGoToPage } from "../../customHooks/useGoToPage";
 
-  const currentPage = isPeopleTabActive ? currentPeoplePage : currentMoviePage;
-  const maxPages = isPeopleTabActive ? maxPeoplePages : maxMoviePages;
+const Pagination = ({ currentPage, lastPage }) => {
+  const page = currentPage;
+  const goToPage = useGoToPage();
+  const isMobile = window.screen.width < 767;
 
   return (
     <Container>
       <Button
         onClick={() => {
-          dispatch(firstPage());
+          goToPage(1);
         }}
-        disabled={currentPage === 1}
+        disabled={+page === 1 || page === null}
       >
         {isMobile ? (
           <>&#60;&#60;</>
@@ -44,9 +25,9 @@ const Pagination = () => {
       </Button>
       <Button
         onClick={() => {
-          dispatch(previousPage());
+          goToPage(+page - 1);
         }}
-        disabled={currentPage === 1}
+        disabled={+page === 1 || page === null}
       >
         {isMobile ? (
           <>&#60;</>
@@ -58,14 +39,15 @@ const Pagination = () => {
       </Button>
       <Pages>
         <>
-          <Text inPages>Page</Text> {currentPage} <Text inPages>of</Text>{" "}{maxPages}
+          <Text inPages>Page</Text> {page === null ? 1 : page}
+          <Text inPages>of</Text> {lastPage}
         </>
       </Pages>
       <Button
         onClick={() => {
-          dispatch(nextPage());
+          page === null ? goToPage(2) : goToPage(+page + 1);
         }}
-        disabled={currentPage === maxPages}
+        disabled={+page === lastPage}
       >
         {isMobile ? (
           <>&#62;</>
@@ -77,9 +59,9 @@ const Pagination = () => {
       </Button>
       <Button
         onClick={() => {
-          dispatch(lastPage());
+          goToPage(lastPage);
         }}
-        disabled={currentPage === maxPages}
+        disabled={+page === lastPage}
       >
         {isMobile ? (
           <>&#62;&#62;</>

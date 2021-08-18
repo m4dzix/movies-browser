@@ -1,9 +1,13 @@
-import { API_KEY, API_URL, API_LANGUAGE } from "../fetchFromApi";
+import { API_KEY, API_URL, API_LANGUAGE } from "../../fetchFromApi";
 
-export const getPopularPeople = async (page) => {
-  const api = `${API_URL}/person/popular?api_key=${API_KEY}&language=en-US&page=${encodeURIComponent(
-    page
-  )}`;
+export const getPopularPeople = async (page, query) => {
+  const api = query
+    ? `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${query}&page=${encodeURIComponent(
+        page
+      )}`
+    : `${API_URL}/person/popular?api_key=${API_KEY}&language=en-US&page=${encodeURIComponent(
+        page
+      )}`;
 
   const response = await fetch(api);
 

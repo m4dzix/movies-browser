@@ -4,15 +4,12 @@ const peopleSlice = createSlice({
   name: "movies",
   initialState: {
     loading: true,
-    page: 1,
-    people: [],
     credits: [],
     cast: [],
     crew: [],
     person: [],
     changeTileStyle: false,
-    id: "undefinded",
-    isPeopleTabActive: false,
+    id: "undefined",
     query: "",
   },
 
@@ -20,7 +17,7 @@ const peopleSlice = createSlice({
     showId: (state) => {
       state.id = this.props.id;
     },
-    updateQuery: (state, { payload: query}) => {
+    updateQuery: (state, { payload: query }) => {
       state.query = query;
     },
     firstPage: (state) => {
@@ -63,18 +60,6 @@ const peopleSlice = createSlice({
       state.loading = false;
       state.credits = !state.credits;
     },
-    fetchPersonDetails: (state) => {
-      state.loading = true;
-    },
-    fetchPersonDetailsSuccess: (state, { payload: person }) => {
-      state.person = person;
-      state.id = person.id;
-      state.loading = false;
-      state.changeTileStyle = true;
-    },
-    fetchPersonDetailsError: (state) => {
-      state.loading = false;
-    },
     peopleTabActive: (state) => {
       state.isPeopleTabActive = true;
     },
@@ -100,25 +85,14 @@ const peopleSlice = createSlice({
 
 export const {
   showId,
-  firstPage,
   lastPage,
-  nextPage,
-  previousPage,
   fetchPopularPeople,
   fetchPopularPeopleSuccess,
   fetchPopularPeopleError,
   fetchCredits,
   fetchCreditsError,
   fetchCreditsSuccess,
-  fetchPersonDetails,
-  fetchPersonDetailsSuccess,
-  fetchPersonDetailsError,
-  peopleTabActive,
-  peopleTabInactive,
   updateQuery,
-  fetchPeopleByQuery,
-  fetchPeopleByQuerySuccess,
-  fetchPeopleByQueryError,
 } = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;
@@ -129,11 +103,9 @@ export const selectCredits = (state) => selectPeopleState(state).credits;
 export const selectCrew = (state) => selectPeopleState(state).crew;
 export const selectLoadingCredits = (state) => selectPeopleState(state).loading;
 export const selectCast = (state) => selectPeopleState(state).cast;
-export const selectPersonDetails = (state) => selectPeopleState(state).person;
-export const selectPeoplePage = (state) => selectPeopleState(state).page;
-export const selectTotalPeoplePages = (state) => selectPeopleState(state).totalPages;
+export const selectTotalPeoplePages = (state) =>
+  selectPeopleState(state).totalPages;
 export const selectLoading = (state) => selectPeopleState(state).loading;
-export const selectPeopleActiveTab = (state) => selectPeopleState(state).isPeopleTabActive;
 export const selectQuery = (state) => selectPeopleState(state).query;
 
 export default peopleSlice.reducer;

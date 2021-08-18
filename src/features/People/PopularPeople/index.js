@@ -4,13 +4,12 @@ import profile from "../../../assets/Profile.svg";
 import {
   selectLoading,
   fetchPopularPeople,
-  fetchPeopleByQuery,
+  selectTotalPeoplePages,
   selectPeople,
   selectChangeTileStyle,
   showId,
-  selectPeoplePage,
-  selectQuery,
-} from "../peopleSlice";
+} from "./peopleSlice";
+import { useQueryParameters } from "../../../customHooks/useQueryParameters";
 import Main from "../../../common/Main";
 import Section from "../../../common/Section";
 import Tile from "../../../common/Tile";
@@ -22,23 +21,22 @@ import NoResults from "../../../common/NoResults";
 
 const PopularPeople = () => {
   const loading = useSelector(selectLoading);
-  const query = useSelector(selectQuery);
+  const query = useQueryParameters("search");
   const people = useSelector(selectPeople);
   const changeTileStyle = useSelector(selectChangeTileStyle);
-  const page = useSelector(selectPeoplePage);
+  const page = useQueryParameters("page");
+  const lastPage = useSelector(selectTotalPeoplePages);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (query === ""){
-      dispatch(fetchPopularPeople(page));
-    } else {
-      dispatch(fetchPeopleByQuery(query, page))
-    }
+    page === null
+      ? dispatch(fetchPopularPeople({ currentPage: 1, query }))
+      : dispatch(fetchPopularPeople({ currentPage: page, query }));
   }, [dispatch, page, query]);
 
   const toPerson = ({ id } = { id: ":id" }) => `/people-details/${id}`;
 
-  if (!loading && people.length > 0) {
+  if (!loading && people) {
     return (
       <Main>
         <Section
@@ -62,12 +60,12 @@ const PopularPeople = () => {
             </StyledLink>
           ))}
         ></Section>
-        <Pagination />
+        <Pagination currentPage={page} lastPage={lastPage} />
       </Main>
     );
   } else if (loading) {
     return <Loading />;
-  } else if (!loading && people.length === 0) {
+  } else if (!loading && people) {
     return <NoResults />;
   } else {
     return <Error />;
