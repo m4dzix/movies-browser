@@ -1,9 +1,15 @@
 import { API_KEY, API_URL, API_LANGUAGE } from "../../fetchFromApi";
 
-export const getPopularMovies = async (page) => {
-  const api = `${API_URL}/movie/popular?api_key=${API_KEY}&language=${API_LANGUAGE}&page=${encodeURIComponent(
-    page
-  )}`;
+export const getPopularMovies = async (page, query) => {
+  const api = query
+    ? `
+    https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=${API_LANGUAGE}&query=${query}&page=${encodeURIComponent(
+        page
+      )}`
+    : `
+    https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${API_LANGUAGE}&page=${encodeURIComponent(
+        page
+      )}`;
 
   const response = await fetch(api);
 
@@ -13,21 +19,6 @@ export const getPopularMovies = async (page) => {
   const popularMovies = await response.json();
 
   return popularMovies;
-};
-
-export const getMoviesByQuery = async (query, page) => {
-  const api = `${API_URL}/search/movie/?api_key=${API_KEY}&language=${API_LANGUAGE}&query=${encodeURIComponent(
-    query
-  )}&page=${encodeURIComponent(page)}`;
-
-  const response = await fetch(api);
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  const moviesByQuery = response.json();
-
-  return moviesByQuery;
 };
 
 export const getMovieCredits = async (id) => {

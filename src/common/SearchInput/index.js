@@ -1,39 +1,41 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useReplaceQueryParameters } from "../../useQueryParameters";
 import {
   selectQuery,
   updateQuery,
 } from "../../features/Movies/PopularMovies/moviesSlice";
-import { selectPeopleActiveTab } from "../../features/People/PopularPeople/peopleSlice";
 import { Input } from "./styled";
 
 export const SearchInput = () => {
   const query = useSelector(selectQuery);
-  const isPeopleTabActive = useSelector(selectPeopleActiveTab);
+  const replaceQueryParameters = useReplaceQueryParameters(true);
   const dispatch = useDispatch();
   const location = useLocation();
-  const history = useHistory();
-  const handleChange = (value) => {
-    const searchParams = new URLSearchParams(location.search);
+  const searchMovies = location.pathname.includes("movies");
 
-    if (value.trim() === "") {
-      searchParams.delete("search");
-    } else {
-      searchParams.set("search", value);
-    }
+  const onFirstPage = (page) =>
+    replaceQueryParameters({
+      key: "page",
+      value: page.toString(),
+    });
 
-    history.push(`${location.pathname}?${searchParams.toString()}`);
-    dispatch(updateQuery(value));
+  const onInputChange = ({ target }) => {
+    onFirstPage(1);
+    replaceQueryParameters({
+      key: "search",
+      value: target.value.trim() !== "" ? target.value : "",
+    });
+    dispatch(updateQuery(target.value));
   };
-
   return (
     <Input
       placeholder={
-        isPeopleTabActive ? "Search for people..." : "Search for movies..."
+        searchMovies ? "Search for movies..." : "Search for people..."
       }
       value={query || ""}
-      onChange={({ target }) => handleChange(target.value)}
+      onChange={onInputChange}
     />
   );
 };

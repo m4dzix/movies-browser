@@ -4,26 +4,19 @@ const moviesSlice = createSlice({
   name: "movies",
   initialState: {
     loading: true,
-    page: 1,
-    query: "",
     movieCredits: [],
     movieCast: [],
     movieCrew: [],
   },
 
   reducers: {
-    firstPage: (state) => {
-      state.page = 1;
-    },
     lastPage: (state) => {
       state.page = state.totalPages;
     },
-    nextPage: (state) => {
-      state.page++;
+    firstPage: (state) => {
+      state.page = 1;
     },
-    previousPage: (state) => {
-      state.page--;
-    },
+
     showId: (state) => {
       state.id = this.props.id;
     },
@@ -35,24 +28,10 @@ const moviesSlice = createSlice({
     },
     fetchPopularMoviesSuccess: (state, { payload: movies }) => {
       state.movies = movies.results;
-      state.page = movies.page;
       state.totalPages = movies.total_pages;
       state.loading = false;
     },
     fetchPopularMoviesError: (state) => {
-      state.loading = false;
-    },
-
-    fetchMoviesByQuery: (state) => {
-      state.loading = true;
-    },
-    fetchMoviesByQuerySuccess: (state, { payload: movies }) => {
-      state.movies = movies.results;
-      state.page = movies.page;
-      state.totalPages = movies.total_pages;
-      state.loading = false;
-    },
-    fetchMoviesByQueryError: (state) => {
       state.loading = false;
     },
     fetchMovieCredits: (state) => {
@@ -72,17 +51,11 @@ const moviesSlice = createSlice({
 });
 
 export const {
-  firstPage,
   lastPage,
-  nextPage,
-  previousPage,
   fetchPopularMovies,
   fetchPopularMoviesSuccess,
   fetchPopularMoviesError,
   showId,
-  fetchMoviesByQuery,
-  fetchMoviesByQuerySuccess,
-  fetchMoviesByQueryError,
   updateQuery,
   fetchMovieCredits,
   fetchMovieCreditsError,
@@ -102,5 +75,4 @@ export const selectTotalMoviePages = (state) =>
   selectMoviesState(state).totalPages;
 export const selectLoading = (state) => selectMoviesState(state).loading;
 export const selectQuery = (state) => selectMoviesState(state).query;
-
 export default moviesSlice.reducer;

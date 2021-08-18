@@ -4,10 +4,8 @@ import {
   fetchPopularMovies,
   selectLoading,
   selectMovies,
-  selectMoviePage,
+  selectTotalMoviePages,
   showId,
-  selectQuery,
-  fetchMoviesByQuery,
 } from "./moviesSlice";
 import video from "../../../assets/Video.svg";
 import starIcon from "../../../assets/Vector.svg";
@@ -20,21 +18,22 @@ import { StyledLink } from "../../../common/Tile/additionalStyled";
 import NoResults from "../../../common/NoResults";
 import Pagination from "../../../common/Pagination";
 import { toMovie } from "../../../routes";
+import { useQueryParameters } from "../../../useQueryParameters";
 
 const PopularMovies = () => {
-  const query = useSelector(selectQuery);
+  const query = useQueryParameters("search");
   const loading = useSelector(selectLoading);
-  const page = useSelector(selectMoviePage);
+  const page = useQueryParameters("page");
+  const lastPage = useSelector(selectTotalMoviePages);
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
 
   useEffect(() => {
-    if (query === "") {
-      dispatch(fetchPopularMovies(page));
-    } else {
-      dispatch(fetchMoviesByQuery(query, page));
-    }
-  }, [dispatch, query, page]);
+    console.log(page);
+    page === null
+      ? dispatch(fetchPopularMovies({ currentPage: 1, query }))
+      : dispatch(fetchPopularMovies({ currentPage: page, query }));
+  }, [dispatch, page, query]);
 
   if (!loading && movies.length > 0) {
     return (
@@ -76,7 +75,7 @@ const PopularMovies = () => {
             </StyledLink>
           ))}
         ></Section>
-        <Pagination />
+        <Pagination currentPage={page} lastPage={lastPage} />
       </Main>
     );
   } else if (loading) {

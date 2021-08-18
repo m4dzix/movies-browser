@@ -1,5 +1,5 @@
-import { delay, call, put, takeEvery, debounce } from "redux-saga/effects";
-import { getPopularPeople, getCredits, getPeopleByQuery } from "./getPeopleApi";
+import { delay, call, put, takeLatest } from "redux-saga/effects";
+import { getPopularPeople, getCredits } from "./getPeopleApi";
 import {
   fetchPopularPeople,
   fetchPopularPeopleSuccess,
@@ -7,15 +7,17 @@ import {
   fetchCredits,
   fetchCreditsSuccess,
   fetchCreditsError,
-  fetchPeopleByQuery,
-  fetchPeopleByQuerySuccess,
-  fetchPeopleByQueryError,
 } from "./peopleSlice";
 
-function* fetchPopularPeopleHandler({ payload: page }) {
+function* fetchPopularPeopleHandler({ payload }) {
   try {
     yield delay(100);
-    const people = yield call(getPopularPeople, page);
+    console.log(payload);
+    const people = yield call(
+      getPopularPeople,
+      payload.currentPage,
+      payload.query
+    );
     yield put(fetchPopularPeopleSuccess(people));
   } catch (error) {
     yield put(fetchPopularPeopleError());
@@ -31,18 +33,8 @@ function* fetchCreditsHandler({ payload: movieId }) {
     yield put(fetchCreditsError());
   }
 }
-function* fetchPeopleByQueryHandler({ payload: query, page }) {
-  try {
-    yield delay(100);
-    const searchPeople = yield call(getPeopleByQuery, query, page);
-    yield put(fetchPeopleByQuerySuccess(searchPeople));
-  } catch (error) {
-    yield put(fetchPeopleByQueryError());
-  }
-}
 
 export function* watchFetchPopularPeople() {
-  yield takeEvery(fetchPopularPeople.type, fetchPopularPeopleHandler);
-  yield takeEvery(fetchCredits.type, fetchCreditsHandler);
-  yield debounce(1000, fetchPeopleByQuery.type, fetchPeopleByQueryHandler);
+  yield takeLatest(fetchPopularPeople.type, fetchPopularPeopleHandler);
+  yield takeLatest(fetchCredits.type, fetchCreditsHandler);
 }

@@ -1,12 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectQuery } from "../../features/Movies/PopularMovies/moviesSlice";
 import Header from "./../Header";
 import Main from "../Main";
 import { StyledPaperPlane, ImageWrapper } from "./styled";
+import { useQueryParameters } from "../../useQueryParameters";
 
 const NoResults = () => {
-  const query = useSelector(selectQuery);
+  const query = useQueryParameters("search");
 
   return (
     <Main>

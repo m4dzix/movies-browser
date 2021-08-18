@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import {
   StyledLink,
   StyledNavLink,
@@ -14,17 +13,10 @@ import {
 } from "./styled";
 import { SearchInput } from "../SearchInput";
 import { toMovies, toPeople } from "../../routes";
-import { firstPage } from "../../features/Movies/PopularMovies/moviesSlice";
 import search from "../../images/search.svg";
 import camera from "../../images/camera.svg";
-import {
-  peopleTabActive,
-  peopleTabInactive,
-} from "../../features/People/PopularPeople/peopleSlice";
 
 export const Navigation = () => {
-  const dispatch = useDispatch();
-
   return (
     <nav>
       <NavContainer>
@@ -37,26 +29,10 @@ export const Navigation = () => {
           </LogoContainer>
           <LinkContainer>
             <ListItem>
-              <StyledNavLink
-                to={toMovies()}
-                onClick={() => {
-                  dispatch(firstPage());
-                  dispatch(peopleTabInactive());
-                }}
-              >
-                movies
-              </StyledNavLink>
+              <StyledNavLink to={toMovies}>movies</StyledNavLink>
             </ListItem>
             <ListItem>
-              <StyledNavLink
-                to={toPeople()}
-                onClick={() => {
-                  dispatch(firstPage());
-                  dispatch(peopleTabActive());
-                }}
-              >
-                people
-              </StyledNavLink>
+              <StyledNavLink to={toPeople()}>people</StyledNavLink>
             </ListItem>
           </LinkContainer>
         </NavContent>
