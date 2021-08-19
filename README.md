@@ -13,8 +13,10 @@ Navigation bar contains categories and search box.
 - Searching:
   Start typing interested movie or person. Data will be live filtered with typed letters.
   At the bottom of the page is a pagination that allows you to navigate between the pages.
+  ![SearchingGif](src/assets/searching.gif)
 - Reviewing details:
   Clicking on the card presenting a given movie or person opens subpage with details.
+  ![navBArGif](src/assets/navBar.gif)
 
 ## Movie details:
 
@@ -23,12 +25,16 @@ First section: title, production details, rating and short description. If the m
 The following sections feature people from the cast and crew.
 Clicking person card move to dedicated page with details.
 
+![movieDetailsGif](src/assets/movieDetails.gif)
+
 ## Person details:
 
 First section: Person details such as photo, date and place of birth with short description.
 
 The following sections list videos where the person was involved.
 clicking on a movie card move to dedicated page with details.
+
+![personDetailsGif](src/assets/personDetails.gif)
 
 ## Technologies used:
 
